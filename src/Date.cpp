@@ -70,7 +70,7 @@ void Date::setYear(const unsigned int val){
 //fin accesseurs basiques
 
 
-//surcharge opérateur pour affichage console
+
 std::string Date::toString() const{
     std::string s;
     s = std::to_string(this->getDay()) + "/" + std::to_string(this->getMonth()) + "/" + std::to_string(this->getYear());

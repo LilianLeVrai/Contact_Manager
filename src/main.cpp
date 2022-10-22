@@ -16,13 +16,13 @@ int main()
     t3.setId(3);
 
     ListTodo l;
-l.addTodo(t1);
+    l.addTodo(t1);
     l.addTodo(t2);
     l.addTodo(t3);
 
 
 
-cout << l.toString() << endl;
+    cout << l.toString() << endl;
 
 
 return 0;

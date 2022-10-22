@@ -60,7 +60,7 @@ void Todo::setBoolTagDate(bool val){
 }
 //fin accesseurs basiques
 
-//surcharge opérateur pour affichage console
+
 std::string Todo::toString() const{
     std::string s;
     if(this->getBoolTagDate())
