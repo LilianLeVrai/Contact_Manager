@@ -8,18 +8,20 @@ Todo::Todo(){
 }
 
 Todo::Todo(const std::string & content){
+    this->id=NULL;
     this->content=content;
-
     this->boolTagDate=false;
 }
 
-Todo::Todo(const std::string & content, Date date){
+Todo::Todo(const std::string & content, const Date & date){
+    this->id=NULL;
     this->content=content;
     this->date=date;
     this->boolTagDate=true;
 }
 
-Todo::Todo(const std::string & content, Date date, bool boolTagDate){
+Todo::Todo(const int id, const std::string & content, const Date & date, const bool boolTagDate){
+    this->id=id;
     this->content=content;
     this->date=date;
     this->boolTagDate=boolTagDate;
@@ -31,6 +33,9 @@ Todo::~Todo(){
 
 
 //début accesseurs basiques
+int Todo::getId() const{
+    return this->id;
+}
 std::string Todo::getContent() const{
     return this->content;
 }
@@ -41,10 +46,13 @@ bool Todo::getBoolTagDate() const{
     return this->boolTagDate;
 }
 
+void Todo::setId(const int val){
+    this->id=val;
+}
 void Todo::setContent(const std::string & val){
     this->content=val;
 }
-void Todo::setDate(Date val){
+void Todo::setDate(const Date & val){
     this->date=val;
 }
 void Todo::setBoolTagDate(bool val){
@@ -53,12 +61,13 @@ void Todo::setBoolTagDate(bool val){
 //fin accesseurs basiques
 
 //surcharge opérateur pour affichage console
-std::ostream& operator<<(std::ostream& os, const Todo& todo){
-    if(todo.getBoolTagDate())
-        os << "@todo " << todo.getContent() << " @date " << todo.getDate();
+std::string Todo::toString() const{
+    std::string s;
+    if(this->getBoolTagDate())
+        s = "@todo " + this->getContent() + " @date " + this->getDate().toString();
     else
-        os << "@todo " << todo.getContent();
-    return os;
+        s = "@todo " + this->getContent();
+    return s;
 }
 
 

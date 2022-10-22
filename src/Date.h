@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <time.h>
+#include <string>
 
 class Date
 {
@@ -30,7 +31,7 @@ class Date
         void setMonth(const unsigned int);
         void setYear(const unsigned int);
 
-        friend std::ostream& operator<<(std::ostream &, const Date&);
+        std::string toString() const;
 };
 
 #endif // DATE_H

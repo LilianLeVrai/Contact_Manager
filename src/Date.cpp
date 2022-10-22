@@ -71,9 +71,10 @@ void Date::setYear(const unsigned int val){
 
 
 //surcharge opérateur pour affichage console
-std::ostream& operator<<(std::ostream& os, const Date& date){
-    os << date.getDay() << "/" << date.getMonth() << "/" << date.getYear();
-    return os;
+std::string Date::toString() const{
+    std::string s;
+    s = std::to_string(this->getDay()) + "/" + std::to_string(this->getMonth()) + "/" + std::to_string(this->getYear());
+    return s;
 }
 
 
