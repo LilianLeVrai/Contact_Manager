@@ -56,6 +56,11 @@ void Todo::setContent(const std::string & val){
 }
 void Todo::setDate(Date* const val){
     this->date=val;
+    if(val==nullptr)
+        this->boolTagDate=false;
+    else
+        this->boolTagDate=true;
+
 }
 void Todo::setBoolTagDate(bool val){
     this->boolTagDate=val;

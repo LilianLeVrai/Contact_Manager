@@ -7,18 +7,18 @@
 class ListTodo
 {
     private:
-        std::list<Todo> listTodo;
+        std::list<Todo*> listTodo;
 
     public:
         ListTodo();
         ~ListTodo();
 
-        std::list<Todo> getListTodo() const;
-        void setListTodo(const std::list<Todo> &);
+        std::list<Todo*> getListTodo() const;
+        void setListTodo(const std::list<Todo*> &);
 
-        void addTodo(const Todo &);
+        void addTodo(Todo* const);
         void removeTodoById(const int);
-        Todo getTodoById(const int) const;
+        Todo* getTodoById(const int) const;
         int getSize() const;
 
         std::string toString() const;

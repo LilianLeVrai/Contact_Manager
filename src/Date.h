@@ -16,8 +16,8 @@ class Date
 
     public:
         Date();
-        Date(unsigned int day,unsigned int month,unsigned int year);
-        Date(unsigned int minute,unsigned int hour,unsigned int day,unsigned int month,unsigned int year);
+        Date(unsigned int day, unsigned int month, unsigned int year);
+        Date(unsigned int minute, unsigned int hour, unsigned int day, unsigned int month, unsigned int year);
         ~Date();
 
         unsigned int getMinute() const;

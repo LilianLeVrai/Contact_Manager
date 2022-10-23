@@ -8,8 +8,10 @@ CONFIG -= app_bundle
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+        Contact.cpp \
         Date.cpp \
         Interaction.cpp \
+        ListContact.cpp \
         ListInteraction.cpp \
         Todo.cpp \
         ListTodo.cpp \
@@ -21,8 +23,10 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 HEADERS += \
+    Contact.h \
     Date.h \
     Interaction.h \
+    ListContact.h \
     ListInteraction.h \
     Todo.h \
     ListTodo.h

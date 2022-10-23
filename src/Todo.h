@@ -17,7 +17,7 @@ class Todo
         Todo();
         Todo(const std::string & content);
         Todo(const std::string & content, Date* const date);
-        Todo(const int id, const std::string & content, Date* const date,const bool boolTagDate);
+        Todo(const int id, const std::string & content, Date* const date, const bool boolTagDate);
         ~Todo();
 
         int getId() const;
