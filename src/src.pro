@@ -9,6 +9,8 @@ CONFIG -= app_bundle
 
 SOURCES += \
         Date.cpp \
+        Interaction.cpp \
+        ListInteraction.cpp \
         Todo.cpp \
         ListTodo.cpp \
         main.cpp
@@ -20,5 +22,7 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 HEADERS += \
     Date.h \
+    Interaction.h \
+    ListInteraction.h \
     Todo.h \
     ListTodo.h

@@ -2,25 +2,27 @@
 
 //début constructeurs/destructeurs
 Todo::Todo(){
+    this->id=NULL;
     this->content="";
-
+    this->date=nullptr;
     this->boolTagDate=false;
 }
 
 Todo::Todo(const std::string & content){
     this->id=NULL;
     this->content=content;
+    this->date=nullptr;
     this->boolTagDate=false;
 }
 
-Todo::Todo(const std::string & content, const Date & date){
+Todo::Todo(const std::string & content, Date* const date){
     this->id=NULL;
     this->content=content;
     this->date=date;
     this->boolTagDate=true;
 }
 
-Todo::Todo(const int id, const std::string & content, const Date & date, const bool boolTagDate){
+Todo::Todo(const int id, const std::string & content, Date* const date, const bool boolTagDate){
     this->id=id;
     this->content=content;
     this->date=date;
@@ -39,7 +41,7 @@ int Todo::getId() const{
 std::string Todo::getContent() const{
     return this->content;
 }
-Date Todo::getDate() const{
+Date* Todo::getDate() const{
     return this->date;
 }
 bool Todo::getBoolTagDate() const{
@@ -52,7 +54,7 @@ void Todo::setId(const int val){
 void Todo::setContent(const std::string & val){
     this->content=val;
 }
-void Todo::setDate(const Date & val){
+void Todo::setDate(Date* const val){
     this->date=val;
 }
 void Todo::setBoolTagDate(bool val){
@@ -64,7 +66,7 @@ void Todo::setBoolTagDate(bool val){
 std::string Todo::toString() const{
     std::string s;
     if(this->getBoolTagDate())
-        s = "@todo " + this->getContent() + " @date " + this->getDate().toString();
+        s = "@todo " + this->getContent() + " @date " + (*this->getDate()).toString();
     else
         s = "@todo " + this->getContent();
     return s;
