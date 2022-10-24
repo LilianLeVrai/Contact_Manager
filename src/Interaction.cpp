@@ -1,6 +1,6 @@
 #include "Interaction.h"
 
-//début constructeurs/destructeurs
+//debut constructeurs/destructeurs
 Interaction::Interaction(){
     this->id=NULL;
     this->content="";
@@ -41,7 +41,7 @@ Interaction::~Interaction(){
 //fin constructeurs/destructeurs
 
 
-//début accesseurs basiques
+//debut accesseurs basiques
 int Interaction::getId() const{
     return this->id;
 }

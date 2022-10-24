@@ -1,6 +1,6 @@
 #include "ListInteraction.h"
 
-//début constructeurs/destructeurs
+//debut constructeurs/destructeurs
 ListInteraction::ListInteraction(){
 }
 
@@ -9,7 +9,7 @@ ListInteraction::~ListInteraction(){
 }
 //fin constructeurs/destructeurs
 
-//début accesseurs basiques
+//debut accesseurs basiques
 std::list<Interaction*> ListInteraction::getListInteraction() const{
     return this->listInteraction;
 }

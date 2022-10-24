@@ -1,6 +1,6 @@
 #include "Todo.h"
 
-//début constructeurs/destructeurs
+//debut constructeurs/destructeurs
 Todo::Todo(){
     this->id=NULL;
     this->content="";
@@ -34,7 +34,7 @@ Todo::~Todo(){
 //fin constructeurs/destructeurs
 
 
-//début accesseurs basiques
+//debut accesseurs basiques
 int Todo::getId() const{
     return this->id;
 }
@@ -76,11 +76,3 @@ std::string Todo::toString() const{
         s = "@todo " + this->getContent();
     return s;
 }
-
-
-
-
-
-
-
-

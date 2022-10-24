@@ -1,6 +1,6 @@
 #include "ListContact.h"
 
-//début constructeurs/destructeurs
+//debut constructeurs/destructeurs
 ListContact::ListContact(){
 }
 
@@ -9,7 +9,7 @@ ListContact::~ListContact(){
 }
 //fin constructeurs/destructeurs
 
-//début accesseurs basiques
+//debut accesseurs basiques
 std::list<Contact*> ListContact::getListContact() const{
     return this->listContact;
 }

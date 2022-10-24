@@ -1,6 +1,6 @@
 #include "Contact.h"
 
-//début constructeurs/destructeurs
+//debut constructeurs/destructeurs
 Contact::Contact(){
     this->id=NULL;
     this->dateCreation=new Date;
@@ -50,7 +50,7 @@ Contact::~Contact(){
 }
 //fin constructeurs/destructeurs
 
-//début accesseurs basiques
+//debut accesseurs basiques
 int  Contact::getId() const{
     return this->id;
 }

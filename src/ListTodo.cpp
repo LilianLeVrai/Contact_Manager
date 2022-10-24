@@ -1,6 +1,6 @@
 #include "ListTodo.h"
 
-//début constructeurs/destructeurs
+//debut constructeurs/destructeurs
 ListTodo::ListTodo(){
 }
 
@@ -9,7 +9,7 @@ ListTodo::~ListTodo(){
 }
 //fin constructeurs/destructeurs
 
-//début accesseurs basiques
+//debut accesseurs basiques
 std::list<Todo*> ListTodo::getListTodo() const{
     return this->listTodo;
 }
