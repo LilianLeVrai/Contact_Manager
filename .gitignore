@@ -1,2 +1,3 @@
 build-src-Desktop_Qt_5_15_2_MinGW_64_bit-Debug/
-src/src.pro.user
+
+/src/src.pro.user
