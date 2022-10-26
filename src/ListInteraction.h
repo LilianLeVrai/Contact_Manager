@@ -1,6 +1,12 @@
 #ifndef LISTINTERACTION_H
 #define LISTINTERACTION_H
 
+/**
+ * @file ListInteraction.h
+ * @brief Fichier header de la classe ListInteraction
+ */
+
+
 #include <Interaction.h>
 
 class ListInteraction

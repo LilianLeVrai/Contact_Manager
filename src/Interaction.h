@@ -1,6 +1,11 @@
 #ifndef INTERACTION_H
 #define INTERACTION_H
 
+/**
+ * @file Interaction.h
+ * @brief Fichier header de la classe Interaction
+ */
+
 
 #include "Date.h"
 #include "ListTodo.h"

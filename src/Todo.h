@@ -1,6 +1,12 @@
 #ifndef TODO_H
 #define TODO_H
 
+/**
+ * @file Todo.h
+ * @brief Fichier header de la classe Todo
+ */
+
+
 #include <string>
 #include <Date.h>
 

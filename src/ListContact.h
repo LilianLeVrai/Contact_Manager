@@ -1,6 +1,12 @@
 #ifndef LISTCONTACT_H
 #define LISTCONTACT_H
 
+/**
+ * @file ListContact.h
+ * @brief Fichier header de la classe ListContact
+ */
+
+
 #include <string.h>
 #include <Contact.h>
 
