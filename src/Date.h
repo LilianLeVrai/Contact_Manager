@@ -94,7 +94,7 @@ class Date
 
         /**
          * @brief Permet d'obtenir une chaine de caractères avec les informations de l'objet
-         * @return string sous la forme 'jj/mm/aaaa'
+         * @return std::string sous la forme 'jj/mm/aaaa'
          *
          * @warning sujet à changement
          */

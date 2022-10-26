@@ -11,18 +11,22 @@
 #include <Date.h>
 #include <ListInteraction.h>
 
+/**
+ * @class Interaction
+ * @brief classe représentant un contact
+ */
 class Contact
 {
     private:
-        int id;
-        std::string lastName;
-        std::string firstName;
-        std::string company;
-        std::string mail;
-        std::string phone;
-        std::string pathPicture;
-        Date* dateCreation;
-        ListInteraction* listInteraction;
+        int id; /**< identifiant */
+        std::string lastName; /**< nom */
+        std::string firstName; /**< prénom */
+        std::string company; /**< entreprise */
+        std::string mail; /**< mail */
+        std::string phone; /**< numéro de téléphone */
+        std::string pathPicture; /**< chemin vers la photo */
+        Date* dateCreation; /**< date de création */
+        ListInteraction* listInteraction; /**< liste d'intéraction */
 
     public:
         Contact();

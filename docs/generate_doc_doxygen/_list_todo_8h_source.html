@@ -1,0 +1,122 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.5"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>ProjetCDAA:  Fichier source de C:/Users/lilia/Documents/GitHub/projetCDAA/src/ListTodo.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">ProjetCDAA
+   </div>
+   <div id="projectbrief">Gestionnaire de contacts avec différentes fonctionnalités de recherches, d&#39;ajout de notes, etc..</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.9.5 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Chargement...</div>
+<div class="SRStatus" id="Searching">Recherche...</div>
+<div class="SRStatus" id="NoMatches">Aucune correspondance</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle"><div class="title">ListTodo.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="_list_todo_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef LISTTODO_H</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define LISTTODO_H</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &lt;list&gt;</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &lt;<a class="code" href="_todo_8h.html">Todo.h</a>&gt;</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno"><a class="line" href="class_list_todo.html">   17</a></span><span class="keyword">class </span><a class="code hl_class" href="class_list_todo.html">ListTodo</a></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>{</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    <span class="keyword">private</span>:</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>        std::list&lt;Todo*&gt; listTodo; </div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>        <a class="code hl_class" href="class_list_todo.html">ListTodo</a>();</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>        <a class="code hl_class" href="class_list_todo.html">~ListTodo</a>();</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>        std::list&lt;Todo*&gt; <a class="code hl_function" href="class_list_todo.html#a9c7475b43decf60499274e60cc6699a8">getListTodo</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="class_list_todo.html#a171817737bdedc34d66194e646bfd742">setListTodo</a>(<span class="keyword">const</span> std::list&lt;Todo*&gt; &amp;);</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="class_list_todo.html#a0de28e1673eed9992859782e87d54da0">addTodo</a>(<a class="code hl_class" href="class_todo.html">Todo</a>* <span class="keyword">const</span>);</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="class_list_todo.html#acff6b354b90b47d7f73f94b7d98d2460">removeTodoById</a>(<span class="keyword">const</span> <span class="keywordtype">int</span>);</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>        <a class="code hl_class" href="class_todo.html">Todo</a>* <a class="code hl_function" href="class_list_todo.html#a9496a94fbe269b2794c41b056c7458ef">getTodoById</a>(<span class="keyword">const</span> <span class="keywordtype">int</span>) <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>        <span class="keywordtype">int</span> <a class="code hl_function" href="class_list_todo.html#adfb7a0b484119c01d89ad723d1dc063b">getSize</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>        std::string <a class="code hl_function" href="class_list_todo.html#a1854dc7a4a105e4e2ef021b62861af8c">toString</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>};</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span> </div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span><span class="preprocessor">#endif </span><span class="comment">// LISTTODO_H</span></div>
+<div class="ttc" id="a_todo_8h_html"><div class="ttname"><a href="_todo_8h.html">Todo.h</a></div><div class="ttdoc">Fichier header de la classe Todo.</div></div>
+<div class="ttc" id="aclass_list_todo_html"><div class="ttname"><a href="class_list_todo.html">ListTodo</a></div><div class="ttdoc">classe représentant une liste de pointeurs vers des objets 'Todo'</div><div class="ttdef"><b>Definition:</b> ListTodo.h:18</div></div>
+<div class="ttc" id="aclass_list_todo_html_a0de28e1673eed9992859782e87d54da0"><div class="ttname"><a href="class_list_todo.html#a0de28e1673eed9992859782e87d54da0">ListTodo::addTodo</a></div><div class="ttdeci">void addTodo(Todo *const)</div><div class="ttdoc">Permet d'ajouter un todo à la liste.</div><div class="ttdef"><b>Definition:</b> ListTodo.cpp:23</div></div>
+<div class="ttc" id="aclass_list_todo_html_a171817737bdedc34d66194e646bfd742"><div class="ttname"><a href="class_list_todo.html#a171817737bdedc34d66194e646bfd742">ListTodo::setListTodo</a></div><div class="ttdeci">void setListTodo(const std::list&lt; Todo * &gt; &amp;)</div><div class="ttdoc">Permet de définir l'attribut de liste.</div><div class="ttdef"><b>Definition:</b> ListTodo.cpp:17</div></div>
+<div class="ttc" id="aclass_list_todo_html_a1854dc7a4a105e4e2ef021b62861af8c"><div class="ttname"><a href="class_list_todo.html#a1854dc7a4a105e4e2ef021b62861af8c">ListTodo::toString</a></div><div class="ttdeci">std::string toString() const</div><div class="ttdoc">Permet d'obtenir une chaine de caractères avec les informations de l'objet.</div><div class="ttdef"><b>Definition:</b> ListTodo.cpp:58</div></div>
+<div class="ttc" id="aclass_list_todo_html_a9496a94fbe269b2794c41b056c7458ef"><div class="ttname"><a href="class_list_todo.html#a9496a94fbe269b2794c41b056c7458ef">ListTodo::getTodoById</a></div><div class="ttdeci">Todo * getTodoById(const int) const</div><div class="ttdoc">Permet de récupérer un todo de la liste en fonction de son identifiant.</div><div class="ttdef"><b>Definition:</b> ListTodo.cpp:41</div></div>
+<div class="ttc" id="aclass_list_todo_html_a9c7475b43decf60499274e60cc6699a8"><div class="ttname"><a href="class_list_todo.html#a9c7475b43decf60499274e60cc6699a8">ListTodo::getListTodo</a></div><div class="ttdeci">std::list&lt; Todo * &gt; getListTodo() const</div><div class="ttdoc">Permet de récupérer l'attribut de liste.</div><div class="ttdef"><b>Definition:</b> ListTodo.cpp:13</div></div>
+<div class="ttc" id="aclass_list_todo_html_acff6b354b90b47d7f73f94b7d98d2460"><div class="ttname"><a href="class_list_todo.html#acff6b354b90b47d7f73f94b7d98d2460">ListTodo::removeTodoById</a></div><div class="ttdeci">void removeTodoById(const int)</div><div class="ttdoc">Permet d'enlever un todo de la liste en fonction de son identifiant.</div><div class="ttdef"><b>Definition:</b> ListTodo.cpp:27</div></div>
+<div class="ttc" id="aclass_list_todo_html_adfb7a0b484119c01d89ad723d1dc063b"><div class="ttname"><a href="class_list_todo.html#adfb7a0b484119c01d89ad723d1dc063b">ListTodo::getSize</a></div><div class="ttdeci">int getSize() const</div><div class="ttdoc">Permet de récupérer la taille de la liste.</div><div class="ttdef"><b>Definition:</b> ListTodo.cpp:54</div></div>
+<div class="ttc" id="aclass_todo_html"><div class="ttname"><a href="class_todo.html">Todo</a></div><div class="ttdoc">classe représentant un tag 'todo'</div><div class="ttdef"><b>Definition:</b> Todo.h:18</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré par&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5
+</small></address>
+</body>
+</html>

@@ -10,14 +10,17 @@
 #include "Date.h"
 #include "ListTodo.h"
 
-
+/**
+ * @class Interaction
+ * @brief classe représentant une interaction
+ */
 class Interaction
 {  
     private:
-        int id;
-        std::string content;
-        Date* date;
-        ListTodo* listTodo;
+        int id; /**< identifiant */
+        std::string content; /**< contenu */
+        Date* date; /**< date */
+        ListTodo* listTodo; /**< liste de todo */
 
     public:
         Interaction();
