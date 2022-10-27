@@ -1,3 +1,8 @@
+/**
+ * @file Date.cpp
+ * @brief Fichier cpp de la classe Date
+ */
+
 #include "Date.h"
 
 //debut constructeurs/destructeurs

@@ -1,3 +1,8 @@
+/**
+ * @file ListInteraction.cpp
+ * @brief Fichier cpp de la classe ListInteraction
+ */
+
 #include "ListInteraction.h"
 
 //debut constructeurs/destructeurs

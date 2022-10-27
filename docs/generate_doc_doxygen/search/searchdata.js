@@ -3,7 +3,7 @@ var indexSectionsWithContent =
   0: "acdgilrst",
   1: "cdilt",
   2: "cdilt",
-  3: "adgrst"
+  3: "acdgirst"
 };
 
 var indexSectionNames =

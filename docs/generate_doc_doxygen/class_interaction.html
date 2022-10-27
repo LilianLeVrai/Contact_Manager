@@ -77,57 +77,368 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>classe représentant un contact  
+<p>classe représentant une interaction  
  <a href="class_interaction.html#details">Plus de détails...</a></p>
 
-<p><code>#include &lt;<a class="el" href="_contact_8h_source.html">Contact.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="_interaction_8h_source.html">Interaction.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Fonctions membres publiques</h2></td></tr>
-<tr class="memitem:af1b7795a91d4a83a2fe1dee19018fbef"><td class="memItemLeft" align="right" valign="top"><a id="af1b7795a91d4a83a2fe1dee19018fbef" name="af1b7795a91d4a83a2fe1dee19018fbef"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Interaction</b> (const std::string &amp;content)</td></tr>
+<tr class="memitem:aadfd0e254296043c26508d47090ace76"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_interaction.html#aadfd0e254296043c26508d47090ace76">Interaction</a> ()</td></tr>
+<tr class="memdesc:aadfd0e254296043c26508d47090ace76"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructeur sans paramètre.  <a href="class_interaction.html#aadfd0e254296043c26508d47090ace76">Plus de détails...</a><br /></td></tr>
+<tr class="separator:aadfd0e254296043c26508d47090ace76"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af1b7795a91d4a83a2fe1dee19018fbef"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_interaction.html#af1b7795a91d4a83a2fe1dee19018fbef">Interaction</a> (const std::string &amp;content)</td></tr>
+<tr class="memdesc:af1b7795a91d4a83a2fe1dee19018fbef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructeur avec le contenu en paramètre.  <a href="class_interaction.html#af1b7795a91d4a83a2fe1dee19018fbef">Plus de détails...</a><br /></td></tr>
 <tr class="separator:af1b7795a91d4a83a2fe1dee19018fbef"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0ff3cfb91413a4c484fccd59251beec0"><td class="memItemLeft" align="right" valign="top"><a id="a0ff3cfb91413a4c484fccd59251beec0" name="a0ff3cfb91413a4c484fccd59251beec0"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Interaction</b> (<a class="el" href="class_list_todo.html">ListTodo</a> *const listTodo)</td></tr>
+<tr class="memitem:a0ff3cfb91413a4c484fccd59251beec0"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_interaction.html#a0ff3cfb91413a4c484fccd59251beec0">Interaction</a> (<a class="el" href="class_list_todo.html">ListTodo</a> *const listTodo)</td></tr>
+<tr class="memdesc:a0ff3cfb91413a4c484fccd59251beec0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructeur avec la liste de tag 'todo' en paramètre.  <a href="class_interaction.html#a0ff3cfb91413a4c484fccd59251beec0">Plus de détails...</a><br /></td></tr>
 <tr class="separator:a0ff3cfb91413a4c484fccd59251beec0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae205cf33cd250b50c3c0b4fffc6ac5b6"><td class="memItemLeft" align="right" valign="top"><a id="ae205cf33cd250b50c3c0b4fffc6ac5b6" name="ae205cf33cd250b50c3c0b4fffc6ac5b6"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Interaction</b> (const std::string &amp;content, <a class="el" href="class_list_todo.html">ListTodo</a> *const listTodo)</td></tr>
+<tr class="memitem:ae205cf33cd250b50c3c0b4fffc6ac5b6"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_interaction.html#ae205cf33cd250b50c3c0b4fffc6ac5b6">Interaction</a> (const std::string &amp;content, <a class="el" href="class_list_todo.html">ListTodo</a> *const listTodo)</td></tr>
+<tr class="memdesc:ae205cf33cd250b50c3c0b4fffc6ac5b6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructeur avec le contenu et la liste de tag 'todo' en paramètre.  <a href="class_interaction.html#ae205cf33cd250b50c3c0b4fffc6ac5b6">Plus de détails...</a><br /></td></tr>
 <tr class="separator:ae205cf33cd250b50c3c0b4fffc6ac5b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af4625aaf64448a22a4db387c15475474"><td class="memItemLeft" align="right" valign="top"><a id="af4625aaf64448a22a4db387c15475474" name="af4625aaf64448a22a4db387c15475474"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>Interaction</b> (const int id, const std::string &amp;content, <a class="el" href="class_date.html">Date</a> *const date, <a class="el" href="class_list_todo.html">ListTodo</a> *const listTodo)</td></tr>
+<tr class="memdesc:af4625aaf64448a22a4db387c15475474"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructeur avec tous les attributs en paramètres. <br /></td></tr>
 <tr class="separator:af4625aaf64448a22a4db387c15475474"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaead50ecd23e853601de816b701bcb12"><td class="memItemLeft" align="right" valign="top"><a id="aaead50ecd23e853601de816b701bcb12" name="aaead50ecd23e853601de816b701bcb12"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>getId</b> () const</td></tr>
+<tr class="memitem:aaead50ecd23e853601de816b701bcb12"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_interaction.html#aaead50ecd23e853601de816b701bcb12">getId</a> () const</td></tr>
+<tr class="memdesc:aaead50ecd23e853601de816b701bcb12"><td class="mdescLeft">&#160;</td><td class="mdescRight">Permet d'obtenir le nombre représentant l'identifiant dans l'objet.  <a href="class_interaction.html#aaead50ecd23e853601de816b701bcb12">Plus de détails...</a><br /></td></tr>
 <tr class="separator:aaead50ecd23e853601de816b701bcb12"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a34903611a5ddfecb42f0f79bd4be9e77"><td class="memItemLeft" align="right" valign="top"><a id="a34903611a5ddfecb42f0f79bd4be9e77" name="a34903611a5ddfecb42f0f79bd4be9e77"></a>
-std::string&#160;</td><td class="memItemRight" valign="bottom"><b>getContent</b> () const</td></tr>
+<tr class="memitem:a34903611a5ddfecb42f0f79bd4be9e77"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_interaction.html#a34903611a5ddfecb42f0f79bd4be9e77">getContent</a> () const</td></tr>
+<tr class="memdesc:a34903611a5ddfecb42f0f79bd4be9e77"><td class="mdescLeft">&#160;</td><td class="mdescRight">Permet d'obtenir le texte représentant le contenu dans l'objet.  <a href="class_interaction.html#a34903611a5ddfecb42f0f79bd4be9e77">Plus de détails...</a><br /></td></tr>
 <tr class="separator:a34903611a5ddfecb42f0f79bd4be9e77"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a56841e470efccdc8f329f6cac7adc49c"><td class="memItemLeft" align="right" valign="top"><a id="a56841e470efccdc8f329f6cac7adc49c" name="a56841e470efccdc8f329f6cac7adc49c"></a>
-<a class="el" href="class_date.html">Date</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>getDate</b> () const</td></tr>
+<tr class="memitem:a56841e470efccdc8f329f6cac7adc49c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_date.html">Date</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_interaction.html#a56841e470efccdc8f329f6cac7adc49c">getDate</a> () const</td></tr>
+<tr class="memdesc:a56841e470efccdc8f329f6cac7adc49c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Permet d'obtenir la date représentant la date dans l'objet.  <a href="class_interaction.html#a56841e470efccdc8f329f6cac7adc49c">Plus de détails...</a><br /></td></tr>
 <tr class="separator:a56841e470efccdc8f329f6cac7adc49c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9de7b16bdc0d907d13a62fb1666033a4"><td class="memItemLeft" align="right" valign="top"><a id="a9de7b16bdc0d907d13a62fb1666033a4" name="a9de7b16bdc0d907d13a62fb1666033a4"></a>
-<a class="el" href="class_list_todo.html">ListTodo</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>getListTodo</b> () const</td></tr>
+<tr class="memitem:a9de7b16bdc0d907d13a62fb1666033a4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_list_todo.html">ListTodo</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_interaction.html#a9de7b16bdc0d907d13a62fb1666033a4">getListTodo</a> () const</td></tr>
+<tr class="memdesc:a9de7b16bdc0d907d13a62fb1666033a4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Permet d'obtenir la liste de tag 'todo' de l'objet.  <a href="class_interaction.html#a9de7b16bdc0d907d13a62fb1666033a4">Plus de détails...</a><br /></td></tr>
 <tr class="separator:a9de7b16bdc0d907d13a62fb1666033a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab66d9fb84fa7d52706cdb31bda5bc310"><td class="memItemLeft" align="right" valign="top"><a id="ab66d9fb84fa7d52706cdb31bda5bc310" name="ab66d9fb84fa7d52706cdb31bda5bc310"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setId</b> (const int)</td></tr>
+<tr class="memitem:ab66d9fb84fa7d52706cdb31bda5bc310"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_interaction.html#ab66d9fb84fa7d52706cdb31bda5bc310">setId</a> (const int)</td></tr>
+<tr class="memdesc:ab66d9fb84fa7d52706cdb31bda5bc310"><td class="mdescLeft">&#160;</td><td class="mdescRight">Permet de définir la valeur de l'attribut représentant l'identifiant.  <a href="class_interaction.html#ab66d9fb84fa7d52706cdb31bda5bc310">Plus de détails...</a><br /></td></tr>
 <tr class="separator:ab66d9fb84fa7d52706cdb31bda5bc310"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6c8ad6392855a3bed4a6d0525cc0acf9"><td class="memItemLeft" align="right" valign="top"><a id="a6c8ad6392855a3bed4a6d0525cc0acf9" name="a6c8ad6392855a3bed4a6d0525cc0acf9"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setContent</b> (const std::string &amp;)</td></tr>
+<tr class="memitem:a6c8ad6392855a3bed4a6d0525cc0acf9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_interaction.html#a6c8ad6392855a3bed4a6d0525cc0acf9">setContent</a> (const std::string &amp;)</td></tr>
+<tr class="memdesc:a6c8ad6392855a3bed4a6d0525cc0acf9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Permet de définir la valeur de l'attribut représentant le contenu.  <a href="class_interaction.html#a6c8ad6392855a3bed4a6d0525cc0acf9">Plus de détails...</a><br /></td></tr>
 <tr class="separator:a6c8ad6392855a3bed4a6d0525cc0acf9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a22b0d66fbc34f5c27862983fb934e8ba"><td class="memItemLeft" align="right" valign="top"><a id="a22b0d66fbc34f5c27862983fb934e8ba" name="a22b0d66fbc34f5c27862983fb934e8ba"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setDate</b> (<a class="el" href="class_date.html">Date</a> *const)</td></tr>
+<tr class="memitem:a22b0d66fbc34f5c27862983fb934e8ba"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_interaction.html#a22b0d66fbc34f5c27862983fb934e8ba">setDate</a> (<a class="el" href="class_date.html">Date</a> *const)</td></tr>
+<tr class="memdesc:a22b0d66fbc34f5c27862983fb934e8ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Permet de définir la valeur de l'attribut représentant la date.  <a href="class_interaction.html#a22b0d66fbc34f5c27862983fb934e8ba">Plus de détails...</a><br /></td></tr>
 <tr class="separator:a22b0d66fbc34f5c27862983fb934e8ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:add3e62a2336de848ea58b7cc62a36a3a"><td class="memItemLeft" align="right" valign="top"><a id="add3e62a2336de848ea58b7cc62a36a3a" name="add3e62a2336de848ea58b7cc62a36a3a"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setListTodo</b> (<a class="el" href="class_list_todo.html">ListTodo</a> *const)</td></tr>
+<tr class="memitem:add3e62a2336de848ea58b7cc62a36a3a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_interaction.html#add3e62a2336de848ea58b7cc62a36a3a">setListTodo</a> (<a class="el" href="class_list_todo.html">ListTodo</a> *const)</td></tr>
+<tr class="memdesc:add3e62a2336de848ea58b7cc62a36a3a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Permet de définir l'attribut de la liste de tag 'todo'.  <a href="class_interaction.html#add3e62a2336de848ea58b7cc62a36a3a">Plus de détails...</a><br /></td></tr>
 <tr class="separator:add3e62a2336de848ea58b7cc62a36a3a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af75207b934f5c71709225d6a04d17327"><td class="memItemLeft" align="right" valign="top"><a id="af75207b934f5c71709225d6a04d17327" name="af75207b934f5c71709225d6a04d17327"></a>
-std::string&#160;</td><td class="memItemRight" valign="bottom"><b>toString</b> () const</td></tr>
+<tr class="memitem:af75207b934f5c71709225d6a04d17327"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_interaction.html#af75207b934f5c71709225d6a04d17327">toString</a> () const</td></tr>
+<tr class="memdesc:af75207b934f5c71709225d6a04d17327"><td class="mdescLeft">&#160;</td><td class="mdescRight">Permet d'obtenir une chaine de caractères avec les informations de l'objet.  <a href="class_interaction.html#af75207b934f5c71709225d6a04d17327">Plus de détails...</a><br /></td></tr>
 <tr class="separator:af75207b934f5c71709225d6a04d17327"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
-<div class="textblock"><p >classe représentant un contact </p>
-<p >classe représentant une interaction </p>
-</div></div><!-- contents -->
+<div class="textblock"><p >classe représentant une interaction </p>
+</div><h2 class="groupheader">Documentation des constructeurs et destructeur</h2>
+<a id="aadfd0e254296043c26508d47090ace76" name="aadfd0e254296043c26508d47090ace76"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aadfd0e254296043c26508d47090ace76">&#9670;&#160;</a></span>Interaction() <span class="overload">[1/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Interaction::Interaction </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Constructeur sans paramètre. </p>
+<p >Initialise l'attribut 'id' à NULL <br  />
+Initialise l'attribut 'dateCreation' avec le constructeur par défaut de l'objet <a class="el" href="class_date.html" title="classe représentant une date">Date</a> <br  />
+Initialise l'attribut 'listTodo' à nullptr </p>
+
+</div>
+</div>
+<a id="af1b7795a91d4a83a2fe1dee19018fbef" name="af1b7795a91d4a83a2fe1dee19018fbef"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af1b7795a91d4a83a2fe1dee19018fbef">&#9670;&#160;</a></span>Interaction() <span class="overload">[2/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Interaction::Interaction </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>content</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Constructeur avec le contenu en paramètre. </p>
+<p >Initialise l'attribut 'id' à NULL <br  />
+Initialise l'attribut 'dateCreation' avec le constructeur par défaut de l'objet <a class="el" href="class_date.html" title="classe représentant une date">Date</a> <br  />
+Initialise l'attribut 'listTodo' à nullptr </p>
+
+</div>
+</div>
+<a id="a0ff3cfb91413a4c484fccd59251beec0" name="a0ff3cfb91413a4c484fccd59251beec0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0ff3cfb91413a4c484fccd59251beec0">&#9670;&#160;</a></span>Interaction() <span class="overload">[3/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Interaction::Interaction </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_list_todo.html">ListTodo</a> *const&#160;</td>
+          <td class="paramname"><em>listTodo</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Constructeur avec la liste de tag 'todo' en paramètre. </p>
+<p >Initialise l'attribut 'id' à NULL <br  />
+Initialise l'attribut 'dateCreation' avec le constructeur par défaut de l'objet <a class="el" href="class_date.html" title="classe représentant une date">Date</a> <br  />
+</p>
+
+</div>
+</div>
+<a id="ae205cf33cd250b50c3c0b4fffc6ac5b6" name="ae205cf33cd250b50c3c0b4fffc6ac5b6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae205cf33cd250b50c3c0b4fffc6ac5b6">&#9670;&#160;</a></span>Interaction() <span class="overload">[4/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Interaction::Interaction </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>content</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_list_todo.html">ListTodo</a> *const&#160;</td>
+          <td class="paramname"><em>listTodo</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Constructeur avec le contenu et la liste de tag 'todo' en paramètre. </p>
+<p >Initialise l'attribut 'id' à NULL <br  />
+Initialise l'attribut 'dateCreation' avec le constructeur par défaut de l'objet <a class="el" href="class_date.html" title="classe représentant une date">Date</a> <br  />
+</p>
+
+</div>
+</div>
+<h2 class="groupheader">Documentation des fonctions membres</h2>
+<a id="a34903611a5ddfecb42f0f79bd4be9e77" name="a34903611a5ddfecb42f0f79bd4be9e77"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a34903611a5ddfecb42f0f79bd4be9e77">&#9670;&#160;</a></span>getContent()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string Interaction::getContent </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Permet d'obtenir le texte représentant le contenu dans l'objet. </p>
+<dl class="section return"><dt>Renvoie</dt><dd>std::string </dd></dl>
+
+</div>
+</div>
+<a id="a56841e470efccdc8f329f6cac7adc49c" name="a56841e470efccdc8f329f6cac7adc49c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a56841e470efccdc8f329f6cac7adc49c">&#9670;&#160;</a></span>getDate()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_date.html">Date</a> * Interaction::getDate </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Permet d'obtenir la date représentant la date dans l'objet. </p>
+<dl class="section return"><dt>Renvoie</dt><dd>pointeur vers objet <a class="el" href="class_date.html" title="classe représentant une date">Date</a> </dd></dl>
+
+</div>
+</div>
+<a id="aaead50ecd23e853601de816b701bcb12" name="aaead50ecd23e853601de816b701bcb12"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaead50ecd23e853601de816b701bcb12">&#9670;&#160;</a></span>getId()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Interaction::getId </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Permet d'obtenir le nombre représentant l'identifiant dans l'objet. </p>
+<dl class="section return"><dt>Renvoie</dt><dd>Entier </dd></dl>
+
+</div>
+</div>
+<a id="a9de7b16bdc0d907d13a62fb1666033a4" name="a9de7b16bdc0d907d13a62fb1666033a4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9de7b16bdc0d907d13a62fb1666033a4">&#9670;&#160;</a></span>getListTodo()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_list_todo.html">ListTodo</a> * Interaction::getListTodo </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Permet d'obtenir la liste de tag 'todo' de l'objet. </p>
+<dl class="section return"><dt>Renvoie</dt><dd>pointeur vers objet <a class="el" href="class_list_todo.html" title="classe représentant une liste de pointeurs vers des objets &#39;Todo&#39;">ListTodo</a> </dd></dl>
+
+</div>
+</div>
+<a id="a6c8ad6392855a3bed4a6d0525cc0acf9" name="a6c8ad6392855a3bed4a6d0525cc0acf9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6c8ad6392855a3bed4a6d0525cc0acf9">&#9670;&#160;</a></span>setContent()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Interaction::setContent </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>val</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Permet de définir la valeur de l'attribut représentant le contenu. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">Le</td><td>paramètre doit être un string </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a22b0d66fbc34f5c27862983fb934e8ba" name="a22b0d66fbc34f5c27862983fb934e8ba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a22b0d66fbc34f5c27862983fb934e8ba">&#9670;&#160;</a></span>setDate()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Interaction::setDate </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_date.html">Date</a> * const&#160;</td>
+          <td class="paramname"><em>val</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Permet de définir la valeur de l'attribut représentant la date. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">Le</td><td>paramètre doit être un pointeur vers un objet <a class="el" href="class_date.html" title="classe représentant une date">Date</a> </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ab66d9fb84fa7d52706cdb31bda5bc310" name="ab66d9fb84fa7d52706cdb31bda5bc310"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab66d9fb84fa7d52706cdb31bda5bc310">&#9670;&#160;</a></span>setId()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Interaction::setId </td>
+          <td>(</td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>val</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Permet de définir la valeur de l'attribut représentant l'identifiant. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">Le</td><td>paramètre doit être un entier </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="add3e62a2336de848ea58b7cc62a36a3a" name="add3e62a2336de848ea58b7cc62a36a3a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#add3e62a2336de848ea58b7cc62a36a3a">&#9670;&#160;</a></span>setListTodo()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Interaction::setListTodo </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_list_todo.html">ListTodo</a> * const&#160;</td>
+          <td class="paramname"><em>val</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Permet de définir l'attribut de la liste de tag 'todo'. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">Le</td><td>paramètre doit être un pointeur vers un objet <a class="el" href="class_list_todo.html" title="classe représentant une liste de pointeurs vers des objets &#39;Todo&#39;">ListTodo</a> </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="af75207b934f5c71709225d6a04d17327" name="af75207b934f5c71709225d6a04d17327"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af75207b934f5c71709225d6a04d17327">&#9670;&#160;</a></span>toString()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string Interaction::toString </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Permet d'obtenir une chaine de caractères avec les informations de l'objet. </p>
+<dl class="section return"><dt>Renvoie</dt><dd>std::string sous la forme 'content\nlistTodo.toSring()'</dd></dl>
+<dl class="section warning"><dt>Avertissement</dt><dd>sujet à changement </dd></dl>
+
+</div>
+</div>
+</div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Généré par&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5

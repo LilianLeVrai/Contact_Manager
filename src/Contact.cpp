@@ -1,3 +1,8 @@
+/**
+ * @file Contact.cpp
+ * @brief Fichier cpp de la classe Contact
+ */
+
 #include "Contact.h"
 
 //debut constructeurs/destructeurs

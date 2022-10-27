@@ -1,3 +1,9 @@
+/**
+ * @file main
+ */
+
+
+
 #include <iostream>
 #include <Date.h>
 #include <Todo.h>
@@ -78,7 +84,7 @@ int main()
     cout << "J'ai ajoute une interaction au contact :\n" << c1.toString() << endl;
 
     Contact c2("Brandon","Pere","UB","brandon@mail.fr","9876543210","urlPhotoBis",&lInteraction);
-    cout << "J'ai cree un second contact avec la ListInteraction précédente :\n" << c2.toString() << endl;
+    cout << "J'ai cree un second contact avec la ListInteraction precedente :\n" << c2.toString() << endl;
 
     cout << "\n-----------------------------------------------------------" << endl;
 

@@ -1,3 +1,8 @@
+/**
+ * @file Interaction.cpp
+ * @brief Fichier cpp de la classe Interaction
+ */
+
 #include "Interaction.h"
 
 //debut constructeurs/destructeurs
