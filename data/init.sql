@@ -22,19 +22,19 @@ CREATE TABLE Interaction(
 CREATE TABLE Todo(
    idTodo INT,
    content VARCHAR(150) NOT NULL,
-   dateTodo DATE NOT NULL,
+   dateTodo DATE,
    idInteraction INT NOT NULL,
    PRIMARY KEY(idTodo),
    FOREIGN KEY(idInteraction) REFERENCES Interaction(idInteraction)
 );
 
 CREATE TABLE Modification(
-   idModification VARCHAR(50),
+   idModification Int,
    contentModified VARCHAR(150) NOT NULL,
    dateModification DATE NOT NULL,
-   idTodo INT NOT NULL,
-   idInteraction INT NOT NULL,
-   idContact INT NOT NULL,
+   idTodo INT,
+   idInteraction INT,
+   idContact INT,
    PRIMARY KEY(idModification),
    FOREIGN KEY(idTodo) REFERENCES Todo(idTodo),
    FOREIGN KEY(idInteraction) REFERENCES Interaction(idInteraction),
