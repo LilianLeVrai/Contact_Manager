@@ -51,6 +51,19 @@ Contact::Contact(const int & id, const std::string & lastName, const std::string
     this->listInteraction=listInteraction;
 }
 
+Contact::Contact(const int & id, const std::string & lastName, const std::string & firstName, const std::string & company, const std::string & mail,
+          const std::string & phone, const std::string & pathPicture, Date* const dateCreation){
+    this->id=id;
+    this->lastName=lastName;
+    this->firstName=firstName;
+    this->company=company;
+    this->mail=mail;
+    this->phone=phone;
+    this->pathPicture=pathPicture;
+    this->dateCreation=dateCreation;
+    this->listInteraction=nullptr;
+}
+
 Contact::~Contact(){
 }
 //fin constructeurs/destructeurs

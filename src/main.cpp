@@ -13,11 +13,53 @@
 #include <ListInteraction.h>
 #include <Contact.h>
 #include <ListContact.h>
+#include <QApplication>
+#include <MainWindow.h>
+#include <DatabaseManagement.h>
+#include <ContactCRUD.h>
+
+#include <QFile>
+#include <QString>
+#include <QDebug>
+
+#include <QPushButton>
+
+
 
 using namespace std;
 
-int main()
+int main(int argc, char *argv[])
 {
+    //déclaration de l'application et du Widget principal
+    QApplication app(argc, argv);
+    MainWindow mainWindow;
+    mainWindow.show();
+
+    //déclaration du styleSheet
+    QFile styleFile("../style/style.qss");
+    styleFile.open(QIODevice::ReadOnly);
+    QString styleSheet = styleFile.readAll();
+    app.setStyleSheet(styleSheet.arg("#F8F7FF").arg("#9381FF").arg("#B8B8FF"));//description des couleurs dans le fichier de style
+
+    //déclaration de la BDD
+    DatabaseManagement database=DatabaseManagement();
+    //database->initDataTest();
+    ContactCRUD contactCRUD(database.getDatabase());
+
+    ListContact listContact;
+    contactCRUD.getAllContacts(&listContact);
+    qDebug() << QString::fromStdString(listContact.toString());
+
+
+
+
+
+
+
+
+
+
+    /*
     //tests Date
     Date dNow;
     Date d1(01,01,2001);
@@ -93,9 +135,9 @@ int main()
     listContact.addContact(&c1);
     listContact.addContact(&c2);
     cout << "J'ai cree une ListContact avec les 2 Contact precedents :\n" << listContact.toString() << endl;
+    */
 
 
-
-    return 0;
+    return app.exec();
 
 }

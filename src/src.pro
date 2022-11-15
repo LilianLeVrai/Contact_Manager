@@ -1,6 +1,7 @@
 QT -= gui
 
-QT += sql
+QT += sql \
+    widgets
 
 CONFIG += c++17 console
 CONFIG -= app_bundle
@@ -11,10 +12,13 @@ CONFIG -= app_bundle
 
 SOURCES += \
         Contact.cpp \
+        ContactCRUD.cpp \
+        DatabaseManagement.cpp \
         Date.cpp \
         Interaction.cpp \
         ListContact.cpp \
         ListInteraction.cpp \
+        MainWindow.cpp \
         Todo.cpp \
         ListTodo.cpp \
         main.cpp
@@ -26,9 +30,14 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 HEADERS += \
     Contact.h \
+    ContactCRUD.h \
+    DatabaseManagement.h \
     Date.h \
     Interaction.h \
     ListContact.h \
     ListInteraction.h \
+    MainWindow.h \
     Todo.h \
     ListTodo.h
+
+FORMS +=

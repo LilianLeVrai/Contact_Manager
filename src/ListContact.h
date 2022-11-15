@@ -57,6 +57,12 @@ class ListContact
         int getSize() const;
 
         /**
+         * @brief Permet de vider tous les contacts de la liste.
+         */
+        void removeAllContacts();
+
+
+        /**
          * @brief Permet d'obtenir une chaine de caractères avec les informations de l'objet
          * @return std::string sous la forme 'contact.toString\\n\\ncontact.toString\\n\\ncontact.toString'
          *

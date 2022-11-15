@@ -60,6 +60,14 @@ int ListContact::getSize() const{
     return this->listContact.size();
 }
 
+void ListContact::removeAllContacts(){
+    auto it=this->listContact.begin();
+    while ((it != this->listContact.end())){
+            it= this->listContact.erase(it);
+    }
+}
+
+
 std::string ListContact::toString() const{
     std::string s;
     auto it=this->listContact.begin();

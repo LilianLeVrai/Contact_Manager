@@ -61,6 +61,13 @@ class Contact
          */
         Contact(const int & id, const std::string & lastName, const std::string & firstName, const std::string & company, const std::string & mail,
                const std::string & phone, const std::string & pathPicture, ListInteraction* const listInteraction);
+        /**
+         * @brief Constructeur avec tous les attributs excepté la liste d'interactions en paramètres.
+         * @details
+         * Initialise l'attribut 'listInteraction' à nullptr
+         */
+        Contact(const int & id, const std::string & lastName, const std::string & firstName, const std::string & company, const std::string & mail,
+               const std::string & phone, const std::string & pathPicture, Date* const dateCreation);
         ~Contact();
 
         /**
