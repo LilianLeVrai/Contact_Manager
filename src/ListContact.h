@@ -7,8 +7,8 @@
  */
 
 
-#include <string.h>
-#include <Contact.h>
+#include <string>
+#include "Contact.h"
 
 /**
  * @class ListContact
@@ -50,6 +50,7 @@ class ListContact
          * @return pointeur vers objet Contact
          */
         Contact* getContactById(const int) const;
+        Contact* getContactByIndex(const int) const;
         /**
          * @brief Permet de récupérer la taille de la liste.
          * @return entier

@@ -19,7 +19,7 @@ class Interaction
     private:
         int id; /**< identifiant */
         std::string content; /**< contenu */
-        Date* date; /**< date */
+        Date* date; /**< date au format à définir */
         ListTodo* listTodo; /**< liste de todo */
 
     public:

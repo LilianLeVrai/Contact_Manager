@@ -8,8 +8,8 @@
 
 
 #include <string>
-#include <Date.h>
-#include <ListInteraction.h>
+#include "Date.h"
+#include "ListInteraction.h"
 
 /**
  * @class Contact
@@ -25,7 +25,7 @@ class Contact
         std::string mail; /**< mail */
         std::string phone; /**< numéro de téléphone */
         std::string pathPicture; /**< chemin vers la photo */
-        Date* dateCreation; /**< date de création */
+        Date* dateCreation; /**< date de création au format jj/mm/aaaa */
         ListInteraction* listInteraction; /**< liste d'intéraction */
 
     public:

@@ -1,3 +1,9 @@
+/**
+ * @file DatabaseManagement.cpp
+ * @brief Fichier cpp de la classe DatabaseManagement
+ */
+
+
 #include "DatabaseManagement.h"
 #include <QDebug>
 #include <QSqlQuery>

@@ -56,6 +56,14 @@ Contact* ListContact::getContactById(const int id) const{
     return nullptr;
 }
 
+Contact* ListContact::getContactByIndex(const int index) const{
+    auto it=this->listContact.begin();
+    for(int i=0; i<index; i++)
+        it++;
+    return *it;
+}
+
+
 int ListContact::getSize() const{
     return this->listContact.size();
 }

@@ -8,7 +8,7 @@
 
 
 #include <string>
-#include <Date.h>
+#include "Date.h"
 
 /**
  * @class Todo
@@ -19,7 +19,7 @@ class Todo
     private:
         int id; /**< identifiant */
         std::string content; /**< contenu */
-        Date* date; /**< date */
+        Date* date; /**< date au format jj/mm/aaaa */
         bool boolTagDate; /**< booléen permettant de savoir si le tad 'todo' contient un tag 'date' */
 
 

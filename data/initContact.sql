@@ -6,7 +6,7 @@ CREATE TABLE Contact(
    mail VARCHAR(50) NOT NULL,
    phone VARCHAR(50) NOT NULL,
    picture VARCHAR(50) NOT NULL,
-   dateCreation DATE NOT NULL,
+   dateCreation VARCHAR(10) NOT NULL,
    PRIMARY KEY(idContact)
 );
 

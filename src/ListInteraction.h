@@ -7,7 +7,7 @@
  */
 
 
-#include <Interaction.h>
+#include "Interaction.h"
 
 /**
  * @class ListInteraction

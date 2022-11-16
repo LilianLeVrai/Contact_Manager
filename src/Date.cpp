@@ -34,6 +34,37 @@ Date::Date(unsigned int minute, unsigned int hour, unsigned int day, unsigned in
     this->year=year;
 }
 
+Date::Date(const std::string s){
+    if(s.size()!=10 && s.size()!=16)//si le format n'est pas bon
+        {
+        time_t now = time(NULL);
+        struct tm * tm = localtime(&now);
+        this->minute=tm->tm_min;
+        this->hour=tm->tm_hour;
+        this->day=tm->tm_mday;
+        this->month=tm->tm_mon+1;
+        this->year=tm->tm_year+1900;
+        }
+     else//si le format est bon
+        {
+        this->day=std::stoi(s.substr(0,2));
+        this->month=std::stoi(s.substr(3,2));
+        this->year=std::stoi(s.substr(6,4));
+        if(s.size()==16)
+            {
+            this->hour=std::stoi(s.substr(11,2));
+            this->minute=std::stoi(s.substr(14,2));
+            }
+        else
+            {
+            time_t now = time(NULL);
+            struct tm * tm = localtime(&now);
+            this->minute=tm->tm_min;
+            this->hour=tm->tm_hour;
+            }
+        }
+}
+
 Date::~Date(){
 }
 //fin constructeurs/destructeurs

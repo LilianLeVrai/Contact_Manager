@@ -5,18 +5,18 @@
 
 
 #include <iostream>
-#include <Date.h>
-#include <Todo.h>
-#include <ListTodo.h>
+#include "Date.h"
+#include "Todo.h"
+#include "ListTodo.h"
 #include <QString>
-#include <Interaction.h>
-#include <ListInteraction.h>
-#include <Contact.h>
-#include <ListContact.h>
+#include "Interaction.h"
+#include "ListInteraction.h"
+#include "Contact.h"
+#include "ListContact.h"
 #include <QApplication>
-#include <MainWindow.h>
-#include <DatabaseManagement.h>
-#include <ContactCRUD.h>
+#include "MainWindow.h"
+#include "DatabaseManagement.h"
+#include "ContactCRUD.h"
 
 #include <QFile>
 #include <QString>
@@ -30,9 +30,19 @@ using namespace std;
 
 int main(int argc, char *argv[])
 {
-    //déclaration de l'application et du Widget principal
+    //déclaration de l'application
     QApplication app(argc, argv);
-    MainWindow mainWindow;
+
+    //déclaration de la BDD
+    DatabaseManagement database=DatabaseManagement();
+    database.initDataTest();
+    ContactCRUD contactCRUD(database.getDatabase());
+    //InteractionCRUD interactionCRUD(database.getDatabase());
+    //TodoCRUD TodoCRUD(database.getDatabase());
+    //ModificationCRUD ModificationCRUD(database.getDatabase());
+
+    //declaration du widget principal
+    MainWindow mainWindow(&contactCRUD);
     mainWindow.show();
 
     //déclaration du styleSheet
@@ -41,16 +51,11 @@ int main(int argc, char *argv[])
     QString styleSheet = styleFile.readAll();
     app.setStyleSheet(styleSheet.arg("#F8F7FF").arg("#9381FF").arg("#B8B8FF"));//description des couleurs dans le fichier de style
 
-    //déclaration de la BDD
-    DatabaseManagement database=DatabaseManagement();
-    //database->initDataTest();
-    ContactCRUD contactCRUD(database.getDatabase());
-
-    ListContact listContact;
-    contactCRUD.getAllContacts(&listContact);
-    qDebug() << QString::fromStdString(listContact.toString());
 
 
+    /*ListContact listContact;
+    mainWindow.contactCRUD->getAllContacts(&listContact);
+    qDebug() << QString::fromStdString(listContact.toString());*/
 
 
 

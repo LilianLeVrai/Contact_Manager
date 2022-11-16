@@ -39,6 +39,11 @@ class Date
          * @details Notamment utile lorsque l'on aura besoin de définir des dates avec l'heure, comme pour horodater les modifications.
          */
         Date(unsigned int minute, unsigned int hour, unsigned int day, unsigned int month, unsigned int year);
+        /**
+         * @brief Constructeur avec une chaine de caractères sous la forme jj/mm/aaaa ou jj/mm/aaaa hh:mm.
+         * @details Notamment utile lorsque que l'on créer une date en récupérant la chaine de caractère depuis la BDD.
+         */
+        Date(const std::string);
         ~Date();
 
         /**
