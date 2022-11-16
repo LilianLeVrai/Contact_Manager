@@ -1,6 +1,0 @@
-var searchData=
-[
-  ['contact_0',['Contact',['../class_contact.html',1,'Contact'],['../class_contact.html#ae39444f378e6de7fd6c3e60981949af5',1,'Contact::Contact()'],['../class_contact.html#a300693cb9b11c970e1f517ab58c3b505',1,'Contact::Contact(const std::string &amp;lastName, const std::string &amp;firstName, const std::string &amp;company, const std::string &amp;mail, const std::string &amp;phone, const std::string &amp;pathPicture)'],['../class_contact.html#adebc44d651d7e01a3446f7414af73944',1,'Contact::Contact(const std::string &amp;lastName, const std::string &amp;firstName, const std::string &amp;company, const std::string &amp;mail, const std::string &amp;phone, const std::string &amp;pathPicture, ListInteraction *const listInteraction)'],['../class_contact.html#add70b83890dfb16109f6038c949ef2b7',1,'Contact::Contact(const int &amp;id, const std::string &amp;lastName, const std::string &amp;firstName, const std::string &amp;company, const std::string &amp;mail, const std::string &amp;phone, const std::string &amp;pathPicture, ListInteraction *const listInteraction)']]],
-  ['contact_2ecpp_1',['Contact.cpp',['../_contact_8cpp.html',1,'']]],
-  ['contact_2eh_2',['Contact.h',['../_contact_8h.html',1,'']]]
-];
