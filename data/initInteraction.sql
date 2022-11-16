@@ -1,8 +1,8 @@
 CREATE TABLE Interaction(
-   idInteraction INT,
+   idInteraction INTEGER,
    content VARCHAR(150) NOT NULL,
    dateCreation VARCHAR(10) NOT NULL,
-   idContact INT NOT NULL,
+   idContact INTEGER NOT NULL,
    PRIMARY KEY(idInteraction),
    FOREIGN KEY(idContact) REFERENCES Contact(idContact)
 );

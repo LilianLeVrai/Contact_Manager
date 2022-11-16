@@ -22,6 +22,7 @@ MainWindow::MainWindow(ContactCRUD * contactCRUD, QWidget *parent)
     this->contactCRUD=contactCRUD;
     contactCRUD->getAllContacts(&this->listContact);
     initUI();
+    initConnect();
     fillTable();
 }
 
@@ -79,6 +80,7 @@ void MainWindow::initUI(){
     this->contactsTable->horizontalHeader()->setSelectionMode(QAbstractItemView::NoSelection);
     this->contactsTable->setEditTriggers(QAbstractItemView::NoEditTriggers);
     this->contactsTable->setSelectionBehavior(QAbstractItemView::SelectRows);
+    this->contactsTable->setSelectionMode(QAbstractItemView::SingleSelection);
 
     //Layout verticaux puis horizontaux
     QVBoxLayout * mainLayout = new QVBoxLayout(this);
@@ -112,7 +114,9 @@ void MainWindow::initUI(){
     showContactsLayout->setAlignment(this->sortCombobox, Qt::AlignTop);
 }
 
-
+void MainWindow::initConnect(){
+    QObject::connect(this->dateSelectorButton1, SIGNAL(clicked()),this,SLOT(openCalendarDialog()));
+}
 
 void MainWindow::fillTable(){
     this->contactsTable->setRowCount(0);
@@ -131,5 +135,9 @@ void MainWindow::fillTable(){
 }
 
 
+void MainWindow::openCalendarDialog(){
+    this ->calendarDialog=new CalendarDialog();
+    this->calendarDialog->show();
+}
 
 

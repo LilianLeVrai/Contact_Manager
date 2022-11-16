@@ -26,7 +26,6 @@ void ContactCRUD::getAllContacts(ListContact * listContact){
         listContact->removeAllContacts();
         while(query.next())
             {
-
             listContact->addContact(new Contact(query.value(0).toInt(),
                                                 query.value(1).toString().toStdString(),
                                                 query.value(2).toString().toStdString(),

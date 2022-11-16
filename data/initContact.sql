@@ -1,5 +1,5 @@
 CREATE TABLE Contact(
-   idContact INT,
+   idContact INTEGER,
    lastName VARCHAR(50) NOT NULL,
    firstName VARCHAR(50) NOT NULL,
    company VARCHAR(50) NOT NULL,

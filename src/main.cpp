@@ -25,7 +25,6 @@
 #include <QPushButton>
 
 
-
 using namespace std;
 
 int main(int argc, char *argv[])
@@ -51,11 +50,6 @@ int main(int argc, char *argv[])
     QString styleSheet = styleFile.readAll();
     app.setStyleSheet(styleSheet.arg("#F8F7FF").arg("#9381FF").arg("#B8B8FF"));//description des couleurs dans le fichier de style
 
-
-
-    /*ListContact listContact;
-    mainWindow.contactCRUD->getAllContacts(&listContact);
-    qDebug() << QString::fromStdString(listContact.toString());*/
 
 
 
