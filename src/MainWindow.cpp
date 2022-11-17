@@ -143,37 +143,24 @@ void MainWindow::initUI(){
     //ajout des layout (attention à l'ordre)
     mainLayout->addLayout(searchBarLayout);
     mainLayout->addLayout(dateAndResetLayout);
-<<<<<<< Updated upstream
     mainLayout->addWidget(this->labelMessage);
-    mainLayout->addLayout(showContactsLayout);
-
+    mainLayout->addLayout(leftButtonsShowContactLayout);
 
     //propriétés d'alignement sur les layout et widget
     dateAndResetLayout->setAlignment(dateSelectorLayout, Qt::AlignLeft);
     dateAndResetLayout->setAlignment(resetFiltersButtonLayout, Qt::AlignRight);
-=======
-    mainLayout->addLayout(leftButtonsShowContactLayout);
-
-    //propriétés d'alignement sur les layout et widget
-    dateAndResetLayout->setAlignment(dateSelectorLayout,Qt::AlignLeft );
-    dateAndResetLayout->setAlignment(resetFiltersButtonLayout,Qt::AlignRight );
     leftButtonsLayout->setAlignment(Qt::AlignTop);
->>>>>>> Stashed changes
 
 }
 
 void MainWindow::initConnect(){
-<<<<<<< Updated upstream
 
-    QObject::connect(this->sortCombobox, SIGNAL(currentIndexChanged(int)), this, SLOT(updateTable()));
     QObject::connect(this->dateSelectorButton1, SIGNAL(clicked()), this, SLOT(openFirstCalendarDialog()));
     QObject::connect(this->dateSelectorButton2, SIGNAL(clicked()), this, SLOT(openSecondCalendarDialog()));
-=======
     QObject::connect(this->dateSelectorButton1, SIGNAL(clicked()),this,SLOT(openCalendarDialog()));
     QObject::connect(this->sortCombobox, SIGNAL(currentIndexChanged(int)),this,SLOT(updateTable()));
     QObject::connect(this->contactsTable, SIGNAL(cellClicked(int,int)),this,SLOT(enableDeleteDetailsButton()));
     QObject::connect(this->deleteContactButton, SIGNAL(clicked()),this,SLOT(deleteContact()));
->>>>>>> Stashed changes
 }
 
 void MainWindow::fillTable(){
