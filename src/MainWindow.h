@@ -15,6 +15,7 @@
 #include <QComboBox>
 #include <QLabel>
 #include <QObject>
+#include <QDate>
 
 #include "ContactCRUD.h"
 #include "ListContact.h"
@@ -42,12 +43,15 @@ class MainWindow : public QWidget
         QLineEdit * searchLineEdit;/**< barre de recherche */
         QPushButton * dateSelectorButton1;/**< bouton pour sélectionner la date de départ du filtre */
         QPushButton * dateSelectorButton2;/**< bouton pour sélectionner la date de fin du filtre */
+        QLabel * labelMessage;/**< label pour afficher les messages*/
         QPushButton * resetFiltersButton;/**< bouton pour rénitialiser tous les filtres (barre de recherche, dates, ...) */
         QTableWidget * contactsTable;/**< tableau affichant les contacts */
         QComboBox * sortCombobox;/**< selecteur du tri */
 
-
-        CalendarDialog * calendarDialog;
+        CalendarDialog * calendarDialogFirstDate;
+        CalendarDialog * calendarDialogSecondDate;
+        Date * filterFirstDate;
+        Date * filterSecondDate;
 
         /**
          * @brief Permet d'initialiser les éléments d'interfaces (Layout, taille, items des selecteurs, nom, et autres propriétés).
@@ -77,7 +81,10 @@ class MainWindow : public QWidget
         ~MainWindow();
 
     public slots:
-        void openCalendarDialog();
+        void openFirstCalendarDialog();
+        void openSecondCalendarDialog();
+        void closeFirstCalendarDialog(QDate *);
+        void closeSecondCalendarDialog(QDate *);
         void updateTable();
 
 

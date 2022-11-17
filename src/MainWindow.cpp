@@ -18,9 +18,12 @@
 MainWindow::MainWindow(ContactCRUD * contactCRUD, QWidget *parent)
     : QWidget(parent)
 {
-    //lien avec BDD
     this->contactCRUD=contactCRUD;
     contactCRUD->getAllContacts(&this->listContact);
+
+    this->filterFirstDate=nullptr;
+    this->filterSecondDate=nullptr;
+
     initUI();
     initConnect();
     fillTable();
@@ -64,7 +67,12 @@ void MainWindow::initUI(){
     //bouton pour réinitialiser les filtres
     this->resetFiltersButton=new QPushButton("Réinitialiser les filtres");
 
-
+    //label pour afficher les messages
+    this->labelMessage=new QLabel;
+    this->labelMessage->setFixedHeight(30);
+    this->labelMessage->setAlignment(Qt::AlignCenter);
+    this->labelMessage->setVisible(false);
+    //this->labelMessage->setStyleSheet("background-color: #24D26D; color: #334433; border-radius: 5px;"); //style pour validation
 
     //selection de tri
     this->sortCombobox=new QComboBox(this);
@@ -72,6 +80,7 @@ void MainWindow::initUI(){
     this->sortCombobox->addItem("Trier par date de création");
     this->sortCombobox->addItem("Trier par ordre A->Z");
     this->sortCombobox->addItem("Trier par ordre Z->A");
+
 
     //tableau des contacts
     this->contactsTable = new QTableWidget(this);
@@ -119,19 +128,22 @@ void MainWindow::initUI(){
     //ajout des layout (attention à l'ordre)
     mainLayout->addLayout(searchBarLayout);
     mainLayout->addLayout(dateAndResetLayout);
+    mainLayout->addWidget(this->labelMessage);
     mainLayout->addLayout(showContactsLayout);
 
 
     //propriétés d'alignement sur les layout et widget
-    dateAndResetLayout->setAlignment(dateSelectorLayout,Qt::AlignLeft );
-    dateAndResetLayout->setAlignment(resetFiltersButtonLayout,Qt::AlignRight );
+    dateAndResetLayout->setAlignment(dateSelectorLayout, Qt::AlignLeft);
+    dateAndResetLayout->setAlignment(resetFiltersButtonLayout, Qt::AlignRight);
 
     showContactsLayout->setAlignment(this->sortCombobox, Qt::AlignTop);
 }
 
 void MainWindow::initConnect(){
-    QObject::connect(this->dateSelectorButton1, SIGNAL(clicked()),this,SLOT(openCalendarDialog()));
-    QObject::connect(this->sortCombobox, SIGNAL(currentIndexChanged(int)),this,SLOT(updateTable()));
+
+    QObject::connect(this->sortCombobox, SIGNAL(currentIndexChanged(int)), this, SLOT(updateTable()));
+    QObject::connect(this->dateSelectorButton1, SIGNAL(clicked()), this, SLOT(openFirstCalendarDialog()));
+    QObject::connect(this->dateSelectorButton2, SIGNAL(clicked()), this, SLOT(openSecondCalendarDialog()));
 }
 
 void MainWindow::fillTable(){
@@ -160,9 +172,54 @@ void MainWindow::fillTable(){
 
 
 
-void MainWindow::openCalendarDialog(){
-    this ->calendarDialog=new CalendarDialog();
-    this->calendarDialog->show();
+void MainWindow::openFirstCalendarDialog(){
+    this->calendarDialogFirstDate=new CalendarDialog();
+    QObject::connect(this->calendarDialogFirstDate, SIGNAL(emitClose(QDate *)), this, SLOT(closeFirstCalendarDialog(QDate *)));
+    this->calendarDialogFirstDate->show();
+}
+
+void MainWindow::openSecondCalendarDialog(){
+    this->calendarDialogSecondDate=new CalendarDialog();
+    QObject::connect(this->calendarDialogSecondDate, SIGNAL(emitClose(QDate *)), this, SLOT(closeSecondCalendarDialog(QDate *)));
+    this->calendarDialogSecondDate->show();
+}
+
+void MainWindow::closeFirstCalendarDialog(QDate * date){
+    if(date!=nullptr)
+        {
+        this->filterFirstDate=new Date(date->day(), date->month(), date->year());
+        this->dateSelectorButton1->setText(this->filterFirstDate->toString().c_str());
+        if(this->filterFirstDate!=nullptr && this->filterSecondDate!=nullptr)
+            {
+            if(!this->filterFirstDate->isLessThan(this->filterSecondDate))
+                {
+                this->labelMessage->setText("La date de départ est supérieur à la date de fin.");
+                this->labelMessage->setStyleSheet("background-color: #C8574D; color: #FFDFDF; border-radius: 5px;"); //style pour erreur
+                this->labelMessage->setVisible(true);
+                }
+            else
+                this->labelMessage->setVisible(false);
+            }
+        }
+}
+
+void MainWindow::closeSecondCalendarDialog(QDate * date){
+    if(date!=nullptr)
+        {
+        this->filterSecondDate=new Date(date->day(), date->month(), date->year());
+        this->dateSelectorButton2->setText(this->filterSecondDate->toString().c_str());
+        if(this->filterFirstDate!=nullptr && this->filterSecondDate!=nullptr)
+            {
+            if(!this->filterFirstDate->isLessThan(this->filterSecondDate))
+                {
+                this->labelMessage->setText("La date de départ est supérieur à la date de fin.");
+                this->labelMessage->setStyleSheet("background-color: #C8574D; color: #FFDFDF; border-radius: 5px;"); //style pour erreur
+                this->labelMessage->setVisible(true);
+                }
+            else
+                this->labelMessage->setVisible(false);
+            }
+    }
 }
 
 void MainWindow::updateTable(){fillTable();}

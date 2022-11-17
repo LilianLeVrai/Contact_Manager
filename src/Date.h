@@ -114,7 +114,7 @@ class Date
         std::string toString() const;
 
 
-
+        bool isLessThan(Date *);
 
 };
 

@@ -125,3 +125,24 @@ std::string Date::toString() const{
         {s = s+ " " + addZero(this->getHour()) + ":" + addZero(this->getMinute());}
     return s;
 }
+
+
+
+bool Date::isLessThan(Date* secondDate){
+    if (this->getYear() < secondDate->getYear())
+        {return true;}
+    if (this->getYear() == secondDate->getYear()
+            && this->getMonth() < secondDate->getMonth())
+        {return true;}
+    if (this->getYear() == secondDate->getYear()
+            && this->getMonth() == secondDate->getMonth()
+            && this->getDay() < secondDate->getDay())
+        {return true;}
+    if (this->getYear() == secondDate->getYear()
+            && this->getMonth() == secondDate->getMonth()
+            && this->getDay() == secondDate->getDay())
+        {return true;}
+    return false;
+}
+
+
