@@ -95,6 +95,7 @@ class MainWindow : public QWidget
         void updateTable();
         void enableDeleteDetailsButton();
         void deleteContact();
+        void resetFilters();
 
 };
 

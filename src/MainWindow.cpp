@@ -157,10 +157,10 @@ void MainWindow::initConnect(){
 
     QObject::connect(this->dateSelectorButton1, SIGNAL(clicked()), this, SLOT(openFirstCalendarDialog()));
     QObject::connect(this->dateSelectorButton2, SIGNAL(clicked()), this, SLOT(openSecondCalendarDialog()));
-    QObject::connect(this->dateSelectorButton1, SIGNAL(clicked()),this,SLOT(openCalendarDialog()));
-    QObject::connect(this->sortCombobox, SIGNAL(currentIndexChanged(int)),this,SLOT(updateTable()));
-    QObject::connect(this->contactsTable, SIGNAL(cellClicked(int,int)),this,SLOT(enableDeleteDetailsButton()));
-    QObject::connect(this->deleteContactButton, SIGNAL(clicked()),this,SLOT(deleteContact()));
+    QObject::connect(this->sortCombobox, SIGNAL(currentIndexChanged(int)), this, SLOT(updateTable()));
+    QObject::connect(this->contactsTable, SIGNAL(cellClicked(int,int)), this, SLOT(enableDeleteDetailsButton()));
+    QObject::connect(this->deleteContactButton, SIGNAL(clicked()), this, SLOT(deleteContact()));
+    QObject::connect(this->resetFiltersButton, SIGNAL(clicked()), this, SLOT(resetFilters()));
 }
 
 void MainWindow::fillTable(){
@@ -252,10 +252,20 @@ void MainWindow::disableDeleteDetailsButton(){
 }
 
 void MainWindow::deleteContact(){
-    this->contactCRUD->deleteContactBDD(this->listContact.getContactByIndex(contactsTable->selectionModel()->currentIndex().row())->getId());
+    this->contactCRUD->deleteContactBDD(this->listContact.getContactByIndex(this->contactsTable->selectionModel()->currentIndex().row())->getId());
     this->disableDeleteDetailsButton();
     this->contactCRUD->getAllContacts(&this->listContact);
     this->fillTable();
-
 }
 
+void MainWindow::resetFilters(){
+    this->filtersCombobox->setCurrentIndex(0);
+    this->searchLineEdit->setText("");
+    this->dateSelectorButton1->setText("");
+    this->dateSelectorButton2->setText("");
+    this->filterFirstDate=nullptr;
+    this->filterSecondDate=nullptr;
+    this->labelMessage->setVisible(false);
+    this->contactCRUD->getAllContacts(&this->listContact);
+    this->fillTable();
+}
