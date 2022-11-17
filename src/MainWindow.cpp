@@ -77,8 +77,8 @@ void MainWindow::initUI(){
     this->contactsTable = new QTableWidget(this);
     this->contactsTable->setObjectName("contactsTable");
     this->contactsTable->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
-    this->contactsTable->setColumnCount(5);
-    QStringList hlabels; hlabels <<"Nom"<<"Prénom"<<"Entreprise"<<"mail"<<"Téléphone";
+    this->contactsTable->setColumnCount(6);
+    QStringList hlabels; hlabels <<"Nom"<<"Prénom"<<"Entreprise"<<"mail"<<"Téléphone"<<"Date de création";
     this->contactsTable->setHorizontalHeaderLabels(hlabels);
     this->contactsTable->verticalHeader()->setVisible(false);
     this->contactsTable->horizontalHeader()->setSelectionMode(QAbstractItemView::NoSelection);
@@ -152,7 +152,8 @@ void MainWindow::fillTable(){
         this->contactsTable->setItem(i,1,new QTableWidgetItem(this->listContact.getContactByIndex(i)->getFirstName().c_str()));
         this->contactsTable->setItem(i,2,new QTableWidgetItem(this->listContact.getContactByIndex(i)->getCompany().c_str()));
         this->contactsTable->setItem(i,3,new QTableWidgetItem(this->listContact.getContactByIndex(i)->getMail().c_str()));
-        this->contactsTable->setItem(i,4,new QTableWidgetItem(this->listContact.getContactByIndex(i)->getDateCreation()->toString().c_str()));
+        this->contactsTable->setItem(i,4,new QTableWidgetItem(this->listContact.getContactByIndex(i)->getPhone().c_str()));
+        this->contactsTable->setItem(i,5,new QTableWidgetItem(this->listContact.getContactByIndex(i)->getDateCreation()->toString().c_str()));
         }
 }
 
