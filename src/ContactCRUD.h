@@ -40,6 +40,8 @@ class ContactCRUD
          */
         void getAllContacts(ListContact *);
 
+        void deleteContactBDD(const int & id);
+
 };
 
 #endif // CONTACTCRUD_H

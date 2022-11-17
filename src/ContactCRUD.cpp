@@ -37,3 +37,9 @@ void ContactCRUD::getAllContacts(ListContact * listContact){
             }
         }
 }
+
+void ContactCRUD::deleteContactBDD(const int & val){
+    QSqlQuery query;
+    if(!query.exec("delete from Contact where idContact="+QString::number(val)+";"))
+        {qDebug() << "Impossible d'effectuer la requète :\n" << query.lastError();}
+}

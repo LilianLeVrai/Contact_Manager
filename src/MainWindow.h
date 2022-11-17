@@ -47,6 +47,9 @@ class MainWindow : public QWidget
         QPushButton * resetFiltersButton;/**< bouton pour rénitialiser tous les filtres (barre de recherche, dates, ...) */
         QTableWidget * contactsTable;/**< tableau affichant les contacts */
         QComboBox * sortCombobox;/**< selecteur du tri */
+        QPushButton * addContactButton; /**< bouton d'ajout d'un contact */
+        QPushButton * detailsContactButton; /**< bouton pour afficher les details d'un contact */
+        QPushButton * deleteContactButton; /**< bouton de suppression du contact selectionne */
 
         CalendarDialog * calendarDialogFirstDate;
         CalendarDialog * calendarDialogSecondDate;
@@ -65,6 +68,10 @@ class MainWindow : public QWidget
          * @brief Permet d'afficher les contacts de l'attribut 'listContact' dans le tableau.
          */
         void fillTable();
+        /**
+         * @brief Permet de desactiver les boutons details contact et delete contact.
+         */
+        void disableDeleteDetailsButton();
 
     public:
         /**
@@ -86,8 +93,8 @@ class MainWindow : public QWidget
         void closeFirstCalendarDialog(QDate *);
         void closeSecondCalendarDialog(QDate *);
         void updateTable();
-
-
+        void enableDeleteDetailsButton();
+        void deleteContact();
 
 };
 

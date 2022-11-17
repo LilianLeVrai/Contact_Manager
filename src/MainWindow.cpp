@@ -81,6 +81,12 @@ void MainWindow::initUI(){
     this->sortCombobox->addItem("Trier par ordre A->Z");
     this->sortCombobox->addItem("Trier par ordre Z->A");
 
+    //Ajouter, details, supprimer contact
+    this->addContactButton = new QPushButton("Ajouter contact");
+    this->detailsContactButton = new QPushButton("Afficher details");
+    detailsContactButton->setEnabled(false);
+    this->deleteContactButton = new QPushButton("Supprimer contact");
+    deleteContactButton->setEnabled(false);
 
     //tableau des contacts
     this->contactsTable = new QTableWidget(this);
@@ -100,10 +106,12 @@ void MainWindow::initUI(){
 
     QHBoxLayout * searchBarLayout = new QHBoxLayout();
     QHBoxLayout * dateAndResetLayout = new QHBoxLayout();
-    QHBoxLayout * dateSelectorLayout = new QHBoxLayout();
+    QHBoxLayout * dateSelectorLayout = new QHBoxLayout();   
     QHBoxLayout * resetFiltersButtonLayout = new QHBoxLayout();
+    QHBoxLayout * leftButtonsShowContactLayout = new QHBoxLayout();
+    QVBoxLayout * leftButtonsLayout = new QVBoxLayout();
     QHBoxLayout * showContactsLayout = new QHBoxLayout();
-    showContactsLayout->setContentsMargins(0,20,0,0);
+    leftButtonsShowContactLayout->setContentsMargins(0,20,0,0);
 
     //ajouts des widget dans chaque layout
     searchBarLayout->addWidget(this->filtersCombobox);
@@ -122,12 +130,20 @@ void MainWindow::initUI(){
     dateAndResetLayout->addLayout(resetFiltersButtonLayout);
 
 
-    showContactsLayout->addWidget(this->sortCombobox);
+    leftButtonsLayout->addWidget(this->sortCombobox);
+    leftButtonsLayout->addWidget(this->addContactButton);
+    leftButtonsLayout->addWidget(this->detailsContactButton);
+    leftButtonsLayout->addWidget(this->deleteContactButton);
+
     showContactsLayout->addWidget(this->contactsTable);
+
+    leftButtonsShowContactLayout->addLayout(leftButtonsLayout);
+    leftButtonsShowContactLayout->addLayout(showContactsLayout);
 
     //ajout des layout (attention à l'ordre)
     mainLayout->addLayout(searchBarLayout);
     mainLayout->addLayout(dateAndResetLayout);
+<<<<<<< Updated upstream
     mainLayout->addWidget(this->labelMessage);
     mainLayout->addLayout(showContactsLayout);
 
@@ -135,15 +151,29 @@ void MainWindow::initUI(){
     //propriétés d'alignement sur les layout et widget
     dateAndResetLayout->setAlignment(dateSelectorLayout, Qt::AlignLeft);
     dateAndResetLayout->setAlignment(resetFiltersButtonLayout, Qt::AlignRight);
+=======
+    mainLayout->addLayout(leftButtonsShowContactLayout);
 
-    showContactsLayout->setAlignment(this->sortCombobox, Qt::AlignTop);
+    //propriétés d'alignement sur les layout et widget
+    dateAndResetLayout->setAlignment(dateSelectorLayout,Qt::AlignLeft );
+    dateAndResetLayout->setAlignment(resetFiltersButtonLayout,Qt::AlignRight );
+    leftButtonsLayout->setAlignment(Qt::AlignTop);
+>>>>>>> Stashed changes
+
 }
 
 void MainWindow::initConnect(){
+<<<<<<< Updated upstream
 
     QObject::connect(this->sortCombobox, SIGNAL(currentIndexChanged(int)), this, SLOT(updateTable()));
     QObject::connect(this->dateSelectorButton1, SIGNAL(clicked()), this, SLOT(openFirstCalendarDialog()));
     QObject::connect(this->dateSelectorButton2, SIGNAL(clicked()), this, SLOT(openSecondCalendarDialog()));
+=======
+    QObject::connect(this->dateSelectorButton1, SIGNAL(clicked()),this,SLOT(openCalendarDialog()));
+    QObject::connect(this->sortCombobox, SIGNAL(currentIndexChanged(int)),this,SLOT(updateTable()));
+    QObject::connect(this->contactsTable, SIGNAL(cellClicked(int,int)),this,SLOT(enableDeleteDetailsButton()));
+    QObject::connect(this->deleteContactButton, SIGNAL(clicked()),this,SLOT(deleteContact()));
+>>>>>>> Stashed changes
 }
 
 void MainWindow::fillTable(){
@@ -223,4 +253,22 @@ void MainWindow::closeSecondCalendarDialog(QDate * date){
 }
 
 void MainWindow::updateTable(){fillTable();}
+
+void MainWindow::enableDeleteDetailsButton(){
+    this->detailsContactButton->setEnabled(true);
+    this->deleteContactButton->setEnabled(true);
+}
+
+void MainWindow::disableDeleteDetailsButton(){
+    this->detailsContactButton->setEnabled(false);
+    this->deleteContactButton->setEnabled(false);
+}
+
+void MainWindow::deleteContact(){
+    this->contactCRUD->deleteContactBDD(this->listContact.getContactByIndex(contactsTable->selectionModel()->currentIndex().row())->getId());
+    this->disableDeleteDetailsButton();
+    this->contactCRUD->getAllContacts(&this->listContact);
+    this->fillTable();
+
+}
 
