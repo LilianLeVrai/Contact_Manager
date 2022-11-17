@@ -5,6 +5,11 @@
 
 #include "ListContact.h"
 
+#include <iostream>
+#include <list>
+#include <string>
+#include <cctype>
+
 //debut constructeurs/destructeurs
 ListContact::ListContact(){
 }
@@ -74,6 +79,60 @@ void ListContact::removeAllContacts(){
             it= this->listContact.erase(it);
     }
 }
+
+
+//fonctions et méthodes pour les tris
+bool compareAlphabet(const Contact*  element1, const Contact*  element2)
+    {
+    unsigned int i=0;
+    while (i < element1->getLastName().length() && i < element2->getLastName().length())
+        {
+        if (tolower(element1->getLastName()[i]) < tolower(element2->getLastName()[i])) return true;
+        else if (tolower(element1->getLastName()[i]) > tolower(element2->getLastName()[i])) return false;
+        ++i;
+        }
+    return(element1->getLastName().length() < element2->getLastName().length());
+    }
+void ListContact::sortByAlphabet(){this->listContact.sort(compareAlphabet);}
+bool compareReverseAlphabet(const Contact*  element1, const Contact*  element2)
+    {
+    unsigned int i=0;
+    while (i < element1->getLastName().length() && i < element2->getLastName().length())
+        {
+        if (tolower(element1->getLastName()[i]) > tolower(element2->getLastName()[i])) return true;
+        else if (tolower(element1->getLastName()[i]) < tolower(element2->getLastName()[i])) return false;
+        ++i;
+        }
+    return(element1->getLastName().length() > element2->getLastName().length());
+    }
+void ListContact::sortByReverseAlphabet(){listContact.sort(compareReverseAlphabet);}
+bool compareDate(const Contact* element1, const Contact* element2){
+    if (element1->getDateCreation()->getYear() < element2->getDateCreation()->getYear())
+        {return true;}
+    if (element1->getDateCreation()->getYear() == element2->getDateCreation()->getYear()
+            && element1->getDateCreation()->getMonth() < element2->getDateCreation()->getMonth())
+        {return true;}
+    if (element1->getDateCreation()->getYear() == element2->getDateCreation()->getYear()
+            && element1->getDateCreation()->getMonth() == element2->getDateCreation()->getMonth()
+            && element1->getDateCreation()->getDay() < element2->getDateCreation()->getDay())
+        {return true;}
+    if (element1->getDateCreation()->getYear() == element2->getDateCreation()->getYear()
+            && element1->getDateCreation()->getMonth() == element2->getDateCreation()->getMonth()
+            && element1->getDateCreation()->getDay() == element2->getDateCreation()->getDay()
+            && element1->getDateCreation()->getHour() < element2->getDateCreation()->getHour())
+        {return true;}
+    if (element1->getDateCreation()->getYear() == element2->getDateCreation()->getYear()
+            && element1->getDateCreation()->getMonth() == element2->getDateCreation()->getMonth()
+            && element1->getDateCreation()->getDay() == element2->getDateCreation()->getDay()
+            && element1->getDateCreation()->getHour() == element2->getDateCreation()->getHour()
+            && element1->getDateCreation()->getMinute() < element2->getDateCreation()->getMinute())
+        {return true;}
+    return false;
+    }
+void ListContact::sortByCreateDate(){this->listContact.sort(compareDate);}
+
+
+
 
 
 std::string ListContact::toString() const{

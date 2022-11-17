@@ -61,6 +61,10 @@ void MainWindow::initUI(){
     this->dateSelectorButton2 = new QPushButton(this);
     this->dateSelectorButton2->setMinimumWidth(100);
 
+    //bouton pour réinitialiser les filtres
+    this->resetFiltersButton=new QPushButton("Réinitialiser les filtres");
+
+
 
     //selection de tri
     this->sortCombobox=new QComboBox(this);
@@ -86,7 +90,9 @@ void MainWindow::initUI(){
     QVBoxLayout * mainLayout = new QVBoxLayout(this);
 
     QHBoxLayout * searchBarLayout = new QHBoxLayout();
+    QHBoxLayout * dateAndResetLayout = new QHBoxLayout();
     QHBoxLayout * dateSelectorLayout = new QHBoxLayout();
+    QHBoxLayout * resetFiltersButtonLayout = new QHBoxLayout();
     QHBoxLayout * showContactsLayout = new QHBoxLayout();
     showContactsLayout->setContentsMargins(0,20,0,0);
 
@@ -95,30 +101,47 @@ void MainWindow::initUI(){
     searchBarLayout->addWidget(this->searchLineEdit);
     searchBarLayout->addWidget(this->searchButton);
 
+
     dateSelectorLayout->addWidget(dateSelectorLabel1);
     dateSelectorLayout->addWidget(this->dateSelectorButton1);
     dateSelectorLayout->addWidget(dateSelectorLabel2);
     dateSelectorLayout->addWidget(this->dateSelectorButton2);
+
+    resetFiltersButtonLayout->addWidget(this->resetFiltersButton);
+
+    dateAndResetLayout->addLayout(dateSelectorLayout);
+    dateAndResetLayout->addLayout(resetFiltersButtonLayout);
+
 
     showContactsLayout->addWidget(this->sortCombobox);
     showContactsLayout->addWidget(this->contactsTable);
 
     //ajout des layout (attention à l'ordre)
     mainLayout->addLayout(searchBarLayout);
-    mainLayout->addLayout(dateSelectorLayout);
+    mainLayout->addLayout(dateAndResetLayout);
     mainLayout->addLayout(showContactsLayout);
 
 
     //propriétés d'alignement sur les layout et widget
-    mainLayout->setAlignment(dateSelectorLayout, Qt::AlignLeft);
+    dateAndResetLayout->setAlignment(dateSelectorLayout,Qt::AlignLeft );
+    dateAndResetLayout->setAlignment(resetFiltersButtonLayout,Qt::AlignRight );
+
     showContactsLayout->setAlignment(this->sortCombobox, Qt::AlignTop);
 }
 
 void MainWindow::initConnect(){
     QObject::connect(this->dateSelectorButton1, SIGNAL(clicked()),this,SLOT(openCalendarDialog()));
+    QObject::connect(this->sortCombobox, SIGNAL(currentIndexChanged(int)),this,SLOT(updateTable()));
 }
 
 void MainWindow::fillTable(){
+    if(this->sortCombobox->currentIndex()==0)
+        this->listContact.sortByCreateDate();
+    if(this->sortCombobox->currentIndex()==1)
+        this->listContact.sortByAlphabet();
+    if(this->sortCombobox->currentIndex()==2)
+        this->listContact.sortByReverseAlphabet();
+
     this->contactsTable->setRowCount(0);
 
     for(int i=0; i<this->listContact.getSize(); i++)
@@ -129,10 +152,11 @@ void MainWindow::fillTable(){
         this->contactsTable->setItem(i,1,new QTableWidgetItem(this->listContact.getContactByIndex(i)->getFirstName().c_str()));
         this->contactsTable->setItem(i,2,new QTableWidgetItem(this->listContact.getContactByIndex(i)->getCompany().c_str()));
         this->contactsTable->setItem(i,3,new QTableWidgetItem(this->listContact.getContactByIndex(i)->getMail().c_str()));
-        this->contactsTable->setItem(i,4,new QTableWidgetItem(this->listContact.getContactByIndex(i)->getPhone().c_str()));
+        this->contactsTable->setItem(i,4,new QTableWidgetItem(this->listContact.getContactByIndex(i)->getDateCreation()->toString().c_str()));
         }
-
 }
+
+
 
 
 void MainWindow::openCalendarDialog(){
@@ -140,4 +164,5 @@ void MainWindow::openCalendarDialog(){
     this->calendarDialog->show();
 }
 
+void MainWindow::updateTable(){fillTable();}
 

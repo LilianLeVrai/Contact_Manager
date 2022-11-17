@@ -14,6 +14,7 @@ Date::Date(){
     this->day=tm->tm_mday;
     this->month=tm->tm_mon+1;
     this->year=tm->tm_year+1900;
+    this->dateType=WithoutHours;
 }
 
 Date::Date(unsigned int day, unsigned int month, unsigned int year){
@@ -24,6 +25,7 @@ Date::Date(unsigned int day, unsigned int month, unsigned int year){
     this->day=day;
     this->month=month;
     this->year=year;
+    this->dateType=WithoutHours;
 }
 
 Date::Date(unsigned int minute, unsigned int hour, unsigned int day, unsigned int month, unsigned int year){
@@ -32,6 +34,7 @@ Date::Date(unsigned int minute, unsigned int hour, unsigned int day, unsigned in
     this->day=day;
     this->month=month;
     this->year=year;
+    this->dateType=WithoutHours;
 }
 
 Date::Date(const std::string s){
@@ -63,6 +66,7 @@ Date::Date(const std::string s){
             this->hour=tm->tm_hour;
             }
         }
+     this->dateType=WithoutHours;
 }
 
 Date::~Date(){
@@ -107,8 +111,17 @@ void Date::setYear(const unsigned int val){
 
 
 
+std::string addZero(int i){
+    std::string s;
+    if(i<10){s="0"+std::to_string(i);}
+    else{s=std::to_string(i);}
+    return s;
+}
+
 std::string Date::toString() const{
     std::string s;
-    s = std::to_string(this->getDay()) + "/" + std::to_string(this->getMonth()) + "/" + std::to_string(this->getYear());
+    s = addZero(this->getDay()) + "/" + addZero(this->getMonth()) + "/" + std::to_string(this->getYear());
+    if(this->dateType==WithHours)
+        {s = s+ " " + addZero(this->getHour()) + ":" + addZero(this->getMinute());}
     return s;
 }

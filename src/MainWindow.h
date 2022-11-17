@@ -78,7 +78,7 @@ class MainWindow : public QWidget
 
     public slots:
         void openCalendarDialog();
-
+        void updateTable();
 
 
 

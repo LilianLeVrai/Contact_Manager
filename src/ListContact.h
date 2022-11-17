@@ -50,6 +50,11 @@ class ListContact
          * @return pointeur vers objet Contact
          */
         Contact* getContactById(const int) const;
+        /**
+         * @brief Permet de récupérer un contact de la liste en fonction de son index dans celle-ci.
+         * @param Le paramètre doit être un entier représentant l'index
+         * @return pointeur vers objet Contact
+         */
         Contact* getContactByIndex(const int) const;
         /**
          * @brief Permet de récupérer la taille de la liste.
@@ -61,6 +66,10 @@ class ListContact
          * @brief Permet de vider tous les contacts de la liste.
          */
         void removeAllContacts();
+
+        void sortByAlphabet();
+        void sortByReverseAlphabet();
+        void sortByCreateDate();
 
 
         /**

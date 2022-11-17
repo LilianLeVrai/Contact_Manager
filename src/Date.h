@@ -17,12 +17,20 @@
  */
 class Date
 {
+
+    public:
+        enum DateType{WithoutHours = 0, WithHours};
+        void setDateType(DateType dateTypeEnum){dateType=dateTypeEnum;}
+
     private:
         unsigned int minute; /**< minute */
         unsigned int hour; /**< heure */
         unsigned int day; /**< jour */
         unsigned int month; /**< mois */
         unsigned int year; /**< année */
+
+        DateType dateType;
+
 
     public:
         /**
@@ -104,6 +112,10 @@ class Date
          * @warning sujet à changement
          */
         std::string toString() const;
+
+
+
+
 };
 
 #endif // DATE_H
