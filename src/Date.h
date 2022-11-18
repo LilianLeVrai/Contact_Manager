@@ -17,9 +17,15 @@
  */
 class Date
 {
-
     public:
+        /**
+         * @brief DateType enum
+         */
         enum DateType{WithoutHours = 0, WithHours};
+        /**
+         * @brief Permet de définir le type de la date
+         * @param prend en paramêtre un choix de l'enum 'DateType': WithoutHours - WithHours
+         */
         void setDateType(DateType dateTypeEnum){dateType=dateTypeEnum;}
 
     private:
@@ -29,7 +35,7 @@ class Date
         unsigned int month; /**< mois */
         unsigned int year; /**< année */
 
-        DateType dateType;
+        DateType dateType; /**< type de la date, défini si elle est utilisé sous le format 'jj/mm/aaaa' ou 'jj/mm/aaaa hh:mm'*/
 
 
     public:
@@ -113,8 +119,19 @@ class Date
          */
         std::string toString() const;
 
-
+        /**
+         * @brief Permet de savoir si la date courante est inférieur ou égal à celle passée en paramêtre
+         * @param pointeur sur un objet Date
+         * @return return true si la date est inférieur ou égal, false sinon
+         */
         bool isLessThan(Date *);
+        /**
+         * @brief Permet de savoir si la date courante est entre ou égal aux deux dates passées en paramêtre
+         * @param pointeur sur un objet Date
+         * @param pointeur sur un objet Date
+         * @return return true si la date est entre ou égal, false sinon
+         */
+        bool isBetween(Date *, Date *);
 
 };
 

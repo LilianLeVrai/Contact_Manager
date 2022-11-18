@@ -82,6 +82,13 @@ void ListContact::removeAllContacts(){
 
 
 //fonctions et méthodes pour les tris
+/**
+ * @brief fonction comparant 2 noms de contacts.
+ * @param pointeur sur un objet Contact
+ * @param pointeur sur un objet Contact
+ * @return true si le nom du premier contact est alphabétiquement inférieur au second, \n sinon false.
+ * @details comparateur utiliser dans la méthode 'sortByAlphabet()' de la classe ListContact.
+ */
 bool compareAlphabet(const Contact*  element1, const Contact*  element2)
     {
     unsigned int i=0;
@@ -94,6 +101,13 @@ bool compareAlphabet(const Contact*  element1, const Contact*  element2)
     return(element1->getLastName().length() < element2->getLastName().length());
     }
 void ListContact::sortByAlphabet(){this->listContact.sort(compareAlphabet);}
+/**
+ * @brief fonction comparant 2 noms de contacts.
+ * @param pointeur sur un objet Contact
+ * @param pointeur sur un objet Contact
+ * @return true si le nom du premier contact est alphabétiquement supérieur au second, \n sinon false.
+ * @details comparateur utiliser dans la méthode 'sortByReverseAlphabet()' de la classe ListContact.
+ */
 bool compareReverseAlphabet(const Contact*  element1, const Contact*  element2)
     {
     unsigned int i=0;
@@ -106,6 +120,13 @@ bool compareReverseAlphabet(const Contact*  element1, const Contact*  element2)
     return(element1->getLastName().length() > element2->getLastName().length());
     }
 void ListContact::sortByReverseAlphabet(){listContact.sort(compareReverseAlphabet);}
+/**
+ * @brief fonction comparant 2 dates de création de contacts.
+ * @param pointeur sur un objet Contact
+ * @param pointeur sur un objet Contact
+ * @return true si la première date est inférieur à la seconde, sinon false.
+ * @details comparateur utiliser dans la méthode 'sortByCreateDate()' de la classe ListContact.
+ */
 bool compareDate(const Contact* element1, const Contact* element2){
     if (element1->getDateCreation()->getYear() < element2->getDateCreation()->getYear())
         {return true;}

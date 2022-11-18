@@ -1,10 +1,19 @@
+/**
+ * @file CalendarDialog.cpp
+ * @brief Fichier cpp de la classe CalendarDialog
+ */
+
+
 #include "CalendarDialog.h"
 
 #include <QVBoxLayout>
 #include <QHBoxLayout>
-
 #include <QDebug>
 
+
+//------------------------------------------------------------------------------------------------------------------------------
+//constructeurs/destructeurs
+//------------------------------------------------------------------------------------------------------------------------------
 CalendarDialog::CalendarDialog(QWidget *parent)
     : QDialog(parent)
 {
@@ -13,16 +22,25 @@ CalendarDialog::CalendarDialog(QWidget *parent)
     initConnect();
 }
 
+CalendarDialog::~CalendarDialog(){};
 
+
+//------------------------------------------------------------------------------------------------------------------------------
+//méthodes
+//------------------------------------------------------------------------------------------------------------------------------
 void CalendarDialog::initUI(){
+    setWindowTitle("Choisir une date");
+
+    //calendrier
     this->calendar=new QCalendarWidget(this);
     QDate currentDate=currentDate.currentDate();
     this->calendar->setMaximumDate(currentDate);
 
-
+    //boutons
     this->cancelButton=new QPushButton("Annuler");
     this->validateButton=new QPushButton("Valider");
 
+    //layouts
     QVBoxLayout * mainLayout=new QVBoxLayout(this);
     QHBoxLayout * buttonLayout=new QHBoxLayout();
 
@@ -39,6 +57,9 @@ void CalendarDialog::initConnect(){
 }
 
 
+//------------------------------------------------------------------------------------------------------------------------------
+//slots
+//------------------------------------------------------------------------------------------------------------------------------
 void CalendarDialog::validateCloseDialog(){
     QDate * selectedDate=new QDate(this->calendar->selectedDate());
     emit emitClose(selectedDate);

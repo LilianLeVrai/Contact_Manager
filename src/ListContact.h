@@ -67,8 +67,17 @@ class ListContact
          */
         void removeAllContacts();
 
+        /**
+         * @brief Permet de trier la liste de contacts par ordre alphabétique (avec le nom du contact).
+         */
         void sortByAlphabet();
+        /**
+         * @brief Permet de trier la liste de contacts par ordre inverse alphabétique (avec le nom du contact).
+         */
         void sortByReverseAlphabet();
+        /**
+         * @brief Permet de trier la liste de contacts par date de création.
+         */
         void sortByCreateDate();
 
 

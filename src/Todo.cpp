@@ -6,8 +6,6 @@
 #include "Todo.h"
 
 //debut constructeurs/destructeurs
-
-
 Todo::Todo(){
     this->id=NULL;
     this->content="";

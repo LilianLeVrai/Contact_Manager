@@ -19,6 +19,7 @@ SOURCES += \
         Interaction.cpp \
         ListContact.cpp \
         ListInteraction.cpp \
+        MainWidget.cpp \
         MainWindow.cpp \
         Todo.cpp \
         ListTodo.cpp \
@@ -38,6 +39,7 @@ HEADERS += \
     Interaction.h \
     ListContact.h \
     ListInteraction.h \
+    MainWidget.h \
     MainWindow.h \
     Todo.h \
     ListTodo.h

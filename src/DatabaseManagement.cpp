@@ -5,6 +5,7 @@
 
 
 #include "DatabaseManagement.h"
+
 #include <QDebug>
 #include <QSqlQuery>
 #include <QFile>
@@ -70,6 +71,7 @@ DatabaseManagement::DatabaseManagement()
           else
             {qDebug() << "fichier initModification appliqué à la BDD";}
 
+          qDebug() << "------------------------------------------------------------------";
         }
 }
 
@@ -88,10 +90,9 @@ void DatabaseManagement::initDataTest(){
             {qDebug() << "Impossible d'insérer les données à la table :\n" << query.lastError();}
           else
             {qDebug() << "Données insérées dans la table :" << initDataInstructions;}
-
-
        }
        initDataFile.close();
+       qDebug() << "------------------------------------------------------------------";
     }
     else{qDebug() << "Le fichier dataTest.sql n'as pas pu être ouvert";}
 }

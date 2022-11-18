@@ -21,6 +21,7 @@
 #include <QFile>
 #include <QString>
 #include <QDebug>
+#include <QMainWindow>
 
 #include <QPushButton>
 
@@ -41,7 +42,7 @@ int main(int argc, char *argv[])
     //ModificationCRUD ModificationCRUD(database.getDatabase());
 
     //declaration du widget principal
-    MainWindow mainWindow(&contactCRUD);
+    MainWindow mainWindow(&database, &contactCRUD);
     mainWindow.show();
 
     //déclaration du styleSheet
@@ -53,12 +54,7 @@ int main(int argc, char *argv[])
 
 
 
-
-
-
-
-
-    /*
+    /*TESTS DU PREMIER JALON
     //tests Date
     Date dNow;
     Date d1(01,01,2001);
@@ -136,7 +132,5 @@ int main(int argc, char *argv[])
     cout << "J'ai cree une ListContact avec les 2 Contact precedents :\n" << listContact.toString() << endl;
     */
 
-
     return app.exec();
-
 }

@@ -7,71 +7,29 @@
  */
 
 
-#include <QWidget>
-
-#include <QPushButton>
-#include <QLineEdit>
-#include <QTableWidget>
-#include <QComboBox>
-#include <QLabel>
-#include <QObject>
-#include <QDate>
-
+#include <QMainWindow>
+#include <QAction>
+#include "MainWidget.h"
 #include "ContactCRUD.h"
-#include "ListContact.h"
-#include "CalendarDialog.h"
+#include "DatabaseManagement.h"
 
 /**
  * @class MainWindow
- * @brief classe représentant l'interface de la page principale
- * @details La classe hérite de la classe QWidget.
+ * @brief classe représentant la page principale
+ * @details La classe hérite de la classe QMainWindow.
  */
-class MainWindow : public QWidget
+class MainWindow : public QMainWindow
 {
-    Q_OBJECT
+        Q_OBJECT
 
     private:
-        ListContact listContact;/**< liste de contact affichée dans la tableau */
+        DatabaseManagement * databaseManagement;/**< databaseManagement (utile pour les options de la barre d'outils) */
 
-        ContactCRUD * contactCRUD;/**< gestionnaire de la table Contact de la BDD */
-        //InteractionCRUD * interactionCRUD;
-        //TodoCRUD * TodoCRUD;
-        //ModificationCRUD * ModificationCRUD;
+        QAction * optionExportJson;/**< bouton de la toolbar permettant l'export des données en JSON */
+        QAction * optionInitDataTest;/**< bouton de la toolbar permettant l'import dans la BDD de données tests */
 
-        QComboBox * filtersCombobox;/**< selecteur du filtre */
-        QPushButton * searchButton;/**< bouton de recherche */
-        QLineEdit * searchLineEdit;/**< barre de recherche */
-        QPushButton * dateSelectorButton1;/**< bouton pour sélectionner la date de départ du filtre */
-        QPushButton * dateSelectorButton2;/**< bouton pour sélectionner la date de fin du filtre */
-        QLabel * labelMessage;/**< label pour afficher les messages*/
-        QPushButton * resetFiltersButton;/**< bouton pour rénitialiser tous les filtres (barre de recherche, dates, ...) */
-        QTableWidget * contactsTable;/**< tableau affichant les contacts */
-        QComboBox * sortCombobox;/**< selecteur du tri */
-        QPushButton * addContactButton; /**< bouton d'ajout d'un contact */
-        QPushButton * detailsContactButton; /**< bouton pour afficher les details d'un contact */
-        QPushButton * deleteContactButton; /**< bouton de suppression du contact selectionne */
+        MainWidget * mainWidget;/**< widget principal de la page */
 
-        CalendarDialog * calendarDialogFirstDate;
-        CalendarDialog * calendarDialogSecondDate;
-        Date * filterFirstDate;
-        Date * filterSecondDate;
-
-        /**
-         * @brief Permet d'initialiser les éléments d'interfaces (Layout, taille, items des selecteurs, nom, et autres propriétés).
-         */
-        void initUI();
-        /**
-         * @brief Permet d'initialiser les connect.
-         */
-        void initConnect();
-        /**
-         * @brief Permet d'afficher les contacts de l'attribut 'listContact' dans le tableau.
-         */
-        void fillTable();
-        /**
-         * @brief Permet de desactiver les boutons details contact et delete contact.
-         */
-        void disableDeleteDetailsButton();
 
     public:
         /**
@@ -81,21 +39,14 @@ class MainWindow : public QWidget
          * @param pointeur vers un objet de type TodoCRUD
          * @param pointeur vers un objet de type ModificationCRUD
          * @details
-         * Rempli l'attribut 'listContact' grâce au pointeur vers l'objet de type ContactCRUD, \n
-         * puis appel les méthodes 'initUI' et 'fillTable'.
+         * Rempli l'attribut 'mainWidget' avec un nouveau MainWidget auquel est transmis les objets de 'CRUD', \n
+         * puis initialise la toolbar.
          */
-        MainWindow(ContactCRUD *,QWidget *parent = 0);
+        MainWindow(DatabaseManagement *, ContactCRUD *, QWidget *parent = 0);
         ~MainWindow();
 
-    public slots:
-        void openFirstCalendarDialog();
-        void openSecondCalendarDialog();
-        void closeFirstCalendarDialog(QDate *);
-        void closeSecondCalendarDialog(QDate *);
-        void updateTable();
-        void enableDeleteDetailsButton();
-        void deleteContact();
-        void resetFilters();
+
+
 
 };
 

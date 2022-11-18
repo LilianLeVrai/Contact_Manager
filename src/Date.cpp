@@ -128,21 +128,27 @@ std::string Date::toString() const{
 
 
 
-bool Date::isLessThan(Date* secondDate){
-    if (this->getYear() < secondDate->getYear())
+bool Date::isLessThan(Date* date){
+    if (this->getYear() < date->getYear())
         {return true;}
-    if (this->getYear() == secondDate->getYear()
-            && this->getMonth() < secondDate->getMonth())
+    if (this->getYear() == date->getYear()
+            && this->getMonth() < date->getMonth())
         {return true;}
-    if (this->getYear() == secondDate->getYear()
-            && this->getMonth() == secondDate->getMonth()
-            && this->getDay() < secondDate->getDay())
+    if (this->getYear() == date->getYear()
+            && this->getMonth() == date->getMonth()
+            && this->getDay() < date->getDay())
         {return true;}
-    if (this->getYear() == secondDate->getYear()
-            && this->getMonth() == secondDate->getMonth()
-            && this->getDay() == secondDate->getDay())
+    if (this->getYear() == date->getYear()
+            && this->getMonth() == date->getMonth()
+            && this->getDay() == date->getDay())
         {return true;}
     return false;
 }
 
+bool Date::isBetween(Date* firstDate, Date* secondDate){
+    if (firstDate->isLessThan(this) && this->isLessThan(secondDate))
+        return true;
+    else
+        return false;
+}
 
