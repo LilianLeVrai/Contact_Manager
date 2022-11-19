@@ -12,6 +12,7 @@
 #include "MainWidget.h"
 #include "ContactCRUD.h"
 #include "DatabaseManagement.h"
+#include "YesNoDialog.h"
 
 /**
  * @class MainWindow
@@ -30,6 +31,7 @@ class MainWindow : public QMainWindow
 
         MainWidget * mainWidget;/**< widget principal de la page */
 
+        YesNoDialog * yesNoDialogDataTest;/** boite de dialogue pour confirmer la volonté d'importer les données test */
 
     public:
         /**
@@ -45,8 +47,23 @@ class MainWindow : public QMainWindow
         MainWindow(DatabaseManagement *, ContactCRUD *, QWidget *parent = 0);
         ~MainWindow();
 
+    public slots:
+        /**
+         * @brief slot ouvrant une fenêtre de dialogue pour demander la confirmation d'importer les données tests.
+         */
+        void askInitDataTest();
+        /**
+         * @brief slot récupérant le choix de l'utilisateur concernant l'import des données test
+         * @details Si le choix est oui, les données sont importés et emet un signal au main widget pour mettre à jour le tableau.
+         */
+        void closeYesNoDialogDataTest(bool);
 
-
+    signals:
+        /**
+         * @brief signal.
+         * @details Permet d'informer le main widget que l'on veut mettre à jour le tableau.
+         */
+        void emitUpdateContact();
 
 };
 

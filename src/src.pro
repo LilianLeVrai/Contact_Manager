@@ -16,6 +16,7 @@ SOURCES += \
         ContactCRUD.cpp \
         DatabaseManagement.cpp \
         Date.cpp \
+        EditContactDialog.cpp \
         Interaction.cpp \
         ListContact.cpp \
         ListInteraction.cpp \
@@ -23,7 +24,9 @@ SOURCES += \
         MainWindow.cpp \
         Todo.cpp \
         ListTodo.cpp \
-        main.cpp
+        YesNoDialog.cpp \
+        main.cpp \
+        MessageLabel.cpp
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
@@ -36,12 +39,15 @@ HEADERS += \
     ContactCRUD.h \
     DatabaseManagement.h \
     Date.h \
+    EditContactDialog.h \
     Interaction.h \
     ListContact.h \
     ListInteraction.h \
     MainWidget.h \
     MainWindow.h \
     Todo.h \
-    ListTodo.h
+    ListTodo.h \
+    YesNoDialog.h \
+    MessageLabel.h
 
 FORMS +=

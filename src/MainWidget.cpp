@@ -73,11 +73,7 @@ void MainWidget::initUI(){
     this->resetFiltersButton=new QPushButton("Réinitialiser les filtres");
 
     //label pour afficher les messages
-    this->labelMessage=new QLabel;
-    this->labelMessage->setFixedHeight(30);
-    this->labelMessage->setAlignment(Qt::AlignCenter);
-    this->labelMessage->setVisible(false);
-    //this->labelMessage->setStyleSheet("background-color: #24D26D; color: #334433; border-radius: 5px;"); //style pour validation
+    this->messageLabel=new MessageLabel;
 
     //selection de tri
     this->sortCombobox=new QComboBox(this);
@@ -148,7 +144,7 @@ void MainWidget::initUI(){
     //ajout des layout (attention à l'ordre)
     mainLayout->addLayout(searchBarLayout);
     mainLayout->addLayout(dateAndResetLayout);
-    mainLayout->addWidget(this->labelMessage);
+    mainLayout->addWidget(this->messageLabel);
     mainLayout->addLayout(leftButtonsShowContactLayout);
 
     //propriétés d'alignement sur les layout et widget
@@ -165,6 +161,7 @@ void MainWidget::initConnect(){
     QObject::connect(this->deleteContactButton, SIGNAL(clicked()), this, SLOT(deleteContact()));
     QObject::connect(this->resetFiltersButton, SIGNAL(clicked()), this, SLOT(resetFilters()));
     QObject::connect(this->searchButton, SIGNAL(clicked()), this, SLOT(searchContacts()));
+    QObject::connect(this->addContactButton, SIGNAL(clicked()), this, SLOT(openCreateContactDialog()));
 }
 
 void MainWidget::fillTable(){
@@ -197,6 +194,7 @@ void MainWidget::disableDeleteDetailsButton(){
     this->deleteContactButton->setEnabled(false);
 }
 
+
 //------------------------------------------------------------------------------------------------------------------------------
 //slots
 //------------------------------------------------------------------------------------------------------------------------------
@@ -221,12 +219,10 @@ void MainWidget::closeFirstCalendarDialog(QDate * date){
             {
             if(!this->filterFirstDate->isLessThan(this->filterSecondDate))
                 {
-                this->labelMessage->setText("La date de départ est supérieur à la date de fin.");
-                this->labelMessage->setStyleSheet("background-color: #C8574D; color: #FFDFDF; border-radius: 5px;"); //style pour erreur
-                this->labelMessage->setVisible(true);
+                this->messageLabel->setProperty("La date de départ est supérieur à la date de fin.", MessageLabel::Red, true);
                 }
             else
-                this->labelMessage->setVisible(false);
+                this->messageLabel->setVisible(false);
             }
         }
 }
@@ -240,12 +236,10 @@ void MainWidget::closeSecondCalendarDialog(QDate * date){
             {
             if(!this->filterFirstDate->isLessThan(this->filterSecondDate))
                 {
-                this->labelMessage->setText("La date de départ est supérieur à la date de fin.");
-                this->labelMessage->setStyleSheet("background-color: #C8574D; color: #FFDFDF; border-radius: 5px;"); //style pour erreur
-                this->labelMessage->setVisible(true);
+                this->messageLabel->setProperty("La date de départ est supérieur à la date de fin.", MessageLabel::Red, true);
                 }
             else
-                this->labelMessage->setVisible(false);
+                this->messageLabel->setVisible(false);
             }
     }
 }
@@ -272,7 +266,7 @@ void MainWidget::resetFilters(){
     this->dateSelectorButton2->setText("");
     this->filterFirstDate=nullptr;
     this->filterSecondDate=nullptr;
-    this->labelMessage->setVisible(false);
+    this->messageLabel->setVisible(false);
     this->contactCRUD->getAllContacts(&this->listContact);
     this->fillTable();
 }
@@ -284,4 +278,10 @@ void MainWidget::searchContacts(){
 }
 
 
+void MainWidget::openCreateContactDialog(){
+    this->createContactDialog=new EditContactDialog();
+
+    this->createContactDialog->show();
+
+}
 

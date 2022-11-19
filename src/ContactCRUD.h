@@ -49,6 +49,18 @@ class ContactCRUD
         void deleteContactBDD(const int & id);
 
         /**
+         * @brief Permet d'ajouter un contact à la BDD.
+         * @param QString représentant le nom
+         * @param QString représentant le prénom
+         * @param QString représentant l'entreprise
+         * @param QString représentant le mail
+         * @param QString représentant le téléphone
+         * @param QString représentant le lien vers l'image
+         * @details La méthode fait une requête à la BDD.
+         */
+        void addContactBDD(QString, QString, QString, QString, QString, QString);
+
+        /**
          * @brief Permet de remplir une liste de contact avec les contacts contenus dans la BDD respectant les filtres de recherches.
          * @param pointeur vers un objet ListContact
          * @param QString, dans notre programme c'est le contenu de la barre de recherche qui est récupéré

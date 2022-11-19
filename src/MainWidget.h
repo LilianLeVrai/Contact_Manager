@@ -19,6 +19,8 @@
 #include "ContactCRUD.h"
 #include "ListContact.h"
 #include "CalendarDialog.h"
+#include "MessageLabel.h"
+#include "EditContactDialog.h"
 
 /**
  * @class MainWidget
@@ -42,7 +44,7 @@ class MainWidget : public QWidget
         QLineEdit * searchLineEdit;/**< barre de recherche */
         QPushButton * dateSelectorButton1;/**< bouton pour sélectionner la date de départ du filtre */
         QPushButton * dateSelectorButton2;/**< bouton pour sélectionner la date de fin du filtre */
-        QLabel * labelMessage;/**< label pour afficher les messages*/
+        MessageLabel * messageLabel;/**< label pour afficher les messages*/
         QPushButton * resetFiltersButton;/**< bouton pour rénitialiser tous les filtres (barre de recherche, dates, ...) */
         QTableWidget * contactsTable;/**< tableau affichant les contacts */
         QComboBox * sortCombobox;/**< selecteur du tri */
@@ -54,6 +56,9 @@ class MainWidget : public QWidget
         CalendarDialog * calendarDialogSecondDate;/**< boite de dialogue pour sélectionner la seconde date de filtre */
         Date * filterFirstDate;/**< première date de filtre */
         Date * filterSecondDate;/**< seconde date de filtre */
+
+        EditContactDialog * createContactDialog;
+
 
         /**
          * @brief Permet d'initialiser les éléments d'interfaces (Layout, taille, items des selecteurs, nom, et autres propriétés).
@@ -127,6 +132,10 @@ class MainWidget : public QWidget
          * @brief slot appelant une méthode de 'ContactCRUD' pour récupérer les contacts en prenant en compte les filtres.
          */
         void searchContacts();
+        /**
+         * @brief slot ouvrant une fenêtre de dialogue pour créer un contact.
+         */
+        void openCreateContactDialog();
 };
 
 #endif // MAINWIDGET_H

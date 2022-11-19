@@ -29,7 +29,7 @@ class CalendarDialog : public QDialog
         QPushButton * validateButton;/**< bouton valider */
 
         /**
-         * @brief Permet d'initialiser les éléments d'interfaces (Layout, taille, items des selecteurs, nom, et autres propriétés).
+         * @brief Permet d'initialiser les éléments d'interfaces (Layout, taille, calendrier, boutons, et autres propriétés).
          */
         void initUI();
         /**
@@ -50,13 +50,13 @@ class CalendarDialog : public QDialog
 
     public slots:
         /**
-         * @brief slot emmetant un signal, avec en paramêtre la date sélectionnée.
+         * @brief slot emmetant le signal 'emitClose', avec en paramêtre la date sélectionnée.
          * @details
          * Dans notre programme le signal est envoyé à la fenêtre principal pour récupérer la date et fermer la boîte de dialogue.
          */
         void validateCloseDialog();
         /**
-         * @brief slot emmetant un signal, avec en paramêtre un pointeur nullptr.
+         * @brief slot emmetant le signal 'emitClose', avec en paramêtre un pointeur nullptr.
          * @details
          * Dans notre programme le signal est envoyé à la fenêtre principal pour récupérer le pointeur et ainsi savoir que l'opération à été annulé puis fermer la boîte de dialogue.
          */
@@ -66,6 +66,7 @@ class CalendarDialog : public QDialog
     signals:
         /**
          * @brief signal.
+         * @param pointeur vers un objet QDate
          * @details
          * Dans notre programme le signal est envoyé à la fenêtre principal pour récupérer le pointeur et ainsi savoir que l'opération à été annulé puis fermer la boîte de dialogue.
          */

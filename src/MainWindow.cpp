@@ -5,9 +5,10 @@
 
 #include <QMenu>
 #include <QMenuBar>
-
+#include <QDebug>
 
 #include "MainWindow.h"
+
 
 MainWindow::MainWindow(DatabaseManagement * databaseManagement, ContactCRUD * contactCRUD, QWidget *parent)
     : QMainWindow(parent)
@@ -26,6 +27,28 @@ MainWindow::MainWindow(DatabaseManagement * databaseManagement, ContactCRUD * co
 
         this->mainWidget=new MainWidget(contactCRUD);
         this->setCentralWidget(this->mainWidget);
+
+        connect(this->optionInitDataTest, SIGNAL(triggered()), this, SLOT(askInitDataTest()));
+        connect(this, SIGNAL(emitUpdateContact()), this->mainWidget, SLOT(searchContacts()));
     }
 
 MainWindow::~MainWindow(){}
+
+void MainWindow::askInitDataTest(){
+    this->yesNoDialogDataTest=new YesNoDialog("Attention", "Cela effacera toutes vos données pour les remplacer par les données tests.\n\nÊtes vous sûr ?");
+    QObject::connect(this->yesNoDialogDataTest, SIGNAL(emitClose(bool)), this, SLOT(closeYesNoDialogDataTest(bool)));
+    yesNoDialogDataTest->show();
+}
+
+void MainWindow::closeYesNoDialogDataTest(bool choice){
+    if(choice)
+        {
+        this->databaseManagement->initDataTest();
+        emit emitUpdateContact();
+        }
+}
+
+
+
+
+

@@ -25,6 +25,7 @@
 
 #include <QPushButton>
 
+#include <QTranslator>
 
 using namespace std;
 
@@ -33,9 +34,9 @@ int main(int argc, char *argv[])
     //déclaration de l'application
     QApplication app(argc, argv);
 
+
     //déclaration de la BDD
     DatabaseManagement database=DatabaseManagement();
-    database.initDataTest();
     ContactCRUD contactCRUD(database.getDatabase());
     //InteractionCRUD interactionCRUD(database.getDatabase());
     //TodoCRUD TodoCRUD(database.getDatabase());

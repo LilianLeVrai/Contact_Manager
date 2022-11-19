@@ -113,3 +113,14 @@ void ContactCRUD::searchByFilters(ListContact * listContact, QString searchBarCo
                 }
         }
 }
+
+
+
+void ContactCRUD::addContactBDD(QString lastName, QString firstName, QString company, QString mail, QString phone, QString urlPicture){
+    Date dateCreation;
+    QString s="insert into Contact(lastName, firstName, company, mail, phone, picture, dateCreation) values ";
+    s=s+"('"+lastName+"', '"+firstName+"', '"+company+"', '"+mail+"', '"+phone+"', '"+urlPicture+"', '"+dateCreation.toString().c_str()+"');";
+    QSqlQuery query;
+    if(!query.exec(s))
+        {qDebug() << "Impossible d'effectuer la requète :\n" << query.lastError();}
+}
