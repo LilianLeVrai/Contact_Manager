@@ -22,7 +22,7 @@ class MessageLabel : public QLabel
          * @brief Style enum
          * @details Permet de définir le style du message en fonction de son renseignement (rouge=erreur, vert=réussite), etc..)
          */
-        enum Style{Green = 0, Red};
+        enum Style{NoStyle=0, Green, Red};
 
         /**
          * @brief Constructeur sans paramètre qui initialise le message sans texte, avec le style vert (réussite) et invisible.

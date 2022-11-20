@@ -16,6 +16,7 @@ SOURCES += \
         ContactCRUD.cpp \
         DatabaseManagement.cpp \
         Date.cpp \
+        DetailsContactDialog.cpp \
         EditContactDialog.cpp \
         Interaction.cpp \
         ListContact.cpp \
@@ -39,6 +40,7 @@ HEADERS += \
     ContactCRUD.h \
     DatabaseManagement.h \
     Date.h \
+    DetailsContactDialog.h \
     EditContactDialog.h \
     Interaction.h \
     ListContact.h \

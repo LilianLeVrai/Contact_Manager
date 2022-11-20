@@ -21,6 +21,7 @@
 #include "CalendarDialog.h"
 #include "MessageLabel.h"
 #include "EditContactDialog.h"
+#include "DetailsContactDialog.h"
 
 /**
  * @class MainWidget
@@ -58,6 +59,7 @@ class MainWidget : public QWidget
         Date * filterSecondDate;/**< seconde date de filtre */
 
         EditContactDialog * createContactDialog;
+        DetailsContactDialog * detailsContactDialog;
 
 
         /**
@@ -136,6 +138,11 @@ class MainWidget : public QWidget
          * @brief slot ouvrant une fenêtre de dialogue pour créer un contact.
          */
         void openCreateContactDialog();
+
+
+        void openDetailsContactDialog();
+
+        void editContact(Contact *, bool);
 };
 
 #endif // MAINWIDGET_H

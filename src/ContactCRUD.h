@@ -58,7 +58,9 @@ class ContactCRUD
          * @param QString représentant le lien vers l'image
          * @details La méthode fait une requête à la BDD.
          */
-        void addContactBDD(QString, QString, QString, QString, QString, QString);
+        void addContactBDD(Contact *);
+
+        void modifyContactBDD(Contact *);
 
         /**
          * @brief Permet de remplir une liste de contact avec les contacts contenus dans la BDD respectant les filtres de recherches.

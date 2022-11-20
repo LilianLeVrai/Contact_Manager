@@ -162,6 +162,7 @@ void MainWidget::initConnect(){
     QObject::connect(this->resetFiltersButton, SIGNAL(clicked()), this, SLOT(resetFilters()));
     QObject::connect(this->searchButton, SIGNAL(clicked()), this, SLOT(searchContacts()));
     QObject::connect(this->addContactButton, SIGNAL(clicked()), this, SLOT(openCreateContactDialog()));
+    QObject::connect(this->detailsContactButton, SIGNAL(clicked()), this, SLOT(openDetailsContactDialog()));
 }
 
 void MainWidget::fillTable(){
@@ -280,8 +281,40 @@ void MainWidget::searchContacts(){
 
 void MainWidget::openCreateContactDialog(){
     this->createContactDialog=new EditContactDialog();
-
+    QObject::connect(this->createContactDialog, SIGNAL(emitClose(Contact*, bool)), this, SLOT(editContact(Contact*, bool)));
     this->createContactDialog->show();
+}
 
+
+void MainWidget::editContact(Contact * contact, bool error){
+    if(contact->getId()==-1)
+        {
+        this->contactCRUD->addContactBDD(contact);
+
+        if(error)
+            this->messageLabel->setProperty("Le contact a été ajouté, l'image par défaut lui a été attribué.", MessageLabel::Red, true);
+        else
+            this->messageLabel->setProperty("Le contact a été ajouté sans erreur.", MessageLabel::Green, true);
+        }
+    else
+        {
+        this->contactCRUD->modifyContactBDD(contact);
+
+        if(error)
+            this->messageLabel->setProperty("Le contact a été modifié, l'image par défaut lui a été attribué.", MessageLabel::Red, true);
+        else
+            this->messageLabel->setProperty("Le contact a été modifié sans erreur.", MessageLabel::Green, true);
+        }
+
+    this->contactCRUD->searchByFilters(&this->listContact, this->searchLineEdit->text(),
+                                       this->filtersCombobox->currentIndex(), this->filterFirstDate, this->filterSecondDate);
+    this->fillTable();
+}
+
+
+void MainWidget::openDetailsContactDialog(){
+    this->detailsContactDialog=new DetailsContactDialog(this->listContact.getContactByIndex(this->contactsTable->selectionModel()->currentIndex().row()));
+    //QObject::connect(this->createContactDialog, SIGNAL(emitClose(Contact*, bool)), this, SLOT(editContact(Contact*, bool)));
+    this->detailsContactDialog->show();
 }
 

@@ -116,10 +116,24 @@ void ContactCRUD::searchByFilters(ListContact * listContact, QString searchBarCo
 
 
 
-void ContactCRUD::addContactBDD(QString lastName, QString firstName, QString company, QString mail, QString phone, QString urlPicture){
-    Date dateCreation;
+void ContactCRUD::addContactBDD(Contact * contact){
     QString s="insert into Contact(lastName, firstName, company, mail, phone, picture, dateCreation) values ";
-    s=s+"('"+lastName+"', '"+firstName+"', '"+company+"', '"+mail+"', '"+phone+"', '"+urlPicture+"', '"+dateCreation.toString().c_str()+"');";
+    s=s+"('"+contact->getLastName().c_str()+"', '"+contact->getFirstName().c_str()+"', '"
+            +contact->getCompany().c_str()+"', '"+contact->getMail().c_str()+"', '"
+            +contact->getPhone().c_str()+"', '"+contact->getPathPicture().c_str()+"', '"
+            +contact->getDateCreation()->toString().c_str()+"');";
+    QSqlQuery query;
+    if(!query.exec(s))
+        {qDebug() << "Impossible d'effectuer la requète :\n" << query.lastError();}
+}
+
+
+void ContactCRUD::modifyContactBDD(Contact * contact){
+    QString s="update Contact set ";
+    s=s+"lastName='"+contact->getLastName().c_str()+"', firstName='"+contact->getFirstName().c_str()
+            +"', company='"+contact->getCompany().c_str()+"', mail='"+contact->getMail().c_str()
+            +"', phone='"+contact->getPhone().c_str()+"', picture='"+contact->getPathPicture().c_str()
+            +"' where idContact="+QString::number(contact->getId())+";";
     QSqlQuery query;
     if(!query.exec(s))
         {qDebug() << "Impossible d'effectuer la requète :\n" << query.lastError();}

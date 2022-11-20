@@ -29,6 +29,8 @@ MessageLabel::MessageLabel(QString message, Style style, bool visibility){
 
 void MessageLabel::setProperty(QString message, Style style, bool visibility){
     this->setText(message);
+    if(style==NoStyle)
+        this->setStyleSheet("");
     if(style==Red)
         this->setStyleSheet("background-color: #C8574D; color: #FFDFDF; border-radius: 5px;");
     if(style==Green)
