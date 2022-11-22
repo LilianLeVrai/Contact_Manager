@@ -175,7 +175,7 @@ void EditContactDialog::editContact(){
                 QFile::copy(pathPicture, newPathPicture);
                 pathPicture=newPathPicture;
                 }
-            else {pathPicture="../defaultImg.jpg";errorImg=true;}
+            else {pathPicture="../img/defaultImg.jpg";errorImg=true;}
             }
 
 

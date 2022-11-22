@@ -6,7 +6,10 @@
 #include <QDialog>
 #include <QPushButton>
 #include <QLabel>
+#include <QComboBox>
 
+#include "MessageLabel.h"
+#include "EditContactDialog.h"
 #include "Contact.h"
 
 
@@ -17,9 +20,16 @@ class DetailsContactDialog : public QDialog
     private:
         Contact * contact;
 
+        MessageLabel * errorMessage;
         QLabel * picture;
-        QPushButton * modifyButton;
+        QPushButton * modifyContactButton;
 
+        QLabel * infoContactLabel;
+        QComboBox * interactionCombobox;
+        QPushButton * addInteractionButton;
+        QPushButton * removeInteractionButton;
+
+        EditContactDialog * modifyContactDialog;
 
 
 
@@ -30,6 +40,15 @@ class DetailsContactDialog : public QDialog
         void initUI();
         void initConnect();
         void fillInfo();
+
+
+
+    public slots:
+        void openModifyContactDialog();
+        void editContact(Contact*, bool);
+
+    signals:
+        void emitModifyContact(Contact*, bool);
 };
 
 #endif // DETAILSCONTACTDIALOG_H

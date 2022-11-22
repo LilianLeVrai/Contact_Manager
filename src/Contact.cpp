@@ -129,8 +129,8 @@ void Contact::setListInteraction(ListInteraction* const val){
 
 std::string Contact::toString() const{
     std::string s;
-    s = this->lastName + "|" + this->firstName + "|" + this->company + "|" + this->mail + "|" + this->phone
-            + "|" + this->pathPicture + "|" + (*this->dateCreation).toString() + "\n" + (*this->listInteraction).toString();
+    s = "Nom : " + this->lastName + "\nPrénom : " + this->firstName + "\nEntreprise : " + this->company
+            + "\nMail : " + this->mail + "\nTéléphone : " + this->phone + "\nCrée le : " + (*this->dateCreation).toString();
     return s;
 }
 
