@@ -50,16 +50,16 @@ class ContactCRUD
 
         /**
          * @brief Permet d'ajouter un contact à la BDD.
-         * @param QString représentant le nom
-         * @param QString représentant le prénom
-         * @param QString représentant l'entreprise
-         * @param QString représentant le mail
-         * @param QString représentant le téléphone
-         * @param QString représentant le lien vers l'image
+         * @param pointeur vers un objet Contact
          * @details La méthode fait une requête à la BDD.
          */
         void addContactBDD(Contact *);
 
+        /**
+         * @brief Permet de modifier un contact de la BDD.
+         * @param pointeur vers un objet Contact
+         * @details La méthode fait une requête à la BDD.
+         */
         void modifyContactBDD(Contact *);
 
         /**

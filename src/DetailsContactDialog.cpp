@@ -1,10 +1,15 @@
+/**
+ * @file DetailsContactDialog.cpp
+ * @brief Fichier cpp de la classe DetailsContactDialog
+ */
+
+
 #include "DetailsContactDialog.h"
 
 #include <QVBoxLayout>
 #include <QHBoxLayout>
 #include <QImage>
 #include <QPixmap>
-
 
 #include <QDebug>
 

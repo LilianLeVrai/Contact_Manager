@@ -1,5 +1,3 @@
-#include "EditContactDialog.h"
-
 /**
  * @file EditContactDialog.cpp
  * @brief Fichier cpp de la classe EditContactDialog

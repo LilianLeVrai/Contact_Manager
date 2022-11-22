@@ -1,19 +1,17 @@
 #ifndef EDITCONTACTDIALOG_H
 #define EDITCONTACTDIALOG_H
 
-#include <QObject>
-
 /**
  * @file EditContactDialog.h
  * @brief Fichier header de la classe EditContactDialog
  */
 
 
+#include <QObject>
 #include <QDialog>
 #include <QLineEdit>
 #include <QPushButton>
 #include <QObject>
-
 
 #include "Contact.h"
 #include "MessageLabel.h"
@@ -68,16 +66,42 @@ class EditContactDialog : public QDialog
          */
         void initConnect();
 
-
+        /**
+         * @brief Vérifie que les informations sont biens remplis.
+         */
         bool checkData();
 
     public slots:
+        /**
+         * @brief slot ouvrant une fenêtre pour choisir une image, et mettant le lien dans la ligne d'édition correspondante.
+         * @details
+         * Ce slot est activé quand le bouton 'Photo' est clické.
+         */
         void openFileDialog();
+        /**
+         * @brief slot emmetant le signal 'emitClose', avec en paramêtre le contact, et un booleen en fonction de la présence d'erreur.
+         * @details
+         * Ce slot est activé quand le bouton 'Valider' est clické.
+         */
         void editContact();
+        /**
+         * @brief slot vérifiant que le lien d'image renseigné est bien valide, et affiche un message d'erreur si ce n'est pas le cas.
+         * @details
+         * Ce slot est activé quand le texte dans la ligne d'édition du lien d'image est changé.
+         */
         void checkPathPicture();
 
 
     signals:
+        /**
+         * @brief signal.
+         * @param pointeur vers objet Contact
+         * @param booleen
+         * @details
+         * Permettra de récupérer le contact éditer par l'utilisateur,
+         * si le contact ne possède pas d'identifiant alors il faut en créer un nouveau, si il en possède un alors il faudra modifier le contact.\n
+         * Le booléen permet de savoir si il y a une erreur dans l'image et le renseigner sur la fenêtre principale.
+         */
         void emitClose(Contact *, bool);
 
 };

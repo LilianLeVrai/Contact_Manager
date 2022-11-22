@@ -58,8 +58,8 @@ class MainWidget : public QWidget
         Date * filterFirstDate;/**< première date de filtre */
         Date * filterSecondDate;/**< seconde date de filtre */
 
-        EditContactDialog * createContactDialog;
-        DetailsContactDialog * detailsContactDialog;
+        EditContactDialog * createContactDialog;/**< boite de dialogue pour créer un contact */
+        DetailsContactDialog * detailsContactDialog;/**< boite de dialogue pour afficher les détails du contact sélectionné */
 
 
         /**
@@ -138,10 +138,15 @@ class MainWidget : public QWidget
          * @brief slot ouvrant une fenêtre de dialogue pour créer un contact.
          */
         void openCreateContactDialog();
-
-
+        /**
+         * @brief slot ouvrant une fenêtre de dialogue pour afficher les détails du contact sélectionné.
+         */
         void openDetailsContactDialog();
-
+        /**
+         * @brief slot appelant une méthode de 'ContactCRUD' pour ajouter ou modifier un contact.
+         * @param pointeur vers sur un objet Contact
+         * @param booleen permettant de savoir si il y a eu une erreur sur le lien d'image
+         */
         void editContact(Contact *, bool);
 };
 
