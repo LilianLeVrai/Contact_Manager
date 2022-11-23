@@ -10,7 +10,7 @@
 #include <QMainWindow>
 #include <QAction>
 #include "MainWidget.h"
-#include "ContactCRUD.h"
+#include "DatabaseCRUD.h"
 #include "DatabaseManagement.h"
 #include "YesNoDialog.h"
 
@@ -44,7 +44,7 @@ class MainWindow : public QMainWindow
          * Rempli l'attribut 'mainWidget' avec un nouveau MainWidget auquel est transmis les objets de 'CRUD', \n
          * puis initialise la toolbar.
          */
-        MainWindow(DatabaseManagement *, ContactCRUD *, QWidget *parent = 0);
+        MainWindow(DatabaseManagement *, DatabaseCRUD *, QWidget *parent = 0);
         ~MainWindow();
 
     public slots:

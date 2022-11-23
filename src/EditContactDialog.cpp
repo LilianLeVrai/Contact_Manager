@@ -111,6 +111,9 @@ void EditContactDialog::initUI(){
     mainLayout->addLayout(buttonLayout);
 
     resize(800,250);
+
+    formLayout->setAlignment(Qt::AlignTop);
+    buttonLayout->setAlignment(Qt::AlignBottom);
 }
 
 void EditContactDialog::initConnect(){

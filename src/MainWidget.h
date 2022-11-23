@@ -16,7 +16,7 @@
 #include <QObject>
 #include <QDate>
 
-#include "ContactCRUD.h"
+#include "DatabaseCRUD.h"
 #include "ListContact.h"
 #include "CalendarDialog.h"
 #include "MessageLabel.h"
@@ -35,7 +35,7 @@ class MainWidget : public QWidget
     private:
         ListContact listContact;/**< liste de contact affichée dans la tableau */
 
-        ContactCRUD * contactCRUD;/**< gestionnaire de la table Contact de la BDD */
+        DatabaseCRUD * contactCRUD;/**< gestionnaire de la table Contact de la BDD */
         //InteractionCRUD * interactionCRUD;
         //TodoCRUD * TodoCRUD;
         //ModificationCRUD * ModificationCRUD;
@@ -91,7 +91,7 @@ class MainWidget : public QWidget
          * Rempli l'attribut 'listContact' grâce au pointeur vers l'objet de type ContactCRUD, \n
          * puis appel les méthodes 'initUI' 'initConnect' et 'fillTable'.
          */
-        MainWidget(ContactCRUD *,QWidget *parent = 0);
+        MainWidget(DatabaseCRUD *,QWidget *parent = 0);
         ~MainWidget();
 
 

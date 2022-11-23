@@ -1,5 +1,5 @@
-#ifndef CONTACTCRUD_H
-#define CONTACTCRUD_H
+#ifndef DATABASECRUD_H
+#define DATABASECRUD_H
 
 /**
  * @file ContactCRUD.h
@@ -19,7 +19,7 @@
  * La classe permet de faire les requètes sur les contact à la BDD. \n
  * 'CRUD' pour Create, Read, Update, Delete.
  */
-class ContactCRUD
+class DatabaseCRUD
 {
     private:
         QSqlDatabase * database;/**< base de données */
@@ -30,7 +30,7 @@ class ContactCRUD
          * @param pointeur vers un objet QSqlDatabase
          * @details Le paramêtre doit être la base de données ouverte par la classe DatabaseManagement
          */
-        ContactCRUD(QSqlDatabase *);
+        DatabaseCRUD(QSqlDatabase *);
 
         /**
          * @brief Permet de remplir une liste de contact avec tous les contacts contenus dans la BDD en attribut.
@@ -76,4 +76,4 @@ class ContactCRUD
         void searchByFilters(ListContact *, QString, int, Date *, Date *);
 };
 
-#endif // CONTACTCRUD_H
+#endif // DATABASECRUD_H

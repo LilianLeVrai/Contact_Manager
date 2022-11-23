@@ -13,7 +13,7 @@ CONFIG -= app_bundle
 SOURCES += \
         CalendarDialog.cpp \
         Contact.cpp \
-        ContactCRUD.cpp \
+        DatabaseCRUD.cpp \
         DatabaseManagement.cpp \
         Date.cpp \
         DetailsContactDialog.cpp \
@@ -37,7 +37,7 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 HEADERS += \
     CalendarDialog.h \
     Contact.h \
-    ContactCRUD.h \
+    DatabaseCRUD.h \
     DatabaseManagement.h \
     Date.h \
     DetailsContactDialog.h \

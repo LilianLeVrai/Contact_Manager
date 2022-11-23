@@ -4,7 +4,7 @@
  */
 
 
-#include "ContactCRUD.h"
+#include "DatabaseCRUD.h"
 
 #include <QSqlQuery>
 #include <QDebug>
@@ -13,12 +13,12 @@
 #include "ListContact.h"
 
 
-ContactCRUD::ContactCRUD(QSqlDatabase * database){
+DatabaseCRUD::DatabaseCRUD(QSqlDatabase * database){
     this->database=database;
 }
 
 
-void ContactCRUD::getAllContacts(ListContact * listContact){
+void DatabaseCRUD::getAllContacts(ListContact * listContact){
     QSqlQuery query;
     if(!query.exec("select * from Contact;"))
         {qDebug() << "Impossible d'effectuer la requète :\n" << query.lastError();}
@@ -39,7 +39,7 @@ void ContactCRUD::getAllContacts(ListContact * listContact){
         }
 }
 
-void ContactCRUD::deleteContactBDD(const int & val){
+void DatabaseCRUD::deleteContactBDD(const int & val){
     QSqlQuery query;
     if(!query.exec("delete from Contact where idContact="+QString::number(val)+";"))
         {qDebug() << "Impossible d'effectuer la requète :\n" << query.lastError();}
@@ -47,7 +47,7 @@ void ContactCRUD::deleteContactBDD(const int & val){
 
 
 
-void ContactCRUD::searchByFilters(ListContact * listContact, QString searchBarContent,
+void DatabaseCRUD::searchByFilters(ListContact * listContact, QString searchBarContent,
                                   int indexFiltersCombobox, Date * filterFirstDate,Date * filterSecondDate){
 
 //-------------------------
@@ -116,7 +116,7 @@ void ContactCRUD::searchByFilters(ListContact * listContact, QString searchBarCo
 
 
 
-void ContactCRUD::addContactBDD(Contact * contact){
+void DatabaseCRUD::addContactBDD(Contact * contact){
     QString s="insert into Contact(lastName, firstName, company, mail, phone, picture, dateCreation) values ";
     s=s+"('"+contact->getLastName().c_str()+"', '"+contact->getFirstName().c_str()+"', '"
             +contact->getCompany().c_str()+"', '"+contact->getMail().c_str()+"', '"
@@ -128,7 +128,7 @@ void ContactCRUD::addContactBDD(Contact * contact){
 }
 
 
-void ContactCRUD::modifyContactBDD(Contact * contact){
+void DatabaseCRUD::modifyContactBDD(Contact * contact){
     QString s="update Contact set ";
     s=s+"lastName='"+contact->getLastName().c_str()+"', firstName='"+contact->getFirstName().c_str()
             +"', company='"+contact->getCompany().c_str()+"', mail='"+contact->getMail().c_str()

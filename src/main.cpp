@@ -16,7 +16,7 @@
 #include <QApplication>
 #include "MainWindow.h"
 #include "DatabaseManagement.h"
-#include "ContactCRUD.h"
+#include "DatabaseCRUD.h"
 
 #include <QFile>
 #include <QString>
@@ -37,7 +37,7 @@ int main(int argc, char *argv[])
 
     //déclaration de la BDD
     DatabaseManagement database=DatabaseManagement();
-    ContactCRUD contactCRUD(database.getDatabase());
+    DatabaseCRUD contactCRUD(database.getDatabase());
     //InteractionCRUD interactionCRUD(database.getDatabase());
     //TodoCRUD TodoCRUD(database.getDatabase());
     //ModificationCRUD ModificationCRUD(database.getDatabase());

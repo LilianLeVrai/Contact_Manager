@@ -20,7 +20,7 @@
 //------------------------------------------------------------------------------------------------------------------------------
 //constructeurs/destructeurs
 //------------------------------------------------------------------------------------------------------------------------------
-MainWidget::MainWidget(ContactCRUD * contactCRUD, QWidget *parent)
+MainWidget::MainWidget(DatabaseCRUD * contactCRUD, QWidget *parent)
     : QWidget(parent)
 {
     this->contactCRUD=contactCRUD;
@@ -112,7 +112,6 @@ void MainWidget::initUI(){
     QHBoxLayout * leftButtonsShowContactLayout = new QHBoxLayout();
     QVBoxLayout * leftButtonsLayout = new QVBoxLayout();
     QHBoxLayout * showContactsLayout = new QHBoxLayout();
-    leftButtonsShowContactLayout->setContentsMargins(0,20,0,0);
 
     //ajouts des widget dans chaque layout
     searchBarLayout->addWidget(this->filtersCombobox);
@@ -148,6 +147,7 @@ void MainWidget::initUI(){
     mainLayout->addLayout(leftButtonsShowContactLayout);
 
     //propriétés d'alignement sur les layout et widget
+    leftButtonsShowContactLayout->setContentsMargins(0,20,0,0);
     dateAndResetLayout->setAlignment(dateSelectorLayout, Qt::AlignLeft);
     dateAndResetLayout->setAlignment(resetFiltersButtonLayout, Qt::AlignRight);
     leftButtonsLayout->setAlignment(Qt::AlignTop);

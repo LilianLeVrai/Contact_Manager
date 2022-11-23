@@ -61,6 +61,7 @@ void DetailsContactDialog::initUI(){
     //layout
     QVBoxLayout * mainLayout=new QVBoxLayout(this);
     QHBoxLayout * pictureLayout=new QHBoxLayout;
+    QVBoxLayout * infoLayout=new QVBoxLayout;
     QHBoxLayout * inputInteractionLayout=new QHBoxLayout;
 
     pictureLayout->addWidget(this->picture);
@@ -70,10 +71,16 @@ void DetailsContactDialog::initUI(){
     inputInteractionLayout->addWidget(this->addInteractionButton);
     inputInteractionLayout->addWidget(this->removeInteractionButton);
 
-    mainLayout->addWidget(this->errorMessage);
-    mainLayout->addLayout(pictureLayout);
-    mainLayout->addWidget(this->infoContactLabel);
+    infoLayout->addWidget(this->errorMessage);
+    infoLayout->addLayout(pictureLayout);
+    infoLayout->addWidget(this->infoContactLabel);
+
+    mainLayout->addLayout(infoLayout);
     mainLayout->addLayout(inputInteractionLayout);
+
+    //propriétés d'alignement sur les layout et widget
+    inputInteractionLayout->setContentsMargins(0,20,0,0);
+    infoLayout->setAlignment(Qt::AlignTop);
 }
 
 

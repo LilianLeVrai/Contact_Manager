@@ -10,7 +10,7 @@
 #include "MainWindow.h"
 
 
-MainWindow::MainWindow(DatabaseManagement * databaseManagement, ContactCRUD * contactCRUD, QWidget *parent)
+MainWindow::MainWindow(DatabaseManagement * databaseManagement, DatabaseCRUD * contactCRUD, QWidget *parent)
     : QMainWindow(parent)
     {
         this->databaseManagement=databaseManagement;
