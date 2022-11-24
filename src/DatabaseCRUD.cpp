@@ -138,3 +138,20 @@ void DatabaseCRUD::modifyContactBDD(Contact * contact){
     if(!query.exec(s))
         {qDebug() << "Impossible d'effectuer la requète :\n" << query.lastError();}
 }
+
+void DatabaseCRUD::getInteractionByIdContact(ListInteraction * listInteraction, Contact * contact){
+    QSqlQuery query;
+    if(!query.exec("select * from Interaction where idContact="+QString::number(contact->getId())+";"))
+        {qDebug() << "Impossible d'effectuer la requète :\n" << query.lastError();}
+    else
+        {
+        listInteraction->removeAllInteractions();
+        while(query.next())
+            {
+            listInteraction->addInteraction(new Interaction(query.value(0).toInt(),
+                                                query.value(1).toString().toStdString(),
+                                                new Date(query.value(7).toString().toStdString()),
+                                                new ListTodo()));
+            }
+        }
+}

@@ -28,6 +28,12 @@ class ListInteraction
          */
         std::list<Interaction*> getListInteraction() const;
         /**
+         * @brief Permet de récupérer une interaction de la liste en fonction de son index dans celle-ci.
+         * @param Le paramètre doit être un entier représentant l'index
+         * @return pointeur vers objet Interaction
+         */
+        Interaction* getInteractionByIndex(const int) const;
+        /**
          * @brief Permet de définir l'attribut de liste.
          * @param Le paramètre doit être un std::list<Interaction*>
          */
@@ -43,6 +49,10 @@ class ListInteraction
          * @param Le paramètre doit être un entier représentant l'identifiant
          */
         void removeInteractionById(const int);
+        /**
+         * @brief Permet de vider toutes les interactions de la liste.
+         */
+        void removeAllInteractions();
         /**
          * @brief Permet de récupérer une interaction de la liste en fonction de son identifiant.
          * @param Le paramètre doit être un entier représentant l'identifiant

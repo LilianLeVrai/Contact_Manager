@@ -127,19 +127,28 @@ bool EditContactDialog::checkData(){
     this->errorMessage->setProperty("",MessageLabel::NoStyle,true);
     bool validData=true;
 
-    //verification si les champs sont complets ou non (peut être ne pas tous les obligés ?
-    if(this->phoneEdit->text().simplified().isEmpty())
+    if(this->phoneEdit->text().simplified().isEmpty() || this->phoneEdit->text().simplified().length()>50)
       {this->errorMessage->setProperty("Le téléphone n'est pas renseigné",MessageLabel::Red,true);validData=false;}
-    if(this->mailEdit->text().simplified().isEmpty())
+    if(this->phoneEdit->text().simplified().length()>50)
+      {this->errorMessage->setProperty("Le numéro de téléphone est trop long",MessageLabel::Red,true);validData=false;}
+    if(this->mailEdit->text().simplified().isEmpty() || this->mailEdit->text().simplified().length()>50)
       {this->errorMessage->setProperty("Le mail n'est pas renseigné",MessageLabel::Red,true);validData=false;}
-    if(this->companyEdit->text().simplified().isEmpty())
+    if(this->mailEdit->text().simplified().length()>50)
+      {this->errorMessage->setProperty("Le mail est trop long",MessageLabel::Red,true);validData=false;}
+    if(this->companyEdit->text().simplified().isEmpty() || this->companyEdit->text().simplified().length()>50)
       {this->errorMessage->setProperty("L'entreprise n'est pas renseigné",MessageLabel::Red,true);validData=false;}
-    if(this->firstNameEdit->text().simplified().isEmpty())
+    if(this->companyEdit->text().simplified().length()>50)
+      {this->errorMessage->setProperty("Le nom de l'entreprise est trop long",MessageLabel::Red,true);validData=false;}
+    if(this->firstNameEdit->text().simplified().isEmpty() || this->firstNameEdit->text().simplified().length()>50)
       {this->errorMessage->setProperty("Le prénom n'est pas renseigné",MessageLabel::Red,true);validData=false;}
-    if(this->lastNameEdit->text().simplified().isEmpty())
+    if(this->firstNameEdit->text().simplified().length()>50)
+      {this->errorMessage->setProperty("Le prénom est trop long",MessageLabel::Red,true);validData=false;}
+    if(this->lastNameEdit->text().simplified().isEmpty() || this->lastNameEdit->text().simplified().length()>50)
       {this->errorMessage->setProperty("Le nom n'est pas renseigné",MessageLabel::Red,true);validData=false;}
+    if(this->lastNameEdit->text().simplified().length()>50)
+      {this->errorMessage->setProperty("Le nom est trop long",MessageLabel::Red,true);validData=false;}
 
-    //possiblement ajouter des vérifications sur le format d'email, de téléphone, etc...
+    //Entreprise, numéro et email peuvent être vide ? (Si oui, bdd à modifier)
 
 
 

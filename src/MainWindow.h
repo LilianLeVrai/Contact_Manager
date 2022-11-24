@@ -25,6 +25,8 @@ class MainWindow : public QMainWindow
 
     private:
         DatabaseManagement * databaseManagement;/**< databaseManagement (utile pour les options de la barre d'outils) */
+        DatabaseCRUD * databaseCRUD;/**< gestionnaire de la BDD */
+        ListContact listContact;/**< liste de contact affichée dans la tableau */
 
         QAction * optionExportJson;/**< bouton de la toolbar permettant l'export des données en JSON */
         QAction * optionInitDataTest;/**< bouton de la toolbar permettant l'import dans la BDD de données tests */
@@ -57,6 +59,10 @@ class MainWindow : public QMainWindow
          * @details Si le choix est oui, les données sont importés et emet un signal au main widget pour mettre à jour le tableau.
          */
         void closeYesNoDialogDataTest(bool);
+        /**
+         * @brief slot créant un fichier .JSON de la base de données.
+         */
+        void createJSON();
 
     signals:
         /**

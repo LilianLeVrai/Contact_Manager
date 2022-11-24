@@ -69,3 +69,17 @@ std::string ListInteraction::toString() const{
     }
     return s;
 }
+
+void ListInteraction::removeAllInteractions(){
+    auto it=this->listInteraction.begin();
+    while ((it != this->listInteraction.end())){
+            it= this->listInteraction.erase(it);
+    }
+}
+
+Interaction* ListInteraction::getInteractionByIndex(const int index) const{
+    auto it=this->listInteraction.begin();
+    for(int i=0; i<index; i++)
+        it++;
+    return *it;
+}

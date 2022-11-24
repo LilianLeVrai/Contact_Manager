@@ -4,5 +4,5 @@ CREATE TABLE Interaction(
    dateCreation VARCHAR(10) NOT NULL,
    idContact INTEGER NOT NULL,
    PRIMARY KEY(idInteraction),
-   FOREIGN KEY(idContact) REFERENCES Contact(idContact)
+   FOREIGN KEY(idContact) REFERENCES Contact(idContact) ON DELETE CASCADE
 );
