@@ -12,6 +12,7 @@
 #include <QPushButton>
 #include <QLabel>
 #include <QComboBox>
+#include <QLineEdit>
 
 #include "MessageLabel.h"
 #include "EditContactDialog.h"
@@ -34,12 +35,15 @@ class DetailsContactDialog : public QDialog
         MessageLabel * errorMessage;/**< message d'erreur (utilisé pour un problème sur l'image) */
         QLabel * picture;/**< champ pour afficher l'image */
         QPushButton * modifyContactButton;/**< bouton pour modifier le contact */
-
         QLabel * infoContactLabel;/**< label pour afficher les informations du contact */
+
         QComboBox * interactionCombobox;/**< sélecteur d'interaction */
-        QPushButton * addInteractionButton;/**< bouton pour ajouter une interaction */
-        QPushButton * modifyInteractionButton;/**< bouton pour modifier l'interaction sélectionné */
         QPushButton * removeInteractionButton;/**< bouton pour supprimer l'interaction sélectionnée */
+        QPushButton * editTagButton;/**< bouton pour gérer les tags */
+        QLineEdit * editInteraction;/**< permet d'afficher et modifier le contenu de l'interaction */
+        QPushButton * editInteractionButton;/**< bouton pour ajouter ou modifier interaction */
+        QLabel * tagsLabel;/**< permet d'afficher les tags de l'interaction sélectionné  */
+
 
         EditContactDialog * modifyContactDialog;/**< boite de dialogue pour modifier le contact */
         EditInteractionDialog * editInteractionDialog;

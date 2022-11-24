@@ -53,36 +53,47 @@ void DetailsContactDialog::initUI(){
 
     //inputs pour interaction
     this->interactionCombobox=new QComboBox;
-    this->interactionCombobox->addItem("Pas d'interaction");
-    this->addInteractionButton=new QPushButton("Ajouter une interaction");
-    this->modifyInteractionButton=new QPushButton("Modifier l'interaction");
-    this->modifyInteractionButton->setEnabled(false);
+    this->interactionCombobox->addItem("Ajouter interaction");
     this->removeInteractionButton=new QPushButton("Supprimer l'interaction");
     this->removeInteractionButton->setEnabled(false);
+    this->editTagButton=new QPushButton("Éditer les tags");
+    this->editTagButton->setEnabled(false);
+    this->editInteraction=new QLineEdit;
+    this->editInteraction->setPlaceholderText("contenu interaction");
+    this->editInteractionButton=new QPushButton("Ajouter interaction");
+    this->editInteractionButton->setEnabled(false);
+
+    this->tagsLabel=new QLabel("@todo ejjejejejej\n@todo aahgahaha @date 12/12/12");
+
 
     //layout
     QVBoxLayout * mainLayout=new QVBoxLayout(this);
     QHBoxLayout * pictureLayout=new QHBoxLayout;
     QVBoxLayout * infoLayout=new QVBoxLayout;
-    QHBoxLayout * inputInteractionLayout=new QHBoxLayout;
-
+    QHBoxLayout * inputInteraction1Layout=new QHBoxLayout;
+    QHBoxLayout * inputInteraction2Layout=new QHBoxLayout;
     pictureLayout->addWidget(this->picture);
-    pictureLayout->addWidget(this->modifyContactButton);
-
-    inputInteractionLayout->addWidget(this->interactionCombobox);
-    inputInteractionLayout->addWidget(this->addInteractionButton);
-    inputInteractionLayout->addWidget(this->modifyInteractionButton);
-    inputInteractionLayout->addWidget(this->removeInteractionButton);
+    pictureLayout->addWidget(this->infoContactLabel);
 
     infoLayout->addWidget(this->errorMessage);
     infoLayout->addLayout(pictureLayout);
-    infoLayout->addWidget(this->infoContactLabel);
+    infoLayout->addWidget(this->modifyContactButton);
+
+
+    inputInteraction1Layout->addWidget(this->interactionCombobox);
+    inputInteraction1Layout->addWidget(this->removeInteractionButton);
+    inputInteraction1Layout->addWidget(this->editTagButton);
+    inputInteraction2Layout->addWidget(this->editInteraction);
+    inputInteraction2Layout->addWidget(this->editInteractionButton);
+
 
     mainLayout->addLayout(infoLayout);
-    mainLayout->addLayout(inputInteractionLayout);
+    mainLayout->addLayout(inputInteraction1Layout);
+    mainLayout->addLayout(inputInteraction2Layout);
+    mainLayout->addWidget(tagsLabel);
 
     //propriétés d'alignement sur les layout et widget
-    inputInteractionLayout->setContentsMargins(0,20,0,0);
+    inputInteraction1Layout->setContentsMargins(0,40,0,0);
     infoLayout->setAlignment(Qt::AlignTop);
 }
 
@@ -92,7 +103,7 @@ void DetailsContactDialog::initUI(){
 
 void DetailsContactDialog::initConnect(){
     QObject::connect(this->modifyContactButton, SIGNAL(clicked()), this, SLOT(openModifyContactDialog()));
-    QObject::connect(this->addInteractionButton, SIGNAL(clicked()), this, SLOT(openCreateInteractionDialog()));
+    QObject::connect(this->editInteractionButton, SIGNAL(clicked()), this, SLOT(openCreateInteractionDialog()));
 }
 
 
