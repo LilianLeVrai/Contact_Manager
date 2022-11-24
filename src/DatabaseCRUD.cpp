@@ -1,6 +1,6 @@
 /**
- * @file ContactCRUD.cpp
- * @brief Fichier cpp de la classe ContactCRUD
+ * @file DatabaseCRUD.cpp
+ * @brief Fichier cpp de la classe DatabaseCRUD
  */
 
 

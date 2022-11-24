@@ -55,6 +55,8 @@ void DetailsContactDialog::initUI(){
     this->interactionCombobox=new QComboBox;
     this->interactionCombobox->addItem("Pas d'interaction");
     this->addInteractionButton=new QPushButton("Ajouter une interaction");
+    this->modifyInteractionButton=new QPushButton("Modifier l'interaction");
+    this->modifyInteractionButton->setEnabled(false);
     this->removeInteractionButton=new QPushButton("Supprimer l'interaction");
     this->removeInteractionButton->setEnabled(false);
 
@@ -69,6 +71,7 @@ void DetailsContactDialog::initUI(){
 
     inputInteractionLayout->addWidget(this->interactionCombobox);
     inputInteractionLayout->addWidget(this->addInteractionButton);
+    inputInteractionLayout->addWidget(this->modifyInteractionButton);
     inputInteractionLayout->addWidget(this->removeInteractionButton);
 
     infoLayout->addWidget(this->errorMessage);
@@ -89,7 +92,7 @@ void DetailsContactDialog::initUI(){
 
 void DetailsContactDialog::initConnect(){
     QObject::connect(this->modifyContactButton, SIGNAL(clicked()), this, SLOT(openModifyContactDialog()));
-
+    QObject::connect(this->addInteractionButton, SIGNAL(clicked()), this, SLOT(openCreateInteractionDialog()));
 }
 
 
@@ -131,3 +134,11 @@ void DetailsContactDialog::editContact(Contact * contact, bool error){
     this->fillInfo();
     emit emitModifyContact(contact, error);
 }
+
+
+void DetailsContactDialog::openCreateInteractionDialog(){
+    this->editInteractionDialog=new EditInteractionDialog();
+    //QObject::connect(this->modifyContactDialog, SIGNAL(emitClose(Contact*, bool)), this, SLOT(editContact(Contact*, bool)));
+    this->editInteractionDialog->show();
+}
+

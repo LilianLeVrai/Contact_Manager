@@ -10,7 +10,7 @@
 #include "MainWindow.h"
 
 
-MainWindow::MainWindow(DatabaseManagement * databaseManagement, DatabaseCRUD * contactCRUD, QWidget *parent)
+MainWindow::MainWindow(DatabaseManagement * databaseManagement, DatabaseCRUD * databaseCRUD, QWidget *parent)
     : QMainWindow(parent)
     {
         this->databaseManagement=databaseManagement;
@@ -25,7 +25,7 @@ MainWindow::MainWindow(DatabaseManagement * databaseManagement, DatabaseCRUD * c
         optionsMenu->addAction(this->optionInitDataTest);
         this->menuBar()->addMenu(optionsMenu);
 
-        this->mainWidget=new MainWidget(contactCRUD);
+        this->mainWidget=new MainWidget(databaseCRUD);
         this->setCentralWidget(this->mainWidget);
 
         connect(this->optionInitDataTest, SIGNAL(triggered()), this, SLOT(askInitDataTest()));

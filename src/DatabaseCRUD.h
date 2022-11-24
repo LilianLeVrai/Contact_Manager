@@ -2,8 +2,8 @@
 #define DATABASECRUD_H
 
 /**
- * @file ContactCRUD.h
- * @brief Fichier header de la classe ContactCRUD
+ * @file DatabaseCRUD.h
+ * @brief Fichier header de la classe DatabaseCRUD
  */
 
 
@@ -13,10 +13,10 @@
 #include <QString>
 
 /**
- * @class ContactCRUD
- * @brief classe représentant le gestionnaire de la table Contact de la BDD
+ * @class DatabaseCRUD
+ * @brief classe représentant le gestionnaire de la BDD
  * @details
- * La classe permet de faire les requètes sur les contact à la BDD. \n
+ * La classe permet de faire les requètes sur les contact, interactions, todos, et modifications à la BDD. \n
  * 'CRUD' pour Create, Read, Update, Delete.
  */
 class DatabaseCRUD

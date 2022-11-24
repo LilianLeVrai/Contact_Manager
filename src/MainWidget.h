@@ -35,10 +35,7 @@ class MainWidget : public QWidget
     private:
         ListContact listContact;/**< liste de contact affichée dans la tableau */
 
-        DatabaseCRUD * contactCRUD;/**< gestionnaire de la table Contact de la BDD */
-        //InteractionCRUD * interactionCRUD;
-        //TodoCRUD * TodoCRUD;
-        //ModificationCRUD * ModificationCRUD;
+        DatabaseCRUD * databaseCRUD;/**< gestionnaire de la BDD */
 
         QComboBox * filtersCombobox;/**< selecteur du filtre */
         QPushButton * searchButton;/**< bouton de recherche */

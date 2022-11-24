@@ -37,13 +37,10 @@ int main(int argc, char *argv[])
 
     //déclaration de la BDD
     DatabaseManagement database=DatabaseManagement();
-    DatabaseCRUD contactCRUD(database.getDatabase());
-    //InteractionCRUD interactionCRUD(database.getDatabase());
-    //TodoCRUD TodoCRUD(database.getDatabase());
-    //ModificationCRUD ModificationCRUD(database.getDatabase());
+    DatabaseCRUD databaseCRUD(database.getDatabase());
 
     //declaration du widget principal
-    MainWindow mainWindow(&database, &contactCRUD);
+    MainWindow mainWindow(&database, &databaseCRUD);
     mainWindow.show();
 
     //déclaration du styleSheet

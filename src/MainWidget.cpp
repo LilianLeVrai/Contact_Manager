@@ -20,11 +20,11 @@
 //------------------------------------------------------------------------------------------------------------------------------
 //constructeurs/destructeurs
 //------------------------------------------------------------------------------------------------------------------------------
-MainWidget::MainWidget(DatabaseCRUD * contactCRUD, QWidget *parent)
+MainWidget::MainWidget(DatabaseCRUD * databaseCRUD, QWidget *parent)
     : QWidget(parent)
 {
-    this->contactCRUD=contactCRUD;
-    contactCRUD->getAllContacts(&this->listContact);
+    this->databaseCRUD=databaseCRUD;
+    databaseCRUD->getAllContacts(&this->listContact);
 
     this->filterFirstDate=nullptr;
     this->filterSecondDate=nullptr;
@@ -254,8 +254,8 @@ void MainWidget::enableDeleteDetailsButton(){
 
 
 void MainWidget::deleteContact(){
-    this->contactCRUD->deleteContactBDD(this->listContact.getContactByIndex(this->contactsTable->selectionModel()->currentIndex().row())->getId());
-    this->contactCRUD->searchByFilters(&this->listContact, this->searchLineEdit->text(),
+    this->databaseCRUD->deleteContactBDD(this->listContact.getContactByIndex(this->contactsTable->selectionModel()->currentIndex().row())->getId());
+    this->databaseCRUD->searchByFilters(&this->listContact, this->searchLineEdit->text(),
                                        this->filtersCombobox->currentIndex(), this->filterFirstDate, this->filterSecondDate);
     this->fillTable();
 }
@@ -268,12 +268,12 @@ void MainWidget::resetFilters(){
     this->filterFirstDate=nullptr;
     this->filterSecondDate=nullptr;
     this->messageLabel->setVisible(false);
-    this->contactCRUD->getAllContacts(&this->listContact);
+    this->databaseCRUD->getAllContacts(&this->listContact);
     this->fillTable();
 }
 
 void MainWidget::searchContacts(){
-    this->contactCRUD->searchByFilters(&this->listContact, this->searchLineEdit->text(),
+    this->databaseCRUD->searchByFilters(&this->listContact, this->searchLineEdit->text(),
                                        this->filtersCombobox->currentIndex(), this->filterFirstDate, this->filterSecondDate);
     this->fillTable();
 }
@@ -289,7 +289,7 @@ void MainWidget::openCreateContactDialog(){
 void MainWidget::editContact(Contact * contact, bool error){
     if(contact->getId()==-1)
         {
-        this->contactCRUD->addContactBDD(contact);
+        this->databaseCRUD->addContactBDD(contact);
 
         if(error)
             this->messageLabel->setProperty("Le contact a été ajouté, l'image par défaut lui a été attribué.", MessageLabel::Red, true);
@@ -298,7 +298,7 @@ void MainWidget::editContact(Contact * contact, bool error){
         }
     else
         {
-        this->contactCRUD->modifyContactBDD(contact);
+        this->databaseCRUD->modifyContactBDD(contact);
 
         if(error)
             this->messageLabel->setProperty("Le contact a été modifié, l'image par défaut lui a été attribué.", MessageLabel::Red, true);
@@ -306,7 +306,7 @@ void MainWidget::editContact(Contact * contact, bool error){
             this->messageLabel->setProperty("Le contact a été modifié sans erreur.", MessageLabel::Green, true);
         }
 
-    this->contactCRUD->searchByFilters(&this->listContact, this->searchLineEdit->text(),
+    this->databaseCRUD->searchByFilters(&this->listContact, this->searchLineEdit->text(),
                                        this->filtersCombobox->currentIndex(), this->filterFirstDate, this->filterSecondDate);
     this->fillTable();
 }

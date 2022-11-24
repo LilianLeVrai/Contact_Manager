@@ -11,7 +11,6 @@
 #include <QDialog>
 #include <QLineEdit>
 #include <QPushButton>
-#include <QObject>
 
 #include "Contact.h"
 #include "MessageLabel.h"

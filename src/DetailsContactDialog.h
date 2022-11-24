@@ -15,6 +15,7 @@
 
 #include "MessageLabel.h"
 #include "EditContactDialog.h"
+#include "EditInteractionDialog.h"
 #include "Contact.h"
 
 /**
@@ -37,10 +38,11 @@ class DetailsContactDialog : public QDialog
         QLabel * infoContactLabel;/**< label pour afficher les informations du contact */
         QComboBox * interactionCombobox;/**< sélecteur d'interaction */
         QPushButton * addInteractionButton;/**< bouton pour ajouter une interaction */
+        QPushButton * modifyInteractionButton;/**< bouton pour modifier l'interaction sélectionné */
         QPushButton * removeInteractionButton;/**< bouton pour supprimer l'interaction sélectionnée */
 
         EditContactDialog * modifyContactDialog;/**< boite de dialogue pour modifier le contact */
-
+        EditInteractionDialog * editInteractionDialog;
 
 
     public:
@@ -82,6 +84,11 @@ class DetailsContactDialog : public QDialog
          * et emmet le signal 'emitModifyContact', avec en paramêtre le contact, et un booleen en fonction de la présence d'erreur.
          */
         void editContact(Contact*, bool);
+
+        /**
+         * @brief slot ouvrant une fenêtre de dialogue pour créer l'interaction.
+         */
+        void openCreateInteractionDialog();
 
     signals:
         /**
