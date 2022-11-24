@@ -101,6 +101,8 @@ void MainWidget::initUI(){
     this->contactsTable->setEditTriggers(QAbstractItemView::NoEditTriggers);
     this->contactsTable->setSelectionBehavior(QAbstractItemView::SelectRows);
     this->contactsTable->setSelectionMode(QAbstractItemView::SingleSelection);
+    //label avec nombre de contacts
+    this->nbContactsLabel=new QLabel;
 
     //Layout verticaux puis horizontaux
     QVBoxLayout * mainLayout = new QVBoxLayout(this);
@@ -111,7 +113,7 @@ void MainWidget::initUI(){
     QHBoxLayout * resetFiltersButtonLayout = new QHBoxLayout();
     QHBoxLayout * leftButtonsShowContactLayout = new QHBoxLayout();
     QVBoxLayout * leftButtonsLayout = new QVBoxLayout();
-    QHBoxLayout * showContactsLayout = new QHBoxLayout();
+    QVBoxLayout * showContactsLayout = new QVBoxLayout();
 
     //ajouts des widget dans chaque layout
     searchBarLayout->addWidget(this->filtersCombobox);
@@ -136,6 +138,7 @@ void MainWidget::initUI(){
     leftButtonsLayout->addWidget(this->deleteContactButton);
 
     showContactsLayout->addWidget(this->contactsTable);
+    showContactsLayout->addWidget(this->nbContactsLabel);
 
     leftButtonsShowContactLayout->addLayout(leftButtonsLayout);
     leftButtonsShowContactLayout->addLayout(showContactsLayout);
@@ -187,6 +190,7 @@ void MainWidget::fillTable(){
         this->contactsTable->setItem(i,4,new QTableWidgetItem(this->listContact.getContactByIndex(i)->getPhone().c_str()));
         this->contactsTable->setItem(i,5,new QTableWidgetItem(this->listContact.getContactByIndex(i)->getDateCreation()->toString().c_str()));
         }
+    this->nbContactsLabel->setText(QString::number(this->contactsTable->rowCount())+" contact(s)");
 }
 
 

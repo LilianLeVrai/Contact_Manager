@@ -45,6 +45,7 @@ class MainWidget : public QWidget
         MessageLabel * messageLabel;/**< label pour afficher les messages*/
         QPushButton * resetFiltersButton;/**< bouton pour rénitialiser tous les filtres (barre de recherche, dates, ...) */
         QTableWidget * contactsTable;/**< tableau affichant les contacts */
+        QLabel * nbContactsLabel;/**< label affichant le nombre de contact dans le tableau */
         QComboBox * sortCombobox;/**< selecteur du tri */
         QPushButton * addContactButton; /**< bouton d'ajout d'un contact */
         QPushButton * detailsContactButton;/**< bouton pour afficher les details d'un contact */
