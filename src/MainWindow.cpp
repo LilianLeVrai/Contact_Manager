@@ -60,6 +60,9 @@ void MainWindow::closeYesNoDialogDataTest(bool choice){
 
 void MainWindow::createJSON(){
 
+    //databaseCRUD->getAllInteractions();
+    //databaseCRUD->getAllTodos();
+
     QJsonArray mainArray;
 
 
@@ -77,41 +80,33 @@ void MainWindow::createJSON(){
         ListInteraction listInteraction;
         databaseCRUD->getInteractionByContact(&listInteraction, this->listContact.getContactByIndex(i));
         for(int j=0;j<listInteraction.getSize();j++){
+            QJsonArray arrayTodo;
             QJsonObject objectInteraction;
             objectInteraction.insert("idInteraction", std::to_string(listInteraction.getInteractionByIndex(j)->getId()).c_str());
             objectInteraction.insert("content", listInteraction.getInteractionByIndex(j)->getContent().c_str());
-            objectInteraction.insert("dateCreation", listInteraction.getInteractionByIndex(j)->getDate()->toString().c_str());
+            objectInteraction.insert("dateCreation", listInteraction.getInteractionByIndex(j)->getDate()->toString().c_str());        
+            ListTodo listTodo;
+            databaseCRUD->getTodoByInteraction(&listTodo, listInteraction.getInteractionByIndex(j));
+            for(int k=0;k<listTodo.getSize();k++){
+                QJsonObject objectTodo;
+                objectTodo.insert("idTodo", std::to_string(listTodo.getTodoByIndex(k)->getId()).c_str());
+                objectTodo.insert("content", listTodo.getTodoByIndex(k)->getContent().c_str());
+                objectTodo.insert("dateCreation", listTodo.getTodoByIndex(k)->getDate()->toString().c_str());
+                arrayTodo.push_back(objectTodo);
+            }
+            if(!arrayTodo.isEmpty())
+                objectInteraction.insert("Todos", arrayTodo);
             arrayInteraction.push_back(objectInteraction);
-
         }     
         if(!arrayInteraction.isEmpty())
             objectContact.insert("Interactions", arrayInteraction);
         mainArray.push_back(objectContact);
     }
 
-    /*
-    QJsonArray arrayTodo;
-
-    QJsonObject objectInteraction;
-    objectInteraction.insert("idInteraction", "1");
-    objectInteraction.insert("content", "interaction test");
-    objectInteraction.insert("dateCreation", "09/09/2009");
-    objectInteraction.insert("Todo", arrayTodo);
-
-    arrayInteraction.push_back(objectInteraction);
-
-    QJsonObject objectTodo;
-    objectTodo.insert("idTodo", "1");
-    objectTodo.insert("content", "todo test");
-    objectTodo.insert("dateTodo", "10/10/201");
-
-    arrayTodo.push_back(objectTodo);
-    */
-
     QJsonDocument jsonDoc;
     jsonDoc.setArray(mainArray);
 
-    QFile fichierJSON("../data/test.json");
+    QFile fichierJSON("../data/JSONdata.json");
 
     if (fichierJSON.open(QFile::WriteOnly | QIODevice::Text))
     {

@@ -43,6 +43,13 @@ void ListTodo::removeTodoById(const int id){
     }
 }
 
+void ListTodo::removeAllTodos(){
+    auto it=this->listTodo.begin();
+    while ((it != this->listTodo.end())){
+            it= this->listTodo.erase(it);
+    }
+}
+
 Todo* ListTodo::getTodoById(const int id) const{
     auto it=this->listTodo.begin();
     while ((it != this->listTodo.end())) {
@@ -68,4 +75,11 @@ std::string ListTodo::toString() const{
         ++it;
     }
     return s;
+}
+
+Todo* ListTodo::getTodoByIndex(const int index) const{
+    auto it=this->listTodo.begin();
+    for(int i=0; i<index; i++)
+        it++;
+    return *it;
 }

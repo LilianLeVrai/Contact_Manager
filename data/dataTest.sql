@@ -1,5 +1,6 @@
 delete from Contact;
 delete from Interaction;
+delete from Todo;
 
 insert into Contact(lastName, firstName, company, mail, phone, picture, dateCreation) values ('Manzano', 'Lilian', 'UB', 'lilian@mail.com', '06 12 34 56 78', '../img/defaultImg.jpg', '01/01/2021');
 insert into Contact(lastName, firstName, company, mail, phone, picture, dateCreation) values ('Pere', 'Brandon', 'ufr sciences et techniques', 'brandon@ufr.fr', '06 87 65 43 21', '../img/defaultImg.jpg', '02/02/2022');
@@ -7,5 +8,8 @@ insert into Contact(lastName, firstName, company, mail, phone, picture, dateCrea
 
 insert into Interaction(content, dateCreation, idContact) values ('Interaction 1 Lilian', '01/01/2020', 1);
 insert into Interaction(content, dateCreation, idContact) values ('Interaction 2 Lilian', '01/01/2020', 1);
-
 insert into Interaction(content, dateCreation, idContact) values ('Interaction 3 random', '01/01/2020', 3);
+
+insert into Todo(content, dateTodo, idInteraction) values ('Todo 1 I2 Lilian', '01/01/2020', 2);
+insert into Todo(content, dateTodo, idInteraction) values ('Todo 2 I2 Lilian', '01/01/2020', 2);
+insert into Todo(content, dateTodo, idInteraction) values ('Todo 1 I3 Random', '01/01/2020', 3);

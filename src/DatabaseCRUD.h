@@ -76,13 +76,20 @@ class DatabaseCRUD
         void searchByFilters(ListContact *, QString, int, Date *, Date *);
 
         /**
-         * @brief Permet de remplir une liste d'interaction avec toutes les interactions du contact passé en paramètre via son id.
+         * @brief Permet de remplir une liste d'interaction avec toutes les interactions du contact passé en paramètre.
          * @param ListInteraction
          * @details
          * Aucune liste n'est retourné, c'est la liste d'interaction passée en paramêtre qui est remplie. \n
          * La méthode fait une requête à la BDD.
          */
         void getInteractionByContact(ListInteraction *, Contact *);
+
+        void getTodoByInteraction(ListTodo *, Interaction *);
+
+        //Fonction de test
+        void getAllInteractions();
+        void getAllTodos();
+
 };
 
 #endif // DATABASECRUD_H

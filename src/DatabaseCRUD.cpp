@@ -155,3 +155,48 @@ void DatabaseCRUD::getInteractionByContact(ListInteraction * listInteraction, Co
             }
         }
 }
+
+void DatabaseCRUD::getTodoByInteraction(ListTodo * listTodo, Interaction * interaction){
+    QSqlQuery query;
+    if(!query.exec("select * from Todo where idInteraction="+QString::number(interaction->getId())+";"))
+        {qDebug() << "Impossible d'effectuer la requète :\n" << query.lastError();}
+    else
+        {
+        listTodo->removeAllTodos();
+        while(query.next())
+            {
+            listTodo->addTodo(new Todo(query.value(0).toInt(),
+                                    query.value(1).toString().toStdString(),
+                                    new Date(query.value(7).toString().toStdString()),
+                                    true));
+            }
+        }
+}
+
+//Fonction de test : Le delete on cascade ne fonctionne pas
+void DatabaseCRUD::getAllInteractions(){
+    QSqlQuery query;
+    if(!query.exec("select * from Interaction;"))
+        {qDebug() << "Impossible d'effectuer la requète :\n" << query.lastError();}
+    else
+        {
+        while(query.next())
+            {
+            qDebug() << QString::number(query.value(0).toInt());
+            qDebug() << query.value(1).toString().toStdString().c_str();
+            }
+        }
+}
+void DatabaseCRUD::getAllTodos(){
+    QSqlQuery query;
+    if(!query.exec("select * from Todo;"))
+        {qDebug() << "Impossible d'effectuer la requète :\n" << query.lastError();}
+    else
+        {
+        while(query.next())
+            {
+            qDebug() << QString::number(query.value(0).toInt());
+            qDebug() << query.value(1).toString().toStdString().c_str();
+            }
+        }
+}

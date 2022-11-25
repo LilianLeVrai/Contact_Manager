@@ -32,8 +32,13 @@ class ListTodo
          * @brief Permet de définir l'attribut de liste.
          * @param Le paramètre doit être un std::list<Todo*>
          */
-        void setListTodo(const std::list<Todo*> &);
-
+        void setListTodo(const std::list<Todo*> &);       
+        /**
+         * @brief Permet de récupérer un todo de la liste en fonction de son index dans celle-ci.
+         * @param Le paramètre doit être un entier représentant l'index
+         * @return pointeur vers objet Todo
+         */
+        Todo* getTodoByIndex(const int) const;
         /**
          * @brief Permet d'ajouter un todo à la liste.
          * @param Le paramètre doit être un pointeur sur un objet Todo
@@ -44,6 +49,10 @@ class ListTodo
          * @param Le paramètre doit être un entier représentant l'identifiant
          */
         void removeTodoById(const int);
+        /**
+         * @brief Permet de vider tous les todos de la liste.
+         */
+        void removeAllTodos();
         /**
          * @brief Permet de récupérer un todo de la liste en fonction de son identifiant.
          * @param Le paramètre doit être un entier représentant l'identifiant
