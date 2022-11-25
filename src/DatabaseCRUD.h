@@ -82,7 +82,7 @@ class DatabaseCRUD
          * Aucune liste n'est retourné, c'est la liste d'interaction passée en paramêtre qui est remplie. \n
          * La méthode fait une requête à la BDD.
          */
-        void getInteractionByIdContact(ListInteraction *, Contact *);
+        void getInteractionByContact(ListInteraction *, Contact *);
 };
 
 #endif // DATABASECRUD_H

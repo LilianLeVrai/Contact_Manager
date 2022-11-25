@@ -1,5 +1,17 @@
 [
     {
+        "Interaction": [
+            {
+                "content": "Interaction 1 Lilian",
+                "dateCreation": "25/11/2022",
+                "idInteraction": "1"
+            },
+            {
+                "content": "Interaction 2 Lilian",
+                "dateCreation": "25/11/2022",
+                "idInteraction": "2"
+            }
+        ],
         "company": "UB",
         "dateCreation": "01/01/2021",
         "firstName": "Lilian",
@@ -20,6 +32,13 @@
         "picture": "../img/defaultImg.jpg"
     },
     {
+        "Interaction": [
+            {
+                "content": "Interaction 3 random",
+                "dateCreation": "25/11/2022",
+                "idInteraction": "3"
+            }
+        ],
         "company": "metierRandom",
         "dateCreation": "03/03/2023",
         "firstName": "prenomRandom",
