@@ -21,7 +21,7 @@ MainWindow::MainWindow(DatabaseManagement * databaseManagement, DatabaseCRUD * d
     {
         this->databaseManagement=databaseManagement;
         this->databaseCRUD=databaseCRUD;
-        databaseCRUD->getAllContacts(&this->listContact);
+        //databaseCRUD->getAllContacts(&this->listContact);
 
         this->setWindowTitle("Gestionnaire de contact");
         this->resize(1600, 800);
@@ -59,9 +59,10 @@ void MainWindow::closeYesNoDialogDataTest(bool choice){
 }
 
 void MainWindow::createJSON(){
-
     //databaseCRUD->getAllInteractions();
     //databaseCRUD->getAllTodos();
+
+    databaseCRUD->getAllContacts(&this->listContact);
 
     QJsonArray mainArray;
 
