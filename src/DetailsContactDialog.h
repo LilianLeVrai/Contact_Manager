@@ -14,9 +14,10 @@
 #include <QComboBox>
 #include <QLineEdit>
 
+#include "DatabaseCRUD.h"
 #include "MessageLabel.h"
 #include "EditContactDialog.h"
-#include "EditInteractionDialog.h"
+#include "EditTagDialog.h"
 #include "Contact.h"
 
 /**
@@ -29,8 +30,9 @@ class DetailsContactDialog : public QDialog
     Q_OBJECT
 
     private:
+        DatabaseCRUD * databaseCRUD;/**< gestionnaire de la BDD */
         Contact * contact;/**< contact concerné par la fenêtre */
-        ListInteraction * listInteraction;
+        ListInteraction listInteraction;/** liste d'interaction du contact */
 
         MessageLabel * errorMessage;/**< message d'erreur (utilisé pour un problème sur l'image) */
         QLabel * picture;/**< champ pour afficher l'image */
@@ -46,7 +48,7 @@ class DetailsContactDialog : public QDialog
 
 
         EditContactDialog * modifyContactDialog;/**< boite de dialogue pour modifier le contact */
-        EditInteractionDialog * editInteractionDialog;
+        EditTagDialog * editTagDialog;/**< boite de dialogue pour éditer les tags */
 
 
     public:
@@ -57,7 +59,7 @@ class DetailsContactDialog : public QDialog
          * Défini la boîte de dialogue en mode bloquante, puis appel les méthodes 'initUI' et 'initConnect'.\n
          * De plus appel la méthode 'fillInfo' qui affiche l'image et les infos du contact.
          */
-        DetailsContactDialog(Contact *,QWidget *parent = 0);
+        DetailsContactDialog(DatabaseCRUD *, Contact *,QWidget *parent = 0);
         ~DetailsContactDialog();
 
         /**
@@ -72,7 +74,10 @@ class DetailsContactDialog : public QDialog
          * @brief Permet d'afficher l'image et les infos du contact.
          */
         void fillInfo();
-
+        /**
+         * @brief Permet de remplir la selection d'interaction.
+         */
+        void fillInteraction();
 
 
     public slots:
@@ -90,9 +95,27 @@ class DetailsContactDialog : public QDialog
         void editContact(Contact*, bool);
 
         /**
-         * @brief slot ouvrant une fenêtre de dialogue pour créer l'interaction.
+         * @brief slot ouvrant une fenêtre de dialogue pour modifier les tags de l'interaction sélectionné.
          */
-        void openCreateInteractionDialog();
+        void openEditTagDialog();
+        /**
+         * @brief slot qui rempli le champ et active ou desésactive les boutons en fonction de l'interaction sélectionnée.
+         */
+        void updateInputInteraction();
+        /**
+         * @brief slot qui active ou désactive le bouton d'ajout/modification en fonction de si le champ est rempli et a été modifié.
+         */
+        void updateEditInteractionButton();
+        /**
+         * @brief slot supprimant l'interaction sélectionné.
+         * @details Fait une requète à la BDD grâce à l'attribut 'databaseCRUD'.
+         */
+        void removeInteraction();
+        /**
+         * @brief slot ajoutant ou modifiant l'interaction.
+         * @details Fait une requète à la BDD grâce à l'attribut 'databaseCRUD'.
+         */
+        void addModifyInteraction();
 
     signals:
         /**

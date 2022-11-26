@@ -317,7 +317,7 @@ void MainWidget::editContact(Contact * contact, bool error){
 
 
 void MainWidget::openDetailsContactDialog(){
-    this->detailsContactDialog=new DetailsContactDialog(this->listContact.getContactByIndex(this->contactsTable->selectionModel()->currentIndex().row()));
+    this->detailsContactDialog=new DetailsContactDialog(this->databaseCRUD,this->listContact.getContactByIndex(this->contactsTable->selectionModel()->currentIndex().row()));
     QObject::connect(this->detailsContactDialog, SIGNAL(emitModifyContact(Contact*, bool)), this, SLOT(editContact(Contact*, bool)));
     this->detailsContactDialog->show();
 }

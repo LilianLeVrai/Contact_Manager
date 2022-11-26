@@ -25,7 +25,7 @@ class EditContactDialog : public QDialog
     Q_OBJECT
 
     private:
-        MessageLabel * errorMessage;/**< message d'erreur (champs non remplis, format de mail incorrect,...)  */
+        MessageLabel * errorMessage;/**< message d'erreur (champs non remplis, format de mail incorrect,...) */
         QLineEdit * lastNameEdit;/**< champ pour rentrer le nom */
         QLineEdit * firstNameEdit;/**< champ pour rentrer le prénom */
         QLineEdit * companyEdit;/**< champ pour rentrer l'entreprise */

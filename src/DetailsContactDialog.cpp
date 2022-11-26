@@ -17,14 +17,17 @@
 //------------------------------------------------------------------------------------------------------------------------------
 //constructeurs/destructeurs
 //------------------------------------------------------------------------------------------------------------------------------
-DetailsContactDialog::DetailsContactDialog(Contact * contact,QWidget *parent)
+DetailsContactDialog::DetailsContactDialog(DatabaseCRUD * databaseCRUD,Contact * contact,QWidget *parent)
     : QDialog(parent)
 {
+    this->databaseCRUD=databaseCRUD;
     this->contact=contact;
+    this->databaseCRUD->getInteractionByContact(&this->listInteraction, this->contact);
 
     initUI();
     initConnect();
     fillInfo();
+    fillInteraction();
 }
 
 
@@ -53,17 +56,19 @@ void DetailsContactDialog::initUI(){
 
     //inputs pour interaction
     this->interactionCombobox=new QComboBox;
-    this->interactionCombobox->addItem("Ajouter interaction");
     this->removeInteractionButton=new QPushButton("Supprimer l'interaction");
     this->removeInteractionButton->setEnabled(false);
     this->editTagButton=new QPushButton("Éditer les tags");
     this->editTagButton->setEnabled(false);
     this->editInteraction=new QLineEdit;
-    this->editInteraction->setPlaceholderText("contenu interaction");
+    this->editInteraction->setPlaceholderText("contenu interaction (max 150 caractères)");
+    this->editInteraction->setMaxLength(150);
     this->editInteractionButton=new QPushButton("Ajouter interaction");
     this->editInteractionButton->setEnabled(false);
 
-    this->tagsLabel=new QLabel("@todo ejjejejejej\n@todo aahgahaha @date 12/12/12");
+    this->tagsLabel=new QLabel;
+    this->tagsLabel->setMinimumHeight(100);
+    this->tagsLabel->setAlignment(Qt::AlignTop);
 
 
     //layout
@@ -94,6 +99,7 @@ void DetailsContactDialog::initUI(){
 
     //propriétés d'alignement sur les layout et widget
     inputInteraction1Layout->setContentsMargins(0,40,0,0);
+    mainLayout->setAlignment(Qt::AlignTop);
     infoLayout->setAlignment(Qt::AlignTop);
 }
 
@@ -103,7 +109,11 @@ void DetailsContactDialog::initUI(){
 
 void DetailsContactDialog::initConnect(){
     QObject::connect(this->modifyContactButton, SIGNAL(clicked()), this, SLOT(openModifyContactDialog()));
-    QObject::connect(this->editInteractionButton, SIGNAL(clicked()), this, SLOT(openCreateInteractionDialog()));
+    QObject::connect(this->editTagButton, SIGNAL(clicked()), this, SLOT(openEditTagDialog()));
+    QObject::connect(this->interactionCombobox, SIGNAL(currentIndexChanged(int)), this, SLOT(updateInputInteraction()));
+    QObject::connect(this->editInteraction, SIGNAL(textChanged(QString)), this, SLOT(updateEditInteractionButton()));
+    QObject::connect(this->removeInteractionButton, SIGNAL(clicked()), this, SLOT(removeInteraction()));
+    QObject::connect(this->editInteractionButton, SIGNAL(clicked()), this, SLOT(addModifyInteraction()));
 }
 
 
@@ -123,6 +133,13 @@ void DetailsContactDialog::fillInfo(){
     this->infoContactLabel->setText(this->contact->toString().c_str());
 }
 
+void DetailsContactDialog::fillInteraction(){
+    this->interactionCombobox->clear();
+    this->interactionCombobox->addItem("Ajouter interaction");
+    for(int i=0;i<this->listInteraction.getSize();i++)
+        this->interactionCombobox->addItem(this->listInteraction.getInteractionByIndex(i)->getContent().c_str());
+
+}
 
 //------------------------------------------------------------------------------------------------------------------------------
 //slots
@@ -147,9 +164,63 @@ void DetailsContactDialog::editContact(Contact * contact, bool error){
 }
 
 
-void DetailsContactDialog::openCreateInteractionDialog(){
-    this->editInteractionDialog=new EditInteractionDialog();
+void DetailsContactDialog::openEditTagDialog(){
+    this->editTagDialog=new EditTagDialog();
     //QObject::connect(this->modifyContactDialog, SIGNAL(emitClose(Contact*, bool)), this, SLOT(editContact(Contact*, bool)));
-    this->editInteractionDialog->show();
+    this->editTagDialog->show();
 }
+
+void DetailsContactDialog::updateInputInteraction(){
+    if(this->interactionCombobox->currentIndex()!=-1)
+        {
+        if(this->interactionCombobox->currentIndex()==0)
+            {
+            this->editInteractionButton->setText("Ajouter interaction");
+            this->removeInteractionButton->setEnabled(false);
+            this->editTagButton->setEnabled(false);
+            this->editInteraction->setText("");
+            }
+        else
+            {
+            this->editInteractionButton->setText("Modifier interaction");
+            this->removeInteractionButton->setEnabled(true);
+            this->editTagButton->setEnabled(true);
+            this->editInteraction->setText(this->listInteraction.getInteractionByIndex(((this->interactionCombobox->currentIndex())-1))->getContent().c_str());
+            }
+        }
+}
+
+void DetailsContactDialog::updateEditInteractionButton(){
+    if(this->editInteraction->text().simplified().isEmpty() ||
+            (this->interactionCombobox->currentIndex()!=0 && this->editInteraction->text()==this->listInteraction.getInteractionByIndex(this->interactionCombobox->currentIndex()-1)->getContent().c_str()))
+        this->editInteractionButton->setEnabled(false);
+    else
+        this->editInteractionButton->setEnabled(true);
+}
+
+void DetailsContactDialog::removeInteraction(){
+    this->databaseCRUD->deleteInteractionBDD(this->listInteraction.getInteractionByIndex(this->interactionCombobox->currentIndex()-1)->getId());
+    this->databaseCRUD->getInteractionByContact(&this->listInteraction,this->contact);
+    this->fillInteraction();
+}
+
+
+void DetailsContactDialog::addModifyInteraction(){
+    if(this->interactionCombobox->currentIndex()!=-1)
+        {
+        if(this->interactionCombobox->currentIndex()==0)
+            {
+            Interaction * newInteraction=new Interaction(this->editInteraction->text().toStdString());
+            this->databaseCRUD->addInteractionBDD(newInteraction, this->contact);
+            }
+        else
+            {
+            this->listInteraction.getInteractionByIndex(this->interactionCombobox->currentIndex()-1)->setContent(this->editInteraction->text().toStdString());
+            this->databaseCRUD->modifyInteractionBDD(this->listInteraction.getInteractionByIndex(this->interactionCombobox->currentIndex()-1));
+            }
+        this->databaseCRUD->getInteractionByContact(&this->listInteraction,this->contact);
+        this->fillInteraction();
+        }
+}
+
 

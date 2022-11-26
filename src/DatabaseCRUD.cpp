@@ -173,6 +173,82 @@ void DatabaseCRUD::getTodoByInteraction(ListTodo * listTodo, Interaction * inter
         }
 }
 
+
+
+void DatabaseCRUD::deleteInteractionBDD(const int & id){
+    QSqlQuery query;
+    if(!query.exec("delete from Interaction where idInteraction="+QString::number(id)+";"))
+        {qDebug() << "Impossible d'effectuer la requète :\n" << query.lastError();}
+}
+
+void DatabaseCRUD::addInteractionBDD(Interaction * interaction, Contact * contact){
+    QString s="insert into Interaction(content, dateCreation, idContact) values ";
+    s=s+"('"+interaction->getContent().c_str()+"', '"
+            +interaction->getDate()->toString().c_str()+"', "
+            +QString::number(contact->getId())+");";
+    QSqlQuery query;
+    if(!query.exec(s))
+        {qDebug() << "Impossible d'effectuer la requète :\n" << query.lastError();}
+}
+
+
+void DatabaseCRUD::modifyInteractionBDD(Interaction * interaction){
+    QString s="update Interaction set ";
+    s=s+"content='"+interaction->getContent().c_str()
+            +"' where idInteraction="+QString::number(interaction->getId())+";";
+    QSqlQuery query;
+    if(!query.exec(s))
+        {qDebug() << "Impossible d'effectuer la requète :\n" << query.lastError();}
+}
+
+
+void DatabaseCRUD::deleteTagBDD(const int & id){
+    QSqlQuery query;
+    if(!query.exec("delete from Todo where idTodo="+QString::number(id)+";"))
+        {qDebug() << "Impossible d'effectuer la requète :\n" << query.lastError();}
+}
+
+void DatabaseCRUD::addTagBDD(Todo * todo, Interaction * interaction){
+    QString s="insert into Todo(content, dateTodo, idInteraction) values ";
+    s=s+"('"+interaction->getContent().c_str()+"', '"
+            +interaction->getDate()->toString().c_str()+"', "
+            +QString::number(todo->getId())+");";
+    QSqlQuery query;
+    if(!query.exec(s))
+        {qDebug() << "Impossible d'effectuer la requète :\n" << query.lastError();}
+}
+
+
+void DatabaseCRUD::modifyTagBDD(Todo * todo){
+    QString s="update Todo set ";
+    s=s+"content='"+todo->getContent().c_str()+"', date='"+todo->getDate()->toString().c_str()+"'"
+            +"' where idTodo="+QString::number(todo->getId())+";";
+    QSqlQuery query;
+    if(!query.exec(s))
+        {qDebug() << "Impossible d'effectuer la requète :\n" << query.lastError();}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //Fonction de test : Le delete on cascade ne fonctionne pas
 void DatabaseCRUD::getAllInteractions(){
     QSqlQuery query;
@@ -200,3 +276,5 @@ void DatabaseCRUD::getAllTodos(){
             }
         }
 }
+
+

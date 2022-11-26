@@ -46,7 +46,7 @@ class DatabaseCRUD
          * @param entier
          * @details La méthode fait une requête à la BDD.
          */
-        void deleteContactBDD(const int & id);
+        void deleteContactBDD(const int &);
 
         /**
          * @brief Permet d'ajouter un contact à la BDD.
@@ -77,18 +77,77 @@ class DatabaseCRUD
 
         /**
          * @brief Permet de remplir une liste d'interaction avec toutes les interactions du contact passé en paramètre.
-         * @param ListInteraction
+         * @param pointeur vers un objet ListInteraction
+         * @param pointeur vers un objet Contact
          * @details
          * Aucune liste n'est retourné, c'est la liste d'interaction passée en paramêtre qui est remplie. \n
          * La méthode fait une requête à la BDD.
          */
         void getInteractionByContact(ListInteraction *, Contact *);
 
+        /**
+         * @brief Permet de remplir une liste de tag avec tous les tags de l'interaction passée en paramètre.
+         * @param pointeur vers un objet ListTodo
+         * @param pointeur vers un objet Interaction
+         * @details
+         * Aucune liste n'est retourné, c'est la liste de tags passée en paramêtre qui est remplie. \n
+         * La méthode fait une requête à la BDD.
+         */
         void getTodoByInteraction(ListTodo *, Interaction *);
+
+
+
+        /**
+         * @brief Permet de supprimer une interaction de la BDD en fonction de son identifiant.
+         * @param entier
+         * @details La méthode fait une requête à la BDD.
+         */
+        void deleteInteractionBDD(const int &);
+
+        /**
+         * @brief Permet d'ajouter une interaction à la BDD.
+         * @param pointeur vers un objet Interaction
+         * @param pointeur vers un objet Contact, contact auquel est associé l'interaction
+         * @details La méthode fait une requête à la BDD.
+         */
+        void addInteractionBDD(Interaction *, Contact *);
+
+        /**
+         * @brief Permet de modifier une interaction de la BDD.
+         * @param pointeur vers un objet Interaction
+         * @details La méthode fait une requête à la BDD.
+         */
+        void modifyInteractionBDD(Interaction *);
+
+        /**
+         * @brief Permet de supprimer un tag de la BDD en fonction de son identifiant.
+         * @param entier
+         * @details La méthode fait une requête à la BDD.
+         */
+        void deleteTagBDD(const int &);
+
+        /**
+         * @brief Permet d'ajouter un tag à la BDD.
+         * @param pointeur vers un objet Todo
+         * @param pointeur vers un objet Interaction, interaction auquelle est associé le tag
+         * @details La méthode fait une requête à la BDD.
+         */
+        void addTagBDD(Todo *, Interaction *);
+
+        /**
+         * @brief Permet de modifier un tag de la BDD.
+         * @param pointeur vers un objet Todo
+         * @details La méthode fait une requête à la BDD.
+         */
+        void modifyTagBDD(Todo *);
+
+
 
         //Fonction de test
         void getAllInteractions();
         void getAllTodos();
+
+
 
 };
 
