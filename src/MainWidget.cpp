@@ -205,12 +205,16 @@ void MainWidget::disableDeleteDetailsButton(){
 //------------------------------------------------------------------------------------------------------------------------------
 void MainWidget::openFirstCalendarDialog(){
     this->calendarDialogFirstDate=new CalendarDialog();
+    QDate currentDate=currentDate.currentDate();
+    this->calendarDialogFirstDate->getCalendar()->setMaximumDate(currentDate);
     QObject::connect(this->calendarDialogFirstDate, SIGNAL(emitClose(QDate *)), this, SLOT(closeFirstCalendarDialog(QDate *)));
     this->calendarDialogFirstDate->show();
 }
 
 void MainWidget::openSecondCalendarDialog(){
     this->calendarDialogSecondDate=new CalendarDialog();
+    QDate currentDate=currentDate.currentDate();
+    this->calendarDialogSecondDate->getCalendar()->setMaximumDate(currentDate);
     QObject::connect(this->calendarDialogSecondDate, SIGNAL(emitClose(QDate *)), this, SLOT(closeSecondCalendarDialog(QDate *)));
     this->calendarDialogSecondDate->show();
 }

@@ -16,6 +16,8 @@
 #include <QLabel>
 
 #include "Interaction.h"
+#include "DatabaseCRUD.h"
+#include "CalendarDialog.h"
 
 /**
  * @class EditTagDialog
@@ -33,20 +35,22 @@ class EditTagDialog : public QDialog
         QPushButton * dateButton;/**< bouton pour sélectionner une date */
         QPushButton * removeDateButton;/**< bouton pour supprimer le tag \@date */
         QPushButton * editTodoButton;/**< bouton pour ajouter ou modifier le tag */
-
         QLabel * listTagLabel;/**< champ pour afficher tous les tag de l'interaction */
 
+        DatabaseCRUD * databaseCRUD;/**< gestionnaire de la BDD */
         Interaction * currentInteraction;/**< interaction concernée par les changements de tags */
 
+        CalendarDialog * calendarDialog;/**< boite de dialogue pour sélectionner la date du tag*/
+        Date * date;
+
     public:
-        EditTagDialog(QWidget *parent = 0);
         /**
          * @brief Constructeur.
          * @param pointeur vers objet Interaction représentant l'interaction dont on veut modifier les tags
          * @details
          * Défini la boîte de dialogue en mode bloquante, puis appel les méthodes 'initUI' et 'initConnect'.\n
          */
-        EditTagDialog(Interaction *, QWidget *parent = 0);
+        EditTagDialog(DatabaseCRUD *, Interaction *, QWidget *parent = 0);
 
 
         /**
@@ -57,6 +61,23 @@ class EditTagDialog : public QDialog
          * @brief Permet d'initialiser les connect.
          */
         void initConnect();
+
+        void fillTodo();
+
+        void checkUpdateInputTodo();
+
+    public slots:
+        void updateInputTodo();
+        void updateEditTodoButton();
+        void deleteTodo();
+        void addModifyTodo();
+        void openCalendarDialog();
+        void closeCalendarDialog(QDate * date);
+        void removeDate();
+
+
+    signals:
+        void emitUpdateTag();
 
 
 };

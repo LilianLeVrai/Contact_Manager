@@ -138,7 +138,6 @@ void DetailsContactDialog::fillInteraction(){
     this->interactionCombobox->addItem("Ajouter interaction");
     for(int i=0;i<this->listInteraction.getSize();i++)
         this->interactionCombobox->addItem(this->listInteraction.getInteractionByIndex(i)->getContent().c_str());
-
 }
 
 //------------------------------------------------------------------------------------------------------------------------------
@@ -165,8 +164,8 @@ void DetailsContactDialog::editContact(Contact * contact, bool error){
 
 
 void DetailsContactDialog::openEditTagDialog(){
-    this->editTagDialog=new EditTagDialog();
-    //QObject::connect(this->modifyContactDialog, SIGNAL(emitClose(Contact*, bool)), this, SLOT(editContact(Contact*, bool)));
+    this->editTagDialog=new EditTagDialog(this->databaseCRUD, this->listInteraction.getInteractionByIndex(this->interactionCombobox->currentIndex()-1));
+    QObject::connect(this->editTagDialog, SIGNAL(emitUpdateTag()), this, SLOT(updateTag()));
     this->editTagDialog->show();
 }
 
@@ -179,13 +178,17 @@ void DetailsContactDialog::updateInputInteraction(){
             this->removeInteractionButton->setEnabled(false);
             this->editTagButton->setEnabled(false);
             this->editInteraction->setText("");
+
+            this->tagsLabel->setText("");
             }
         else
             {
             this->editInteractionButton->setText("Modifier interaction");
             this->removeInteractionButton->setEnabled(true);
             this->editTagButton->setEnabled(true);
-            this->editInteraction->setText(this->listInteraction.getInteractionByIndex(((this->interactionCombobox->currentIndex())-1))->getContent().c_str());
+            this->editInteraction->setText(this->listInteraction.getInteractionByIndex(this->interactionCombobox->currentIndex()-1)->getContent().c_str());
+
+            this->tagsLabel->setText(this->listInteraction.getInteractionByIndex(((this->interactionCombobox->currentIndex())-1))->toString().c_str());
             }
         }
 }
@@ -222,5 +225,11 @@ void DetailsContactDialog::addModifyInteraction(){
         this->fillInteraction();
         }
 }
+
+
+void DetailsContactDialog::updateTag(){
+    this->tagsLabel->setText(this->listInteraction.getInteractionByIndex(((this->interactionCombobox->currentIndex())-1))->toString().c_str());
+}
+
 
 

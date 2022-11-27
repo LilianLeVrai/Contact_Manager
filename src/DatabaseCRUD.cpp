@@ -148,10 +148,12 @@ void DatabaseCRUD::getInteractionByContact(ListInteraction * listInteraction, Co
         listInteraction->removeAllInteractions();
         while(query.next())
             {
-            listInteraction->addInteraction(new Interaction(query.value(0).toInt(),
-                                                query.value(1).toString().toStdString(),
-                                                new Date(query.value(7).toString().toStdString()),
-                                                new ListTodo()));
+            Interaction * interaction=new Interaction(query.value(0).toInt(),
+                                                      query.value(1).toString().toStdString(),
+                                                      new Date(query.value(7).toString().toStdString()),
+                                                      new ListTodo());
+            this->getTodoByInteraction(interaction->getListTodo(), interaction);
+            listInteraction->addInteraction(interaction);
             }
         }
 }
@@ -165,10 +167,15 @@ void DatabaseCRUD::getTodoByInteraction(ListTodo * listTodo, Interaction * inter
         listTodo->removeAllTodos();
         while(query.next())
             {
-            listTodo->addTodo(new Todo(query.value(0).toInt(),
+            if(query.value(2).isNull())
+                listTodo->addTodo(new Todo(query.value(0).toInt(),
                                     query.value(1).toString().toStdString(),
-                                    new Date(query.value(7).toString().toStdString()),
-                                    true));
+                                    nullptr));
+            else
+                listTodo->addTodo(new Todo(query.value(0).toInt(),
+                                    query.value(1).toString().toStdString(),
+                                    new Date(query.value(2).toString().toStdString())));
+
             }
         }
 }
@@ -209,10 +216,21 @@ void DatabaseCRUD::deleteTagBDD(const int & id){
 }
 
 void DatabaseCRUD::addTagBDD(Todo * todo, Interaction * interaction){
-    QString s="insert into Todo(content, dateTodo, idInteraction) values ";
-    s=s+"('"+interaction->getContent().c_str()+"', '"
-            +interaction->getDate()->toString().c_str()+"', "
-            +QString::number(todo->getId())+");";
+    QString s;
+
+    if(todo->getDate()!=nullptr)
+        {
+        s="insert into Todo(content, dateTodo, idInteraction) values ";
+        s=s+"('"+todo->getContent().c_str()+"', '"
+                +todo->getDate()->toString().c_str()+"', "
+                +QString::number(interaction->getId())+");";
+        }
+    else
+        {
+        s="insert into Todo(content, idInteraction) values ";
+        s=s+"('"+todo->getContent().c_str()+"', "
+                +QString::number(interaction->getId())+");";qDebug()<<s;
+        }
     QSqlQuery query;
     if(!query.exec(s))
         {qDebug() << "Impossible d'effectuer la requète :\n" << query.lastError();}
@@ -221,12 +239,18 @@ void DatabaseCRUD::addTagBDD(Todo * todo, Interaction * interaction){
 
 void DatabaseCRUD::modifyTagBDD(Todo * todo){
     QString s="update Todo set ";
-    s=s+"content='"+todo->getContent().c_str()+"', date='"+todo->getDate()->toString().c_str()+"'"
-            +"' where idTodo="+QString::number(todo->getId())+";";
+    s=s+"content='"+todo->getContent().c_str();
+    if(todo->getDate()==nullptr)
+        s=s+"', dateTodo=NULL";
+    else
+        s=s+"', dateTodo='"+todo->getDate()->toString().c_str()+"'";
+    s=s+" where idTodo="+QString::number(todo->getId())+";";
     QSqlQuery query;
     if(!query.exec(s))
         {qDebug() << "Impossible d'effectuer la requète :\n" << query.lastError();}
 }
+
+
 
 
 

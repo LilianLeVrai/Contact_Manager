@@ -47,6 +47,8 @@ class CalendarDialog : public QDialog
         CalendarDialog(QWidget *parent = 0);
         ~CalendarDialog();
 
+        QCalendarWidget * getCalendar();
+
 
     public slots:
         /**

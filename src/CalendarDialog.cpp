@@ -33,8 +33,6 @@ void CalendarDialog::initUI(){
 
     //calendrier
     this->calendar=new QCalendarWidget(this);
-    QDate currentDate=currentDate.currentDate();
-    this->calendar->setMaximumDate(currentDate);
 
     //boutons
     this->cancelButton=new QPushButton("Annuler");
@@ -54,6 +52,11 @@ void CalendarDialog::initUI(){
 void CalendarDialog::initConnect(){
     QObject::connect(this->cancelButton, SIGNAL(clicked()), this, SLOT(cancelCloseDialog()));
     QObject::connect(this->validateButton, SIGNAL(clicked()), this, SLOT(validateCloseDialog()));
+}
+
+
+QCalendarWidget * CalendarDialog::getCalendar(){
+    return this->calendar;
 }
 
 

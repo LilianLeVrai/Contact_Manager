@@ -117,6 +117,9 @@ class DetailsContactDialog : public QDialog
          */
         void addModifyInteraction();
 
+
+        void updateTag();
+
     signals:
         /**
          * @brief signal.
