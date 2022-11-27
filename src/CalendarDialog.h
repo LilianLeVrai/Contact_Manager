@@ -46,7 +46,10 @@ class CalendarDialog : public QDialog
          */
         CalendarDialog(QWidget *parent = 0);
         ~CalendarDialog();
-
+        /**
+         * @brief Permet de récupérer le QCalendarWidget, notamment pour fixer des propriétés suivant le contexte de la fenêtre.
+         * @return pointeur sur objet QCalendarWidget
+         */
         QCalendarWidget * getCalendar();
 
 

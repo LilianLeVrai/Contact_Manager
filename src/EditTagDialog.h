@@ -40,8 +40,8 @@ class EditTagDialog : public QDialog
         DatabaseCRUD * databaseCRUD;/**< gestionnaire de la BDD */
         Interaction * currentInteraction;/**< interaction concernée par les changements de tags */
 
-        CalendarDialog * calendarDialog;/**< boite de dialogue pour sélectionner la date du tag*/
-        Date * date;
+        CalendarDialog * calendarDialog;/**< boite de dialogue pour sélectionner la date du tag */
+        Date * date;/**< date du tag sélectionné */
 
     public:
         /**
@@ -61,22 +61,53 @@ class EditTagDialog : public QDialog
          * @brief Permet d'initialiser les connect.
          */
         void initConnect();
-
+        /**
+         * @brief Permet de remplir la QCombobox des tags.
+         */
         void fillTodo();
-
+        /**
+         * @brief Permet de vérifier les données remplis pour rendre accessible ou non le bouton 'ajouter/modifier'.
+         */
         void checkUpdateInputTodo();
 
     public slots:
+        /**
+         * @brief slot mettant à jour les informations du tag, cela quand l'index de la QCombobox change.
+         */
         void updateInputTodo();
+        /**
+         * @brief slot appelant la méthode 'checkUpdateInputTodo' quand le texte de la ligne d'édition du \@todo change.
+         */
         void updateEditTodoButton();
+        /**
+         * @brief slot qui supprime le tag sélectionné dans la BDD, et appelle la méthode fillTodo. Cela quand le bouton 'supprimer' est cliqué.
+         */
         void deleteTodo();
+        /**
+         * @brief slot qui ajoute ou modifie un tag dans la BDD. Cela quand le bouton 'ajouter/modifier' est cliqué.
+         */
         void addModifyTodo();
+        /**
+         * @brief slot qui ouvre la fenêtre de dialogue pour sélectionner une date.
+         */
         void openCalendarDialog();
+        /**
+         * @brief slot pour recevoir la date choisi pour le tag \@date.
+         * @param pointeur sur un objet QDate
+         */
         void closeCalendarDialog(QDate * date);
+        /**
+         * @brief slot supprimant la date du tag.
+         */
         void removeDate();
 
 
     signals:
+        /**
+         * @brief signal.
+         * @details
+         * Dans notre programme le signal est envoyé à la boite de dialogue de détails du contact pour lui demander d'actualiser ses informations sur les tags.
+         */
         void emitUpdateTag();
 
 

@@ -117,7 +117,10 @@ class DetailsContactDialog : public QDialog
          */
         void addModifyInteraction();
 
-
+        /**
+         * @brief slot mettant à jour le label où est affiché l'interaction pour voir les changement de tags.
+         * @details Dans notre programme déclenché par un signal de la boite de dialogue d'édition de tags.
+         */
         void updateTag();
 
     signals:
