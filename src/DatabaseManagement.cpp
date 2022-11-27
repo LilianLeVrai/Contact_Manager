@@ -71,6 +71,12 @@ DatabaseManagement::DatabaseManagement()
           else
             {qDebug() << "fichier initModification appliqué à la BDD";}
 
+          //active les clés étrangères (pour le 'ON DELETE CASCADE')
+          if(!query.exec("PRAGMA foreign_keys=ON;"))
+            {qDebug() << "Impossible d'activer les clés étrangères :\n" << query.lastError();}
+          else
+            {qDebug() << "clés étrangères activées";}
+
           qDebug() << "------------------------------------------------------------------";
         }
 }
