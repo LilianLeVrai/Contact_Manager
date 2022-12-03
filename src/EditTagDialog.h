@@ -39,6 +39,7 @@ class EditTagDialog : public QDialog
 
         DatabaseCRUD * databaseCRUD;/**< gestionnaire de la BDD */
         Interaction * currentInteraction;/**< interaction concernée par les changements de tags */
+        Contact * currentContact;/**< contact concernée par les changements de tags */
 
         CalendarDialog * calendarDialog;/**< boite de dialogue pour sélectionner la date du tag */
         Date * date;/**< date du tag sélectionné */
@@ -50,7 +51,7 @@ class EditTagDialog : public QDialog
          * @details
          * Défini la boîte de dialogue en mode bloquante, puis appel les méthodes 'initUI' et 'initConnect'.\n
          */
-        EditTagDialog(DatabaseCRUD *, Interaction *, QWidget *parent = 0);
+        EditTagDialog(DatabaseCRUD *, Interaction *, Contact *, QWidget *parent = 0);
 
 
         /**

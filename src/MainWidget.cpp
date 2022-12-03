@@ -262,7 +262,7 @@ void MainWidget::enableDeleteDetailsButton(){
 
 
 void MainWidget::deleteContact(){
-    this->databaseCRUD->deleteContactBDD(this->listContact.getContactByIndex(this->contactsTable->selectionModel()->currentIndex().row())->getId());
+    this->databaseCRUD->deleteContactBDD(this->listContact.getContactByIndex(this->contactsTable->selectionModel()->currentIndex().row()));
     this->databaseCRUD->searchByFilters(&this->listContact, this->searchLineEdit->text(),
                                        this->filtersCombobox->currentIndex(), this->filterFirstDate, this->filterSecondDate);
     this->fillTable();

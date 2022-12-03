@@ -59,9 +59,6 @@ void MainWindow::closeYesNoDialogDataTest(bool choice){
 }
 
 void MainWindow::createJSON(){
-    //databaseCRUD->getAllInteractions();
-    //databaseCRUD->getAllTodos();
-
     databaseCRUD->getAllContacts(&this->listContact);
 
     QJsonArray mainArray;
@@ -85,7 +82,7 @@ void MainWindow::createJSON(){
             QJsonObject objectInteraction;
             objectInteraction.insert("idInteraction", std::to_string(listInteraction.getInteractionByIndex(j)->getId()).c_str());
             objectInteraction.insert("content", listInteraction.getInteractionByIndex(j)->getContent().c_str());
-            objectInteraction.insert("dateCreation", listInteraction.getInteractionByIndex(j)->getDate()->toString().c_str());        
+            objectInteraction.insert("dateCreation", listInteraction.getInteractionByIndex(j)->getDate()->toString().c_str());
             ListTodo listTodo;
             databaseCRUD->getTodoByInteraction(&listTodo, listInteraction.getInteractionByIndex(j));
             for(int k=0;k<listTodo.getSize();k++){
@@ -98,7 +95,7 @@ void MainWindow::createJSON(){
             if(!arrayTodo.isEmpty())
                 objectInteraction.insert("Todos", arrayTodo);
             arrayInteraction.push_back(objectInteraction);
-        }     
+        }
         if(!arrayInteraction.isEmpty())
             objectContact.insert("Interactions", arrayInteraction);
         mainArray.push_back(objectContact);

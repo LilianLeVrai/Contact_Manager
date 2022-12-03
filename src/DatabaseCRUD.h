@@ -23,6 +23,7 @@ class DatabaseCRUD
 {
     private:
         QSqlDatabase * database;/**< base de données */
+        Date * date; /**<Date lors de l'appel de la fonction*/
 
     public:
         /**
@@ -42,11 +43,17 @@ class DatabaseCRUD
         void getAllContacts(ListContact *);
 
         /**
-         * @brief Permet de supprimer un contact de la BDD en fonction de son identifiant.
-         * @param entier
-         * @details La méthode fait une requête à la BDD.
+         * @brief Permet de remplir une liste de contact avec les contacts contenus dans la BDD respectant les filtres de recherches.
+         * @param pointeur vers un objet ListContact
+         * @param QString, dans notre programme c'est le contenu de la barre de recherche qui est récupéré
+         * @param entier, dans notre programme c'est l'index courant du sélecteur de filtres
+         * @param pointeur vers un objet Date, dans notre programme c'est la date de début des filtres
+         * @param pointeur vers un objet Date, dans notre programme c'est la date de fin des filtres
+         * @details
+         * Aucune liste n'est retourné, c'est la liste de contact passée en paramêtre qui est remplie. \n
+         * Pour filtrer, la méthode fait une requête à la BDD, et applique des méthodes de la classe date.
          */
-        void deleteContactBDD(const int &);
+        void searchByFilters(ListContact *, QString, int, Date *, Date *);
 
         /**
          * @brief Permet d'ajouter un contact à la BDD.
@@ -63,17 +70,62 @@ class DatabaseCRUD
         void modifyContactBDD(Contact *);
 
         /**
-         * @brief Permet de remplir une liste de contact avec les contacts contenus dans la BDD respectant les filtres de recherches.
-         * @param pointeur vers un objet ListContact
-         * @param QString, dans notre programme c'est le contenu de la barre de recherche qui est récupéré
-         * @param entier, dans notre programme c'est l'index courant du sélecteur de filtres
-         * @param pointeur vers un objet Date, dans notre programme c'est la date de début des filtres
-         * @param pointeur vers un objet Date, dans notre programme c'est la date de fin des filtres
-         * @details
-         * Aucune liste n'est retourné, c'est la liste de contact passée en paramêtre qui est remplie. \n
-         * Pour filtrer, la méthode fait une requête à la BDD, et applique des méthodes de la classe date.
+         * @brief Permet de supprimer un contact de la BDD en fonction de son identifiant.
+         * @param entier
+         * @details La méthode fait une requête à la BDD.
          */
-        void searchByFilters(ListContact *, QString, int, Date *, Date *);
+        void deleteContactBDD(Contact *);
+
+        /**
+         * @brief Permet d'ajouter une interaction à la BDD.
+         * @param pointeur vers un objet Interaction
+         * @param pointeur vers un objet Contact, contact auquel est associé l'interaction
+         * @details La méthode fait une requête à la BDD.
+         */
+        void addInteractionBDD(Interaction *, Contact *);
+
+        /**
+         * @brief Permet de modifier une interaction de la BDD.
+         * @param pointeur vers un objet Interaction
+         * @param pointeur vers un objet Contact, contact auquel est associé l'interaction
+         * @details La méthode fait une requête à la BDD.
+         */
+        void modifyInteractionBDD(Interaction *, Contact *);
+
+        /**
+         * @brief Permet de supprimer une interaction de la BDD en fonction de son identifiant.
+         * @param pointeur vers un objet Interaction
+         * @param pointeur vers un objet Contact, contact auquel est associé l'interaction
+         * @details La méthode fait une requête à la BDD.
+         */
+        void deleteInteractionBDD(Interaction *, Contact *);
+
+        /**
+         * @brief Permet d'ajouter un tag à la BDD.
+         * @param pointeur vers un objet Todo
+         * @param pointeur vers un objet Interaction, interaction auquelle est associé le tag
+         * @param pointeur vers un objet Contact, contact auquel est associé l'interaction
+         * @details La méthode fait une requête à la BDD.
+         */
+        void addTagBDD(Todo *, Interaction *, Contact *);
+
+        /**
+         * @brief Permet de modifier un tag de la BDD.
+         * @param pointeur vers un objet Todo
+         * @param pointeur vers un objet Interaction, interaction auquelle est associé le tag
+         * @param pointeur vers un objet Contact, contact auquel est associé l'interaction
+         * @details La méthode fait une requête à la BDD.
+         */
+        void modifyTagBDD(Todo *, Interaction *, Contact *);
+
+        /**
+         * @brief Permet de supprimer un tag de la BDD en fonction de son identifiant.
+         * @param pointeur vers un objet Todo
+         * @param pointeur vers un objet Interaction, interaction auquelle est associé le tag
+         * @param pointeur vers un objet Contact, contact auquel est associé l'interaction
+         * @details La méthode fait une requête à la BDD.
+         */
+        void deleteTagBDD(Todo *, Interaction *, Contact *);
 
         /**
          * @brief Permet de remplir une liste d'interaction avec toutes les interactions du contact passé en paramètre.
@@ -96,56 +148,10 @@ class DatabaseCRUD
         void getTodoByInteraction(ListTodo *, Interaction *);
 
 
-
-        /**
-         * @brief Permet de supprimer une interaction de la BDD en fonction de son identifiant.
-         * @param entier
-         * @details La méthode fait une requête à la BDD.
-         */
-        void deleteInteractionBDD(const int &);
-
-        /**
-         * @brief Permet d'ajouter une interaction à la BDD.
-         * @param pointeur vers un objet Interaction
-         * @param pointeur vers un objet Contact, contact auquel est associé l'interaction
-         * @details La méthode fait une requête à la BDD.
-         */
-        void addInteractionBDD(Interaction *, Contact *);
-
-        /**
-         * @brief Permet de modifier une interaction de la BDD.
-         * @param pointeur vers un objet Interaction
-         * @details La méthode fait une requête à la BDD.
-         */
-        void modifyInteractionBDD(Interaction *);
-
-        /**
-         * @brief Permet de supprimer un tag de la BDD en fonction de son identifiant.
-         * @param entier
-         * @details La méthode fait une requête à la BDD.
-         */
-        void deleteTagBDD(const int &);
-
-        /**
-         * @brief Permet d'ajouter un tag à la BDD.
-         * @param pointeur vers un objet Todo
-         * @param pointeur vers un objet Interaction, interaction auquelle est associé le tag
-         * @details La méthode fait une requête à la BDD.
-         */
-        void addTagBDD(Todo *, Interaction *);
-
-        /**
-         * @brief Permet de modifier un tag de la BDD.
-         * @param pointeur vers un objet Todo
-         * @details La méthode fait une requête à la BDD.
-         */
-        void modifyTagBDD(Todo *);
-
-
-
         //Fonction de test
         void getAllInteractions();
         void getAllTodos();
+        void getAllModifications();
 
 
 

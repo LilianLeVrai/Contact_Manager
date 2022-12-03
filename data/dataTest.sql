@@ -1,3 +1,4 @@
+delete from Modification;
 delete from Contact;
 delete from Interaction;
 delete from Todo;
@@ -9,7 +10,3 @@ insert into Contact(lastName, firstName, company, mail, phone, picture, dateCrea
 insert into Interaction(content, dateCreation, idContact) values ('Interaction 1 Lilian', '01/01/2020', 1);
 insert into Interaction(content, dateCreation, idContact) values ('Interaction 2 Lilian', '01/01/2020', 1);
 insert into Interaction(content, dateCreation, idContact) values ('Interaction 3 random', '01/01/2020', 3);
-
-insert into Todo(content, dateTodo, idInteraction) values ('Todo 1 I2 Lilian', '01/01/2020', 2);
-insert into Todo(content, dateTodo, idInteraction) values ('Todo 2 I2 Lilian', '01/01/2020', 2);
-insert into Todo(content, dateTodo, idInteraction) values ('Todo 1 I3 Random', '01/01/2020', 3);

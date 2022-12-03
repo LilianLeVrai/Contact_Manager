@@ -16,12 +16,13 @@
 //------------------------------------------------------------------------------------------------------------------------------
 //constructeurs/destructeurs
 //------------------------------------------------------------------------------------------------------------------------------
-EditTagDialog::EditTagDialog(DatabaseCRUD * databaseCRUD, Interaction * interaction, QWidget *parent)//si on veut modifier une interaction
+EditTagDialog::EditTagDialog(DatabaseCRUD * databaseCRUD, Interaction * interaction, Contact * contact, QWidget *parent)//si on veut modifier une interaction
     : QDialog(parent)
 {
     setModal(true);
     this->databaseCRUD=databaseCRUD;
     this->currentInteraction=interaction;
+    this->currentContact=contact;
     this->date=nullptr;
     setWindowTitle("Éditer les tags");
     initUI();
@@ -102,7 +103,7 @@ void EditTagDialog::initConnect(){
 
 void EditTagDialog::fillTodo(){
     this->todoCombobox->clear();
-    this->todoCombobox->addItem("Ajouter interaction");
+    this->todoCombobox->addItem("Ajouter todo");
     for(int i=0;i<this->currentInteraction->getListTodo()->getSize();i++)
         this->todoCombobox->addItem(this->currentInteraction->getListTodo()->getTodoByIndex(i)->getContent().c_str());
 }
@@ -175,7 +176,7 @@ void EditTagDialog::updateEditTodoButton(){
 }
 
 void EditTagDialog::deleteTodo(){
-    this->databaseCRUD->deleteTagBDD(this->currentInteraction->getListTodo()->getTodoByIndex(this->todoCombobox->currentIndex()-1)->getId());
+    this->databaseCRUD->deleteTagBDD(this->currentInteraction->getListTodo()->getTodoByIndex(this->todoCombobox->currentIndex()-1), this->currentInteraction, this->currentContact);
     this->databaseCRUD->getTodoByInteraction(this->currentInteraction->getListTodo(),this->currentInteraction);
     this->fillTodo();
     emit emitUpdateTag();
@@ -192,7 +193,7 @@ void EditTagDialog::addModifyTodo(){
                 newTodo=new Todo(this->contentEdit->text().toStdString(), nullptr);
             else
                 newTodo=new Todo(this->contentEdit->text().toStdString(), this->date);
-            this->databaseCRUD->addTagBDD(newTodo, this->currentInteraction);
+            this->databaseCRUD->addTagBDD(newTodo, this->currentInteraction, this->currentContact);
             }
         else
             {
@@ -202,7 +203,7 @@ void EditTagDialog::addModifyTodo(){
                 this->currentInteraction->getListTodo()->getTodoByIndex(this->todoCombobox->currentIndex()-1)->setDate(date);
 
             this->currentInteraction->getListTodo()->getTodoByIndex(this->todoCombobox->currentIndex()-1)->setContent(this->contentEdit->text().toStdString());
-            this->databaseCRUD->modifyTagBDD(this->currentInteraction->getListTodo()->getTodoByIndex(this->todoCombobox->currentIndex()-1));
+            this->databaseCRUD->modifyTagBDD(this->currentInteraction->getListTodo()->getTodoByIndex(this->todoCombobox->currentIndex()-1), this->currentInteraction, this->currentContact);
             }
         this->databaseCRUD->getTodoByInteraction(this->currentInteraction->getListTodo(),this->currentInteraction);
         this->fillTodo();

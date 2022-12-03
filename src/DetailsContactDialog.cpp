@@ -164,7 +164,7 @@ void DetailsContactDialog::editContact(Contact * contact, bool error){
 
 
 void DetailsContactDialog::openEditTagDialog(){
-    this->editTagDialog=new EditTagDialog(this->databaseCRUD, this->listInteraction.getInteractionByIndex(this->interactionCombobox->currentIndex()-1));
+    this->editTagDialog=new EditTagDialog(this->databaseCRUD, this->listInteraction.getInteractionByIndex(this->interactionCombobox->currentIndex()-1), this->contact);
     QObject::connect(this->editTagDialog, SIGNAL(emitUpdateTag()), this, SLOT(updateTag()));
     this->editTagDialog->show();
 }
@@ -202,7 +202,7 @@ void DetailsContactDialog::updateEditInteractionButton(){
 }
 
 void DetailsContactDialog::removeInteraction(){
-    this->databaseCRUD->deleteInteractionBDD(this->listInteraction.getInteractionByIndex(this->interactionCombobox->currentIndex()-1)->getId());
+    this->databaseCRUD->deleteInteractionBDD(this->listInteraction.getInteractionByIndex(this->interactionCombobox->currentIndex()-1), this->contact);
     this->databaseCRUD->getInteractionByContact(&this->listInteraction,this->contact);
     this->fillInteraction();
 }
@@ -219,7 +219,7 @@ void DetailsContactDialog::addModifyInteraction(){
         else
             {
             this->listInteraction.getInteractionByIndex(this->interactionCombobox->currentIndex()-1)->setContent(this->editInteraction->text().toStdString());
-            this->databaseCRUD->modifyInteractionBDD(this->listInteraction.getInteractionByIndex(this->interactionCombobox->currentIndex()-1));
+            this->databaseCRUD->modifyInteractionBDD(this->listInteraction.getInteractionByIndex(this->interactionCombobox->currentIndex()-1), this->contact);
             }
         this->databaseCRUD->getInteractionByContact(&this->listInteraction,this->contact);
         this->fillInteraction();

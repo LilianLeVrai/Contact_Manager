@@ -10,6 +10,11 @@
 #include <QSqlQuery>
 #include <QFile>
 #include <QString>
+#include <QJsonDocument>
+#include <QJsonParseError>
+#include <QJsonObject>
+#include <QJsonValue>
+#include <QJsonArray>
 
 #include <QSqlError>
 
@@ -104,3 +109,4 @@ void DatabaseManagement::initDataTest(){
 }
 
 QSqlDatabase * DatabaseManagement::getDatabase(){return &(this->database);}
+
