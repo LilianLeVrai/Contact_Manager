@@ -24,6 +24,7 @@ SOURCES += \
         ListInteraction.cpp \
         MainWidget.cpp \
         MainWindow.cpp \
+        ModificationsWindow.cpp \
         Todo.cpp \
         ListTodo.cpp \
         YesNoDialog.cpp \
@@ -49,6 +50,7 @@ HEADERS += \
     ListInteraction.h \
     MainWidget.h \
     MainWindow.h \
+    ModificationsWindow.h \
     Todo.h \
     ListTodo.h \
     YesNoDialog.h \

@@ -21,7 +21,6 @@ MainWindow::MainWindow(DatabaseManagement * databaseManagement, DatabaseCRUD * d
     {
         this->databaseManagement=databaseManagement;
         this->databaseCRUD=databaseCRUD;
-        //databaseCRUD->getAllContacts(&this->listContact);
 
         this->setWindowTitle("Gestionnaire de contact");
         this->resize(1600, 800);
@@ -29,9 +28,12 @@ MainWindow::MainWindow(DatabaseManagement * databaseManagement, DatabaseCRUD * d
         QMenu * optionsMenu=new QMenu("Options");
         this->optionExportJson=new QAction("Exporter les données en JSON");
         this->optionInitDataTest=new QAction("Initialiser les données de tests");
+        this->showAllModification=new QAction("Afficher les modifications");
         optionsMenu->addAction(this->optionExportJson);
         optionsMenu->addAction(this->optionInitDataTest);
         this->menuBar()->addMenu(optionsMenu);
+        this->menuBar()->addAction(this->showAllModification);
+
 
         this->mainWidget=new MainWidget(databaseCRUD);
         this->setCentralWidget(this->mainWidget);
@@ -39,7 +41,7 @@ MainWindow::MainWindow(DatabaseManagement * databaseManagement, DatabaseCRUD * d
         connect(this->optionExportJson, SIGNAL(triggered()), this, SLOT(createJSON()));
         connect(this->optionInitDataTest, SIGNAL(triggered()), this, SLOT(askInitDataTest()));
         connect(this, SIGNAL(emitUpdateContact()), this->mainWidget, SLOT(searchContacts()));
-
+        connect(this->showAllModification, SIGNAL(triggered()), this, SLOT(openModificationsWindow()));
     }
 
 MainWindow::~MainWindow(){}
@@ -115,8 +117,13 @@ void MainWindow::createJSON(){
     {
        qDebug() << "Erreur d'enregistrement";
     }
+
 }
 
+void MainWindow::openModificationsWindow(){
+    this->modificationWindow=new ModificationsWindow(this->databaseManagement->getDatabase());
+    this->modificationWindow->show();
+}
 
 
 

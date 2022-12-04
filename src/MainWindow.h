@@ -13,6 +13,7 @@
 #include "DatabaseCRUD.h"
 #include "DatabaseManagement.h"
 #include "YesNoDialog.h"
+#include "ModificationsWindow.h"
 
 /**
  * @class MainWindow
@@ -30,10 +31,12 @@ class MainWindow : public QMainWindow
 
         QAction * optionExportJson;/**< bouton de la toolbar permettant l'export des données en JSON */
         QAction * optionInitDataTest;/**< bouton de la toolbar permettant l'import dans la BDD de données tests */
+        QAction * showAllModification;/**< bouton de la toolbar permettant d'afficher la liste des modifications */
 
         MainWidget * mainWidget;/**< widget principal de la page */
 
         YesNoDialog * yesNoDialogDataTest;/** boite de dialogue pour confirmer la volonté d'importer les données test */
+        ModificationsWindow * modificationWindow;/** Fenêtre des modifications */
 
     public:
         /**
@@ -63,6 +66,10 @@ class MainWindow : public QMainWindow
          * @brief slot créant un fichier .JSON de la base de données.
          */
         void createJSON();
+        /**
+         * @brief slot ouvrant une fenêtre affichant les modifications.
+         */
+        void openModificationsWindow();
 
     signals:
         /**
