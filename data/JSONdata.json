@@ -1,100 +1,69 @@
 [
     {
-        "Interactions": [
-            {
-                "content": "Interaction 1 Lilian",
-                "dateCreation": "02/12/2022",
-                "idInteraction": "1"
-            },
-            {
-                "Todos": [
-                    {
-                        "content": "Todo 1 I2 Lilian",
-                        "dateCreation": "01/01/2020",
-                        "idTodo": "1"
-                    },
-                    {
-                        "content": "Todo 2 I2 Lilian",
-                        "dateCreation": "01/01/2020",
-                        "idTodo": "2"
-                    }
-                ],
-                "content": "Interaction 2 Lilian",
-                "dateCreation": "02/12/2022",
-                "idInteraction": "2"
-            }
-        ],
-        "company": "UB",
-        "dateCreation": "01/01/2021",
-        "firstName": "Lilian",
-        "idContact": "1",
-        "lastName": "Manzano",
-        "mail": "lilian@mail.com",
-        "phone": "06 12 34 56 78",
-        "picture": "../img/defaultImg.jpg"
+        "Contact": {
+            "Interactions": [
+                {
+                    "content": "Interaction 1 Lilian",
+                    "dateCreation": "05/12/2022",
+                    "idInteraction": "1"
+                },
+                {
+                    "content": "Interaction 2 Lilian",
+                    "dateCreation": "05/12/2022",
+                    "idInteraction": "2"
+                }
+            ],
+            "company": "UB",
+            "dateCreation": "01/01/2021",
+            "firstName": "Lilian",
+            "idContact": "1",
+            "lastName": "Manzano",
+            "mail": "lilian@mail.com",
+            "phone": "06 12 34 56 78",
+            "picture": "../img/defaultImg.jpg"
+        }
     },
     {
-        "company": "ufr sciences et techniques",
-        "dateCreation": "02/02/2022",
-        "firstName": "Brandon",
-        "idContact": "2",
-        "lastName": "Pere",
-        "mail": "brandon@ufr.fr",
-        "phone": "06 87 65 43 21",
-        "picture": "../img/defaultImg.jpg"
+        "Contact": {
+            "company": "ufr sciences et techniques",
+            "dateCreation": "02/02/2022",
+            "firstName": "Brandon",
+            "idContact": "2",
+            "lastName": "Pere",
+            "mail": "brandon@ufr.fr",
+            "phone": "06 87 65 43 21",
+            "picture": "../img/defaultImg.jpg"
+        }
     },
     {
-        "Interactions": [
-            {
-                "Todos": [
-                    {
-                        "content": "Todo 1 I3 Random",
-                        "dateCreation": "01/01/2020",
-                        "idTodo": "3"
-                    }
-                ],
-                "content": "Interaction 3 random",
-                "dateCreation": "02/12/2022",
-                "idInteraction": "3"
-            }
-        ],
-        "company": "metierRandom",
-        "dateCreation": "03/03/2023",
-        "firstName": "prenomRandom",
-        "idContact": "3",
-        "lastName": "nomRandom",
-        "mail": "contact@random.com",
-        "phone": "06 01 02 03 04",
-        "picture": "../img/defaultImg.jpg"
+        "Contact": {
+            "Interactions": [
+                {
+                    "content": "Interaction 3 random",
+                    "dateCreation": "05/12/2022",
+                    "idInteraction": "3"
+                }
+            ],
+            "company": "metierRandom",
+            "dateCreation": "03/03/2023",
+            "firstName": "prenomRandom",
+            "idContact": "3",
+            "lastName": "nomRandom",
+            "mail": "contact@random.com",
+            "phone": "06 01 02 03 04",
+            "picture": "../img/defaultImg.jpg"
+        }
     },
     {
-        "company": "ezez",
-        "dateCreation": "02/12/2022",
-        "firstName": "ezezez",
-        "idContact": "4",
-        "lastName": "aeazaezeza",
-        "mail": "zeez",
-        "phone": "zeezez",
-        "picture": "../img/defaultImg.jpg"
-    },
-    {
-        "company": "azza",
-        "dateCreation": "02/12/2022",
-        "firstName": "azzaaz",
-        "idContact": "5",
-        "lastName": "azaazaz",
-        "mail": "zaazaz",
-        "phone": "azazazza",
-        "picture": "../img/defaultImg.jpg"
-    },
-    {
-        "company": "eazaezaze",
-        "dateCreation": "02/12/2022",
-        "firstName": "zaeezaezaeza",
-        "idContact": "6",
-        "lastName": "ezaezaaez",
-        "mail": "eazeazaezaze",
-        "phone": "azeeazazezae",
-        "picture": "../img/defaultImg.jpg"
+        "Contact": {
+            "company": "aerzareza",
+            "dateCreation": "05/12/2022",
+            "firstName": "azerarez",
+            "idContact": "4",
+            "lastName": "azreaerzaezr",
+            "mail": "rezareza",
+            "phone": "rezarezreazreaz",
+            "picture": "../img/defaultImg.jpg"
+        }
     }
 ]

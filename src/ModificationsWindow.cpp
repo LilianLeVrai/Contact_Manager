@@ -11,16 +11,20 @@ ModificationsWindow::ModificationsWindow(QSqlDatabase * database, QWidget *paren
     this->database=database;
     this->initUI();
     this->fillModificationsTable();
+
+    QObject::connect(this->refreshButton, SIGNAL(clicked()), this, SLOT(refreshTable()));
 }
 
 ModificationsWindow::~ModificationsWindow(){}
 
 void ModificationsWindow::initUI(){
-    setModal(true);
+
     this->setWindowTitle("Liste des modifications");
     this->resize(1200, 600);
 
     QVBoxLayout * mainLayout = new QVBoxLayout(this);
+    this->refreshButton=new QPushButton("Rafraichir");
+    mainLayout->addWidget(this->refreshButton);
 
     this->modificationsTable = new QTableWidget(this);
     this->modificationsTable->setObjectName("modificationsTable");
@@ -37,6 +41,7 @@ void ModificationsWindow::initUI(){
 }
 
 void ModificationsWindow::fillModificationsTable(){
+    this->modificationsTable->setRowCount(0);
     int i=0;
     QSqlQuery query;
     if(!query.exec("select * from Modification;"))
@@ -52,4 +57,8 @@ void ModificationsWindow::fillModificationsTable(){
             i++;
             }
         }
+}
+
+void ModificationsWindow::refreshTable(){
+    this->fillModificationsTable();
 }

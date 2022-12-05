@@ -8,6 +8,7 @@
 
 
 #include <QSqlDatabase>
+#include <DatabaseCRUD.h>
 
 /**
  * @class DatabaseManagement
@@ -36,6 +37,11 @@ class DatabaseManagement
          * @details Les requêtes SQL (INSERT ...) sont contenus dans le fichier 'dataTest.sql' du dossier 'data'
          */
         void initDataTest();
+
+        /**
+         * @brief Permet de créer un fichier "data.json" de la base de données
+         */
+        void createJSONfile(DatabaseCRUD *);
 
 };
 

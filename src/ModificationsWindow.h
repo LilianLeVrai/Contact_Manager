@@ -15,6 +15,7 @@
 #include <QTableWidget>
 #include <QHeaderView>
 #include <QVBoxLayout>
+#include <QPushButton>
 
 /**
  * @class ModificationWindow
@@ -28,6 +29,7 @@ class ModificationsWindow : public QDialog
     private:
         QSqlDatabase * database;/**< base de données */
         QTableWidget * modificationsTable;/**< tableau affichant les modifications */
+        QPushButton * refreshButton;/**< bouton 'non' */
 
     public:
         /**
@@ -45,6 +47,14 @@ class ModificationsWindow : public QDialog
          * @brief Permet d'initialiser de remplir le tableau avec les modifications contenues dans la base de données.
          */
         void fillModificationsTable();
+
+    public slots:
+        /**
+         * @brief slot emmetant le signal 'refreshTable'.
+         * @details
+         * Ce signal est envoyé quand le bouton 'rafraichir' est clické.
+         */
+        void refreshTable();
 
 };
 

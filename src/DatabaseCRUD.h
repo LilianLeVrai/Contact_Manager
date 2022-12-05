@@ -147,7 +147,6 @@ class DatabaseCRUD
          */
         void getTodoByInteraction(ListTodo *, Interaction *);
 
-
         //Fonction de test
         void getAllInteractions();
         void getAllTodos();

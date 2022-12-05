@@ -61,63 +61,7 @@ void MainWindow::closeYesNoDialogDataTest(bool choice){
 }
 
 void MainWindow::createJSON(){
-    databaseCRUD->getAllContacts(&this->listContact);
-
-    QJsonArray mainArray;
-
-
-    for(int i=0;i<this->listContact.getSize();i++){
-        QJsonArray arrayInteraction;
-        QJsonObject objectContact;
-        objectContact.insert("idContact",std::to_string(this->listContact.getContactByIndex(i)->getId()).c_str());
-        objectContact.insert("lastName",this->listContact.getContactByIndex(i)->getLastName().c_str());
-        objectContact.insert("firstName",this->listContact.getContactByIndex(i)->getFirstName().c_str());
-        objectContact.insert("company",this->listContact.getContactByIndex(i)->getCompany().c_str());
-        objectContact.insert("mail",this->listContact.getContactByIndex(i)->getMail().c_str());
-        objectContact.insert("phone",this->listContact.getContactByIndex(i)->getPhone().c_str());
-        objectContact.insert("picture",this->listContact.getContactByIndex(i)->getPathPicture().c_str());
-        objectContact.insert("dateCreation",this->listContact.getContactByIndex(i)->getDateCreation()->toString().c_str());
-        ListInteraction listInteraction;
-        databaseCRUD->getInteractionByContact(&listInteraction, this->listContact.getContactByIndex(i));
-        for(int j=0;j<listInteraction.getSize();j++){
-            QJsonArray arrayTodo;
-            QJsonObject objectInteraction;
-            objectInteraction.insert("idInteraction", std::to_string(listInteraction.getInteractionByIndex(j)->getId()).c_str());
-            objectInteraction.insert("content", listInteraction.getInteractionByIndex(j)->getContent().c_str());
-            objectInteraction.insert("dateCreation", listInteraction.getInteractionByIndex(j)->getDate()->toString().c_str());
-            ListTodo listTodo;
-            databaseCRUD->getTodoByInteraction(&listTodo, listInteraction.getInteractionByIndex(j));
-            for(int k=0;k<listTodo.getSize();k++){
-                QJsonObject objectTodo;
-                objectTodo.insert("idTodo", std::to_string(listTodo.getTodoByIndex(k)->getId()).c_str());
-                objectTodo.insert("content", listTodo.getTodoByIndex(k)->getContent().c_str());
-                objectTodo.insert("dateCreation", listTodo.getTodoByIndex(k)->getDate()->toString().c_str());
-                arrayTodo.push_back(objectTodo);
-            }
-            if(!arrayTodo.isEmpty())
-                objectInteraction.insert("Todos", arrayTodo);
-            arrayInteraction.push_back(objectInteraction);
-        }
-        if(!arrayInteraction.isEmpty())
-            objectContact.insert("Interactions", arrayInteraction);
-        mainArray.push_back(objectContact);
-    }
-
-    QJsonDocument jsonDoc;
-    jsonDoc.setArray(mainArray);
-
-    QFile fichierJSON("../data/JSONdata.json");
-
-    if (fichierJSON.open(QFile::WriteOnly | QIODevice::Text))
-    {
-       fichierJSON.write(jsonDoc.toJson());
-       fichierJSON.close();
-    }
-    else
-    {
-       qDebug() << "Erreur d'enregistrement";
-    }
-
+    this->databaseManagement->createJSONfile(this->databaseCRUD);
 }
 
 void MainWindow::openModificationsWindow(){

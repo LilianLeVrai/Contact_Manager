@@ -27,7 +27,6 @@ class MainWindow : public QMainWindow
     private:
         DatabaseManagement * databaseManagement;/**< databaseManagement (utile pour les options de la barre d'outils) */
         DatabaseCRUD * databaseCRUD;/**< gestionnaire de la BDD */
-        ListContact listContact;/**< liste de contact affichée dans la tableau */
 
         QAction * optionExportJson;/**< bouton de la toolbar permettant l'export des données en JSON */
         QAction * optionInitDataTest;/**< bouton de la toolbar permettant l'import dans la BDD de données tests */
