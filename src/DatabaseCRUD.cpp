@@ -209,7 +209,7 @@ void DatabaseCRUD::deleteInteractionBDD(Interaction * interaction, Contact * con
         {qDebug() << "DeleteInteractionModif : Impossible d'effectuer la requète :\n" << query3.lastError();}
 
     QSqlQuery query;
-    if(!query.exec("delete from Interaction where idInteraction="+QString::number(contact->getId())+";"))
+    if(!query.exec("delete from Interaction where idInteraction="+QString::number(interaction->getId())+";"))
         {qDebug() << "Delete : Impossible d'effectuer la requète :\n" << query.lastError();}
 }
 
@@ -268,7 +268,7 @@ void DatabaseCRUD::deleteTagBDD(Todo * todo, Interaction * interaction, Contact 
         {qDebug() << "DeleteTodoNull : Impossible d'effectuer la requète :\n" << query2.lastError();}
 
     QString s2="insert into Modification(contentModified, dateModification, idTodo, idInteraction, idContact) values ";
-    s2=s2+"('Suppression TODO de <"+interaction->getContent().c_str()+"> du contact <"+contact->getFirstName().c_str()+" "+contact->getLastName().c_str()+"> : "+todo->getContent().c_str()+"', '"+this->date->toString().c_str()+"', null "+QString::number(interaction->getId())+", "+QString::number(contact->getId())+");";
+    s2=s2+"('Suppression TODO de <"+interaction->getContent().c_str()+"> du contact <"+contact->getFirstName().c_str()+" "+contact->getLastName().c_str()+"> : "+todo->getContent().c_str()+"', '"+this->date->toString().c_str()+"', null, "+QString::number(interaction->getId())+", "+QString::number(contact->getId())+");";
     QSqlQuery query3;
     if(!query3.exec(s2))
         {qDebug() << "DeleteTodoModif : Impossible d'effectuer la requète :\n" << query3.lastError();}
