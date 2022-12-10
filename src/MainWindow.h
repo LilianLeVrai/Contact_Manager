@@ -35,7 +35,7 @@ class MainWindow : public QMainWindow
         MainWidget * mainWidget;/**< widget principal de la page */
 
         YesNoDialog * yesNoDialogDataTest;/** boite de dialogue pour confirmer la volonté d'importer les données test */
-        ModificationsWindow * modificationWindow;/** Fenêtre des modifications */
+        ModificationsWindow * modificationsWindow;/** Fenêtre des modifications */
 
     public:
         /**
@@ -48,7 +48,7 @@ class MainWindow : public QMainWindow
          * Rempli l'attribut 'mainWidget' avec un nouveau MainWidget auquel est transmis les objets de 'CRUD', \n
          * puis initialise la toolbar.
          */
-        MainWindow(DatabaseManagement *, DatabaseCRUD *, QWidget *parent = 0);
+        MainWindow(DatabaseCRUD *, QWidget *parent = 0);
         ~MainWindow();
 
     public slots:

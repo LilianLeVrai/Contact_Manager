@@ -16,6 +16,8 @@
 #include <QHeaderView>
 #include <QVBoxLayout>
 #include <QPushButton>
+#include <Contact.h>
+#include <DatabaseCRUD.h>
 
 /**
  * @class ModificationWindow
@@ -27,15 +29,21 @@ class ModificationsWindow : public QDialog
     Q_OBJECT
 
     private:
-        QSqlDatabase * database;/**< base de données */
+        DatabaseCRUD * databaseCRUD;/**< gestionnaire de la BDD */
         QTableWidget * modificationsTable;/**< tableau affichant les modifications */
+        Contact * contact; /**< contact */
         QPushButton * refreshButton;/**< bouton 'non' */
 
     public:
         /**
          * @brief Constructeur.
          */
-        ModificationsWindow(QSqlDatabase *, QWidget *parent = 0);
+        ModificationsWindow(DatabaseCRUD *, QWidget *parent = 0);
+        /**
+         * @brief Constructeur avec un contact en parametre.
+         */
+        ModificationsWindow(Contact *, DatabaseCRUD *, QWidget *parent = 0);
+
         ~ModificationsWindow();
 
         /**
@@ -44,9 +52,14 @@ class ModificationsWindow : public QDialog
         void initUI();
 
         /**
-         * @brief Permet d'initialiser de remplir le tableau avec les modifications contenues dans la base de données.
+         * @brief Permet de remplir le tableau avec les modifications contenues dans la base de données.
          */
         void fillModificationsTable();
+
+        /**
+         * @brief Permet de remplir le tableau avec les modifications contenues dans la base de données du contact.
+         */
+        void fillModificationsTableByContact();
 
     public slots:
         /**
@@ -55,6 +68,13 @@ class ModificationsWindow : public QDialog
          * Ce signal est envoyé quand le bouton 'rafraichir' est clické.
          */
         void refreshTable();
+
+        /**
+         * @brief slot emmetant le signal 'refreshTableByContact'.
+         * @details
+         * Ce signal est envoyé quand le bouton 'rafraichir' est clické.
+         */
+        void refreshTableByContact();
 
 };
 

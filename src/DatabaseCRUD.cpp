@@ -320,7 +320,43 @@ void DatabaseCRUD::getTodoByInteraction(ListTodo * listTodo, Interaction * inter
         }
 }
 
+void DatabaseCRUD::fillModificationsTable(QTableWidget * modificationsTable){
+    modificationsTable->setRowCount(0);
+    int i=0;
+    QSqlQuery query;
+    if(!query.exec("select * from Modification;"))
+        {qDebug() << "Impossible d'effectuer la requète :\n" << query.lastError();}
+    else
+        {
+        while(query.next())
+            {
+            modificationsTable->insertRow(i);
+            modificationsTable->setItem(i,0,new QTableWidgetItem(query.value(1).toString().toStdString().c_str()));
+            modificationsTable->setItem(i,1,new QTableWidgetItem(query.value(2).toString().toStdString().c_str()));
+            modificationsTable->item(i,1)->setTextAlignment(Qt::AlignCenter);
+            i++;
+            }
+        }
+}
 
+void DatabaseCRUD::fillModificationsTableByContact(QTableWidget * modificationsTable, Contact * contact){
+    modificationsTable->setRowCount(0);
+    int i=0;
+    QSqlQuery query;
+    if(!query.exec("select * from Modification where idContact="+QString::number(contact->getId())+";"))
+        {qDebug() << "Impossible d'effectuer la requète :\n" << query.lastError();}
+    else
+        {
+        while(query.next())
+            {
+            modificationsTable->insertRow(i);
+            modificationsTable->setItem(i,0,new QTableWidgetItem(query.value(1).toString().toStdString().c_str()));
+            modificationsTable->setItem(i,1,new QTableWidgetItem(query.value(2).toString().toStdString().c_str()));
+            modificationsTable->item(i,1)->setTextAlignment(Qt::AlignCenter);
+            i++;
+            }
+        }
+}
 
 
 

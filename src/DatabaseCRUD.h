@@ -11,6 +11,7 @@
 
 #include <QSqlDatabase>
 #include <QString>
+#include <QTableWidget>
 
 /**
  * @class DatabaseCRUD
@@ -146,6 +147,25 @@ class DatabaseCRUD
          * La méthode fait une requête à la BDD.
          */
         void getTodoByInteraction(ListTodo *, Interaction *);
+
+        /**
+         * @brief Permet de remplir la table avec toutes les interactions de la base de données.
+         * @param pointeur vers un objet QTableWidget
+         * @details
+         * Aucune liste n'est retourné, c'est la table passée en paramêtre qui est remplie. \n
+         * La méthode fait une requête à la BDD.
+         */
+        void fillModificationsTable(QTableWidget *);
+
+        /**
+         * @brief Permet de remplir la table avec toutes les interactions de la base de données concernant le contact.
+         * @param pointeur vers un objet QTableWidget
+         * @param pointeyr vers un objet Contact
+         * @details
+         * Aucune liste n'est retourné, c'est la table passée en paramêtre qui est remplie. \n
+         * La méthode fait une requête à la BDD.
+         */
+        void fillModificationsTableByContact(QTableWidget *, Contact *);
 
         //Fonction de test
         void getAllInteractions();

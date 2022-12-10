@@ -5,14 +5,26 @@
 
 #include "ModificationsWindow.h"
 
-ModificationsWindow::ModificationsWindow(QSqlDatabase * database, QWidget *parent)
+ModificationsWindow::ModificationsWindow(DatabaseCRUD * databaseCRUD, QWidget *parent)
     : QDialog(parent)
 {
-    this->database=database;
+    this->databaseCRUD=databaseCRUD;
     this->initUI();
     this->fillModificationsTable();
 
     QObject::connect(this->refreshButton, SIGNAL(clicked()), this, SLOT(refreshTable()));
+}
+
+
+ModificationsWindow::ModificationsWindow(Contact * contact, DatabaseCRUD * databaseCRUD, QWidget *parent)
+    : QDialog(parent)
+{
+    this->databaseCRUD=databaseCRUD;
+    this->initUI();
+    this->contact=contact;
+    this->fillModificationsTableByContact();
+
+    QObject::connect(this->refreshButton, SIGNAL(clicked()), this, SLOT(refreshTableByContact()));
 }
 
 ModificationsWindow::~ModificationsWindow(){}
@@ -41,24 +53,17 @@ void ModificationsWindow::initUI(){
 }
 
 void ModificationsWindow::fillModificationsTable(){
-    this->modificationsTable->setRowCount(0);
-    int i=0;
-    QSqlQuery query;
-    if(!query.exec("select * from Modification;"))
-        {qDebug() << "Impossible d'effectuer la requète :\n" << query.lastError();}
-    else
-        {
-        while(query.next())
-            {
-            this->modificationsTable->insertRow(i);
-            this->modificationsTable->setItem(i,0,new QTableWidgetItem(query.value(1).toString().toStdString().c_str()));
-            this->modificationsTable->setItem(i,1,new QTableWidgetItem(query.value(2).toString().toStdString().c_str()));
-            this->modificationsTable->item(i,1)->setTextAlignment(Qt::AlignCenter);
-            i++;
-            }
-        }
+    this->databaseCRUD->fillModificationsTable(this->modificationsTable);
+}
+
+void ModificationsWindow::fillModificationsTableByContact(){
+    this->databaseCRUD->fillModificationsTableByContact(this->modificationsTable, this->contact);
 }
 
 void ModificationsWindow::refreshTable(){
     this->fillModificationsTable();
+}
+
+void ModificationsWindow::refreshTableByContact(){
+    this->fillModificationsTableByContact();
 }

@@ -16,10 +16,9 @@
 #include "MainWindow.h"
 
 
-MainWindow::MainWindow(DatabaseManagement * databaseManagement, DatabaseCRUD * databaseCRUD, QWidget *parent)
+MainWindow::MainWindow(DatabaseCRUD * databaseCRUD, QWidget *parent)
     : QMainWindow(parent)
     {
-        this->databaseManagement=databaseManagement;
         this->databaseCRUD=databaseCRUD;
 
         this->setWindowTitle("Gestionnaire de contact");
@@ -65,8 +64,8 @@ void MainWindow::createJSON(){
 }
 
 void MainWindow::openModificationsWindow(){
-    this->modificationWindow=new ModificationsWindow(this->databaseManagement->getDatabase());
-    this->modificationWindow->show();
+    this->modificationsWindow=new ModificationsWindow(this->databaseCRUD);
+    this->modificationsWindow->show();
 }
 
 

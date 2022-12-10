@@ -13,12 +13,13 @@
 #include <QLabel>
 #include <QComboBox>
 #include <QLineEdit>
-
+#include <QSqlDatabase>
 #include "DatabaseCRUD.h"
 #include "MessageLabel.h"
 #include "EditContactDialog.h"
 #include "EditTagDialog.h"
 #include "Contact.h"
+#include "ModificationsWindow.h"
 
 /**
  * @class DetailsContactDialog
@@ -30,6 +31,7 @@ class DetailsContactDialog : public QDialog
     Q_OBJECT
 
     private:
+
         DatabaseCRUD * databaseCRUD;/**< gestionnaire de la BDD */
         Contact * contact;/**< contact concerné par la fenêtre */
         ListInteraction listInteraction;/** liste d'interaction du contact */
@@ -45,10 +47,11 @@ class DetailsContactDialog : public QDialog
         QLineEdit * editInteraction;/**< permet d'afficher et modifier le contenu de l'interaction */
         QPushButton * editInteractionButton;/**< bouton pour ajouter ou modifier interaction */
         QLabel * tagsLabel;/**< permet d'afficher les tags de l'interaction sélectionné  */
-
+        QPushButton * printModificationsButton;/**< permet d'afficher les modifications du contact  */
 
         EditContactDialog * modifyContactDialog;/**< boite de dialogue pour modifier le contact */
         EditTagDialog * editTagDialog;/**< boite de dialogue pour éditer les tags */
+        ModificationsWindow * modificationsWindow;/** Fenêtre des modifications */
 
 
     public:
@@ -122,6 +125,11 @@ class DetailsContactDialog : public QDialog
          * @details Dans notre programme déclenché par un signal de la boite de dialogue d'édition de tags.
          */
         void updateTag();
+
+        /**
+         * @brief slot permettant d'ouvrir une fenêtre contenant les modifications effectuées au contact.
+         */
+        void printModifications();
 
     signals:
         /**

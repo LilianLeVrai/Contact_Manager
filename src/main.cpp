@@ -40,7 +40,7 @@ int main(int argc, char *argv[])
     DatabaseCRUD databaseCRUD(database.getDatabase());
 
     //declaration du widget principal
-    MainWindow mainWindow(&database, &databaseCRUD);
+    MainWindow mainWindow(&databaseCRUD);
     mainWindow.show();
 
     //déclaration du styleSheet

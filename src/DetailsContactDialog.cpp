@@ -51,6 +51,8 @@ void DetailsContactDialog::initUI(){
     this->picture->setFixedHeight(150);
     //bouton modifier le contact
     this->modifyContactButton=new QPushButton("Modifier le contact");
+    //bouton pour afficher les modifications du contact
+    this->printModificationsButton=new QPushButton("Afficher les modifications");
     //info pour contact
     this->infoContactLabel=new QLabel();
 
@@ -83,6 +85,7 @@ void DetailsContactDialog::initUI(){
     infoLayout->addWidget(this->errorMessage);
     infoLayout->addLayout(pictureLayout);
     infoLayout->addWidget(this->modifyContactButton);
+    infoLayout->addWidget(this->printModificationsButton);
 
 
     inputInteraction1Layout->addWidget(this->interactionCombobox);
@@ -98,7 +101,7 @@ void DetailsContactDialog::initUI(){
     mainLayout->addWidget(tagsLabel);
 
     //propriétés d'alignement sur les layout et widget
-    inputInteraction1Layout->setContentsMargins(0,40,0,0);
+    inputInteraction1Layout->setContentsMargins(0,10,0,0);
     mainLayout->setAlignment(Qt::AlignTop);
     infoLayout->setAlignment(Qt::AlignTop);
 }
@@ -114,6 +117,7 @@ void DetailsContactDialog::initConnect(){
     QObject::connect(this->editInteraction, SIGNAL(textChanged(QString)), this, SLOT(updateEditInteractionButton()));
     QObject::connect(this->removeInteractionButton, SIGNAL(clicked()), this, SLOT(removeInteraction()));
     QObject::connect(this->editInteractionButton, SIGNAL(clicked()), this, SLOT(addModifyInteraction()));
+    QObject::connect(this->printModificationsButton, SIGNAL(clicked()), this, SLOT(printModifications()));
 }
 
 
@@ -231,5 +235,8 @@ void DetailsContactDialog::updateTag(){
     this->tagsLabel->setText(this->listInteraction.getInteractionByIndex(((this->interactionCombobox->currentIndex())-1))->toString().c_str());
 }
 
-
+void DetailsContactDialog::printModifications(){
+    this->modificationsWindow=new ModificationsWindow(this->contact, this->databaseCRUD);
+    this->modificationsWindow->show();
+}
 
