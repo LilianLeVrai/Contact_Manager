@@ -84,15 +84,15 @@ void MainWidget::initUI(){
     this->searchButton->setObjectName("searchButton");
 
     //selecteur de date
-    QLabel * dateSelectorLabel1=new QLabel("Contacts crées entre le ");
+    QLabel * dateSelectorLabel1=new QLabel("Contacts crées entre le ",this);
     this->dateSelectorButton1 = new QPushButton(this);
     this->dateSelectorButton1->setMinimumWidth(100);
-    QLabel * dateSelectorLabel2=new QLabel("et le ");
+    QLabel * dateSelectorLabel2=new QLabel("et le ",this);
     this->dateSelectorButton2 = new QPushButton(this);
     this->dateSelectorButton2->setMinimumWidth(100);
 
     //bouton pour réinitialiser les filtres
-    this->resetFiltersButton=new QPushButton("Réinitialiser les filtres");
+    this->resetFiltersButton=new QPushButton("Réinitialiser les filtres",this);
 
     //label pour afficher les messages
     this->messageLabel=new MessageLabel;
@@ -105,10 +105,10 @@ void MainWidget::initUI(){
     this->sortCombobox->addItem("Trier par ordre Z->A");
 
     //Ajouter, details, supprimer contact
-    this->addContactButton = new QPushButton("Ajouter contact");
-    this->detailsContactButton = new QPushButton("Afficher details");
+    this->addContactButton = new QPushButton("Ajouter contact",this);
+    this->detailsContactButton = new QPushButton("Afficher details",this);
     detailsContactButton->setEnabled(false);
-    this->deleteContactButton = new QPushButton("Supprimer contact");
+    this->deleteContactButton = new QPushButton("Supprimer contact",this);
     deleteContactButton->setEnabled(false);
 
     //tableau des contacts
@@ -124,14 +124,14 @@ void MainWidget::initUI(){
     this->contactsTable->setSelectionBehavior(QAbstractItemView::SelectRows);
     this->contactsTable->setSelectionMode(QAbstractItemView::SingleSelection);
     //label avec nombre de contacts
-    this->nbContactsLabel=new QLabel;
+    this->nbContactsLabel=new QLabel(this);
 
     //Layout verticaux puis horizontaux
     QVBoxLayout * mainLayout = new QVBoxLayout(this);
 
     QHBoxLayout * searchBarLayout = new QHBoxLayout();
     QHBoxLayout * dateAndResetLayout = new QHBoxLayout();
-    QHBoxLayout * dateSelectorLayout = new QHBoxLayout();   
+    QHBoxLayout * dateSelectorLayout = new QHBoxLayout();
     QHBoxLayout * resetFiltersButtonLayout = new QHBoxLayout();
     QHBoxLayout * leftButtonsShowContactLayout = new QHBoxLayout();
     QVBoxLayout * leftButtonsLayout = new QVBoxLayout();

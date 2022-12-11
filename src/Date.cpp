@@ -110,7 +110,12 @@ void Date::setYear(const unsigned int val){
 //fin accesseurs basiques
 
 
-
+/**
+ * @brief Permet d'ajouter un zéro dans la chaîne de caractère pour le bon affichage de la date.
+ * @param entier
+ * @return string
+ * @details Par exemple pour février on lui transmet 2, et elle renvoie 02.
+ */
 std::string addZero(int i){
     std::string s;
     if(i<10){s="0"+std::to_string(i);}

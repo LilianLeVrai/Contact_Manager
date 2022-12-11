@@ -42,7 +42,7 @@ void ModificationsWindow::initUI(){
     this->resize(1200, 600);
 
     QVBoxLayout * mainLayout = new QVBoxLayout(this);
-    this->refreshButton=new QPushButton("Rafraichir");
+    this->refreshButton=new QPushButton("Rafraichir",this);
     mainLayout->addWidget(this->refreshButton);
 
     this->modificationsTable = new QTableWidget(this);

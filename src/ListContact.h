@@ -84,8 +84,6 @@ class ListContact
         /**
          * @brief Permet d'obtenir une chaine de caractères avec les informations de l'objet
          * @return std::string sous la forme 'contact.toString\\n\\ncontact.toString\\n\\ncontact.toString'
-         *
-         * @warning sujet à changement
          */
         std::string toString() const;
 };

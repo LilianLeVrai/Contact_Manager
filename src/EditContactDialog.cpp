@@ -74,22 +74,22 @@ void EditContactDialog::initUI(){
 
     this->errorMessage=new MessageLabel("", MessageLabel::NoStyle, true);
 
-    QLabel * lastNameLabel=new QLabel("Nom :");
-    this->lastNameEdit=new QLineEdit();
+    QLabel * lastNameLabel=new QLabel("Nom :",this);
+    this->lastNameEdit=new QLineEdit(this);
     QLabel * firstNameLabel=new QLabel("Prénom :");
-    this->firstNameEdit=new QLineEdit();
-    QLabel * companyLabel=new QLabel("Entreprise :");
-    this->companyEdit=new QLineEdit();
-    QLabel * mailLabel=new QLabel("Mail :");
-    this->mailEdit=new QLineEdit();
-    QLabel * phoneLabel=new QLabel("Téléphone :");
-    this->phoneEdit=new QLineEdit();
-    this->pictureButton=new QPushButton("Photo");
-    this->pictureEdit=new QLineEdit();
+    this->firstNameEdit=new QLineEdit(this);
+    QLabel * companyLabel=new QLabel("Entreprise :",this);
+    this->companyEdit=new QLineEdit(this);
+    QLabel * mailLabel=new QLabel("Mail :",this);
+    this->mailEdit=new QLineEdit(this);
+    QLabel * phoneLabel=new QLabel("Téléphone :",this);
+    this->phoneEdit=new QLineEdit(this);
+    this->pictureButton=new QPushButton("Photo",this);
+    this->pictureEdit=new QLineEdit(this);
     this->pictureEdit->setPlaceholderText(".jpg ou .jpeg ou .png");
 
-    this->cancelButton=new QPushButton("Annuler");
-    this->validateButton=new QPushButton();
+    this->cancelButton=new QPushButton("Annuler",this);
+    this->validateButton=new QPushButton(this);
 
     QVBoxLayout * mainLayout=new QVBoxLayout(this);
     QVBoxLayout * labelLayout=new QVBoxLayout;

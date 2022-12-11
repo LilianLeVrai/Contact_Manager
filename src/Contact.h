@@ -165,8 +165,6 @@ class Contact
         /**
          * @brief Permet d'obtenir une chaine de caractères avec les informations de l'objet
          * @return std::string sous la forme 'nom|prenom|entreprise|mail|telephone|urlPhoto|dateCreation\\nlistInteraction.toString()'
-         *
-         * @warning sujet à changement
          */
         std::string toString() const;
 

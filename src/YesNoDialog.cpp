@@ -36,8 +36,8 @@ void YesNoDialog::initUI(QString title, QString question){
     QLabel * questionLabel=new QLabel(question);
 
     //boutons
-    this->noButton=new QPushButton("Non");
-    this->yesButton=new QPushButton("Oui");
+    this->noButton=new QPushButton("Non",this);
+    this->yesButton=new QPushButton("Oui",this);
 
     //layouts
     QVBoxLayout * mainLayout=new QVBoxLayout(this);

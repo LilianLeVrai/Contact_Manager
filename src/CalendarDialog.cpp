@@ -39,8 +39,8 @@ void CalendarDialog::initUI(){
     this->calendar=new QCalendarWidget(this);
 
     //boutons
-    this->cancelButton=new QPushButton("Annuler");
-    this->validateButton=new QPushButton("Valider");
+    this->cancelButton=new QPushButton("Annuler",this);
+    this->validateButton=new QPushButton("Valider",this);
 
     //layouts
     QVBoxLayout * mainLayout=new QVBoxLayout(this);

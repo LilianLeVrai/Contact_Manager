@@ -24,17 +24,17 @@ MainWindow::MainWindow(DatabaseCRUD * databaseCRUD, QWidget *parent)
         this->setWindowTitle("Gestionnaire de contact");
         this->resize(1600, 800);
 
-        QMenu * optionsMenu=new QMenu("Options");
-        this->optionExportJson=new QAction("Exporter les données en JSON");
-        this->optionInitDataTest=new QAction("Initialiser les données de tests");
-        this->showAllModification=new QAction("Afficher les modifications");
+        QMenu * optionsMenu=new QMenu("Options",this);
+        this->optionExportJson=new QAction("Exporter les données en JSON",this);
+        this->optionInitDataTest=new QAction("Initialiser les données de tests",this);
+        this->showAllModification=new QAction("Afficher les modifications",this);
         optionsMenu->addAction(this->optionExportJson);
         optionsMenu->addAction(this->optionInitDataTest);
         this->menuBar()->addMenu(optionsMenu);
         this->menuBar()->addAction(this->showAllModification);
 
 
-        this->mainWidget=new MainWidget(databaseCRUD);
+        this->mainWidget=new MainWidget(databaseCRUD,this);
         this->setCentralWidget(this->mainWidget);
 
         connect(this->optionExportJson, SIGNAL(triggered()), this, SLOT(createJSON()));

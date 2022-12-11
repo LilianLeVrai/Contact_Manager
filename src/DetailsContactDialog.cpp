@@ -63,29 +63,29 @@ void DetailsContactDialog::initUI(){
     this->errorMessage=new MessageLabel("",MessageLabel::NoStyle, false);
 
     //label pour photo
-    this->picture=new QLabel();
+    this->picture=new QLabel(this);
     this->picture->setFixedWidth(150);
     this->picture->setFixedHeight(150);
     //bouton modifier le contact
-    this->modifyContactButton=new QPushButton("Modifier le contact");
+    this->modifyContactButton=new QPushButton("Modifier le contact",this);
     //bouton pour afficher les modifications du contact
-    this->printModificationsButton=new QPushButton("Afficher les modifications");
+    this->printModificationsButton=new QPushButton("Afficher les modifications",this);
     //info pour contact
-    this->infoContactLabel=new QLabel();
+    this->infoContactLabel=new QLabel(this);
 
     //inputs pour interaction
-    this->interactionCombobox=new QComboBox;
-    this->removeInteractionButton=new QPushButton("Supprimer l'interaction");
+    this->interactionCombobox=new QComboBox(this);
+    this->removeInteractionButton=new QPushButton("Supprimer l'interaction",this);
     this->removeInteractionButton->setEnabled(false);
-    this->editTagButton=new QPushButton("Éditer les tags");
+    this->editTagButton=new QPushButton("Éditer les tags",this);
     this->editTagButton->setEnabled(false);
-    this->editInteraction=new QLineEdit;
+    this->editInteraction=new QLineEdit(this);
     this->editInteraction->setPlaceholderText("contenu interaction (max 150 caractères)");
     this->editInteraction->setMaxLength(150);
-    this->editInteractionButton=new QPushButton("Ajouter interaction");
+    this->editInteractionButton=new QPushButton("Ajouter interaction",this);
     this->editInteractionButton->setEnabled(false);
 
-    this->tagsLabel=new QLabel;
+    this->tagsLabel=new QLabel(this);
     this->tagsLabel->setMinimumHeight(100);
     this->tagsLabel->setAlignment(Qt::AlignTop);
 

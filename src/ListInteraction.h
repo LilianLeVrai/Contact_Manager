@@ -68,8 +68,6 @@ class ListInteraction
         /**
          * @brief Permet d'obtenir une chaine de caractères avec les informations de l'objet
          * @return std::string sous la forme 'interaction.toString\\n\\ninteraction.toString\\n\\ninteraction.toString'
-         *
-         * @warning sujet à changement
          */
         std::string toString() const;
 };

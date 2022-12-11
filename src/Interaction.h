@@ -103,8 +103,6 @@ class Interaction
         /**
          * @brief Permet d'obtenir une chaine de caractères avec les informations de l'objet
          * @return std::string sous la forme 'content\\nlistTodo.toSring()'
-         *
-         * @warning sujet à changement
          */
         std::string toString() const;
 };

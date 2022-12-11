@@ -5,14 +5,7 @@
 
 
 #include <iostream>
-#include "Date.h"
-#include "Todo.h"
-#include "ListTodo.h"
 #include <QString>
-#include "Interaction.h"
-#include "ListInteraction.h"
-#include "Contact.h"
-#include "ListContact.h"
 #include <QApplication>
 #include "MainWindow.h"
 #include "DatabaseManagement.h"
@@ -47,8 +40,8 @@ int main(int argc, char *argv[])
     QFile styleFile("../style/style.qss");
     styleFile.open(QIODevice::ReadOnly);
     QString styleSheet = styleFile.readAll();
-    app.setStyleSheet(styleSheet.arg("#F8F7FF").arg("#9381FF").arg("#B8B8FF"));//description des couleurs dans le fichier de style
-
+    app.setStyleSheet(styleSheet.arg("#F8F7FF"));//description des couleurs dans le fichier de style
+    styleFile.close();
 
 
     return app.exec();

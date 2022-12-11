@@ -83,3 +83,22 @@ Todo* ListTodo::getTodoByIndex(const int index) const{
         it++;
     return *it;
 }
+
+
+
+/**
+ * @brief fonction comparant 2 todo.
+ * @param pointeur sur un objet Todo
+ * @param pointeur sur un objet Todo
+ * @return renvoie true si le premier tag ne possède pas de tag date et le second si, ou si le premier tag date est inférieur au second,\nrenvoie false dans d'autre cas.
+ * @details comparateur utiliser dans la méthode 'sortTags()' de la classe ListTodo.
+ */
+bool compare(const Todo* element1, const Todo* element2){
+    if(element1->getDate()==nullptr && element2->getDate()!=nullptr)
+        {return true;}
+    if(element1->getDate()!=nullptr && element2->getDate()!=nullptr)
+        if(element1->getDate()->isLessThan(element2->getDate()))
+            {return true;}
+    return false;
+    }
+void ListTodo::sortTags(){this->listTodo.sort(compare);}

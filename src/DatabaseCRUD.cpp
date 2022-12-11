@@ -257,7 +257,7 @@ void DatabaseCRUD::addTagBDD(Todo * todo, Interaction * interaction, Contact * c
         {
         s="insert into Todo(content, idInteraction) values ";
         s=s+"('"+todo->getContent().c_str()+"', "
-                +QString::number(interaction->getId())+");";qDebug()<<s;
+                +QString::number(interaction->getId())+");";
         }
     QSqlQuery query;
     if(!query.exec(s))
@@ -355,6 +355,7 @@ void DatabaseCRUD::getTodoByInteraction(ListTodo * listTodo, Interaction * inter
                                     new Date(query.value(2).toString().toStdString())));
 
             }
+        listTodo->sortTags();
         }
 }
 

@@ -10,7 +10,6 @@
 #include <QGroupBox>
 #include <QVBoxLayout>
 #include <QHBoxLayout>
-#include <QDebug>
 
 
 //------------------------------------------------------------------------------------------------------------------------------
@@ -52,20 +51,20 @@ void EditTagDialog::initUI(){
     this->todoCombobox=new QComboBox(this);
     this->todoCombobox->addItem("Ajouter tag");
     //suppression todo
-    this->deleteTodoButton=new QPushButton("supprimer le tag");
+    this->deleteTodoButton=new QPushButton("supprimer le tag",this);
     this->deleteTodoButton->setEnabled(false);
 
     //contenu de l'interaction
-    this->contentEdit=new QLineEdit;
+    this->contentEdit=new QLineEdit(this);
     this->contentEdit->setPlaceholderText("@todo (max 150 caractères)");
-    this->dateButton=new QPushButton("@date");
-    this->removeDateButton=new QPushButton("Effacer la date");
+    this->dateButton=new QPushButton("@date",this);
+    this->removeDateButton=new QPushButton("Effacer la date",this);
     this->removeDateButton->setEnabled(false);
 
-    this->editTodoButton=new QPushButton("Ajouter tag");
+    this->editTodoButton=new QPushButton("Ajouter tag",this);
     this->editTodoButton->setEnabled(false);
 
-    this->listTagLabel=new QLabel;
+    this->listTagLabel=new QLabel(this);
     this->listTagLabel->setMinimumHeight(100);
 
 
@@ -91,7 +90,7 @@ void EditTagDialog::initUI(){
     topLayout->addWidget(this->editTodoButton);
 
     labelLayout->addWidget(this->listTagLabel);
-    QGroupBox * group=new QGroupBox;
+    QGroupBox * group=new QGroupBox(this);
     group->setLayout(labelLayout);
 
     mainLayout->addLayout(topLayout);
@@ -123,23 +122,23 @@ void EditTagDialog::fillTodo(){
 
 void EditTagDialog::checkUpdateInputTodo(){
     if(this->contentEdit->text().simplified().isEmpty())
-        {this->editTodoButton->setEnabled(false);qDebug()<<"1";}
+        {this->editTodoButton->setEnabled(false);}
     else
-        {qDebug()<<"2";
+        {
         if(this->todoCombobox->currentIndex()!=0 && this->contentEdit->text()==this->currentInteraction->getListTodo()->getTodoByIndex(this->todoCombobox->currentIndex()-1)->getContent().c_str())
-            {qDebug()<<"3";
+            {
             if(this->date==nullptr && this->currentInteraction->getListTodo()->getTodoByIndex(this->todoCombobox->currentIndex()-1)->getDate()==nullptr)
-                    {this->editTodoButton->setEnabled(false);qDebug()<<"4";}
+                    {this->editTodoButton->setEnabled(false);}
             else
-                {qDebug()<<"5";
+                {
                 if(this->date!=nullptr && this->currentInteraction->getListTodo()->getTodoByIndex(this->todoCombobox->currentIndex()-1)->getDate()!=nullptr && this->date->toString().compare(this->currentInteraction->getListTodo()->getTodoByIndex(this->todoCombobox->currentIndex()-1)->getDate()->toString())==0 )
-                   {this->editTodoButton->setEnabled(false);qDebug()<<"6";}
+                   {this->editTodoButton->setEnabled(false);}
                 else
-                    {this->editTodoButton->setEnabled(true);qDebug()<<"7";}
+                    {this->editTodoButton->setEnabled(true);}
                 }
             }
         else
-            {this->editTodoButton->setEnabled(true);qDebug()<<"8";}
+            {this->editTodoButton->setEnabled(true);}
         }
 
 }

@@ -68,10 +68,13 @@ class ListTodo
         /**
          * @brief Permet d'obtenir une chaine de caractères avec les informations de l'objet
          * @return std::string sous la forme 'todo.toString\\ntodo.toString\\ntodo.toString'
-         *
-         * @warning sujet à changement
          */
         std::string toString() const;
+
+        /**
+         * @brief Permet de trier la liste de tags, d'abord ceux sans \@date, puis par date.
+         */
+        void sortTags();
 };
 
 #endif // LISTTODO_H

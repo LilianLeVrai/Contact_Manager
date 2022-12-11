@@ -40,10 +40,8 @@ class MainWindow : public QMainWindow
     public:
         /**
          * @brief Constructeur.
-         * @param pointeur vers un objet de type ContactCRUD
-         * @param pointeur vers un objet de type InteractionCRUD
-         * @param pointeur vers un objet de type TodoCRUD
-         * @param pointeur vers un objet de type ModificationCRUD
+         * @param pointeur vers un objet de type DatabaseCRUD
+
          * @details
          * Rempli l'attribut 'mainWidget' avec un nouveau MainWidget auquel est transmis les objets de 'CRUD', \n
          * puis initialise la toolbar.
