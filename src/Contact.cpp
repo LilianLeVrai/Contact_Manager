@@ -65,6 +65,7 @@ Contact::Contact(const int & id, const std::string & lastName, const std::string
 }
 
 Contact::~Contact(){
+    delete(this->dateCreation);
 }
 //fin constructeurs/destructeurs
 

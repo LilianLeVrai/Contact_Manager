@@ -25,6 +25,7 @@ class DatabaseManagement
          * @brief Constructeur sans paramètre qui fait la connexion à la base de données, et l'initialise.
          */
         DatabaseManagement();
+        ~DatabaseManagement();
 
         /**
          * @brief Permet d'obtenir la base de données.

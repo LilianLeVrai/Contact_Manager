@@ -44,7 +44,7 @@ class YesNoDialog : public QDialog
          * Défini la boîte de dialogue en mode bloquante, puis appel les méthodes 'initUI' et 'initConnect'.
          */
         YesNoDialog(QString, QString, QWidget *parent = 0);
-
+        ~YesNoDialog();
 
     public slots:
         /**

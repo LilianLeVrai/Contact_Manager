@@ -52,7 +52,7 @@ class EditTagDialog : public QDialog
          * Défini la boîte de dialogue en mode bloquante, puis appel les méthodes 'initUI' et 'initConnect'.\n
          */
         EditTagDialog(DatabaseCRUD *, Interaction *, Contact *, QWidget *parent = 0);
-
+        ~EditTagDialog();
 
         /**
          * @brief Permet d'initialiser les éléments d'interfaces (Layout, taille, bouton, et autres propriétés).

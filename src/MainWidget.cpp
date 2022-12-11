@@ -34,7 +34,29 @@ MainWidget::MainWidget(DatabaseCRUD * databaseCRUD, QWidget *parent)
     fillTable();
 }
 
-MainWidget::~MainWidget(){}
+MainWidget::~MainWidget(){
+    delete(this->filtersCombobox);
+    delete(this->searchButton);
+    delete(this->searchLineEdit);
+    delete(this->dateSelectorButton1);
+    delete(this->dateSelectorButton2);
+    delete(this->messageLabel);
+    delete(this->resetFiltersButton);
+    delete(this->contactsTable);
+    delete(this->nbContactsLabel);
+    delete(this->sortCombobox);
+    delete(this->addContactButton);
+    delete(this->detailsContactButton);
+    delete(this->deleteContactButton);
+
+    delete(this->calendarDialogFirstDate);
+    delete(this->calendarDialogSecondDate);
+    delete(this->filterFirstDate);
+    delete(this->filterSecondDate);
+
+    delete(this->createContactDialog);
+    delete(this->detailsContactDialog);
+}
 
 
 

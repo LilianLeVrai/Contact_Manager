@@ -86,6 +86,10 @@ DatabaseManagement::DatabaseManagement()
         }
 }
 
+DatabaseManagement::~DatabaseManagement(){
+    this->database.close();
+}
+
 void DatabaseManagement::initDataTest(){
     QFile initDataFile("../data/dataTest.sql");
     QString initDataInstructions;

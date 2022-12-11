@@ -5,10 +5,12 @@
 
 #include "ModificationsWindow.h"
 
+
 ModificationsWindow::ModificationsWindow(DatabaseCRUD * databaseCRUD, QWidget *parent)
     : QDialog(parent)
 {
     this->databaseCRUD=databaseCRUD;
+    this->setWindowTitle("Liste des modifications");
     this->initUI();
     this->fillModificationsTable();
 
@@ -20,6 +22,9 @@ ModificationsWindow::ModificationsWindow(Contact * contact, DatabaseCRUD * datab
     : QDialog(parent)
 {
     this->databaseCRUD=databaseCRUD;
+    QString s="Liste des modifications du contact : ";
+    s=s+contact->getFirstName().c_str()+" "+contact->getLastName().c_str();
+    this->setWindowTitle(s);
     this->initUI();
     this->contact=contact;
     this->fillModificationsTableByContact();
@@ -27,11 +32,13 @@ ModificationsWindow::ModificationsWindow(Contact * contact, DatabaseCRUD * datab
     QObject::connect(this->refreshButton, SIGNAL(clicked()), this, SLOT(refreshTableByContact()));
 }
 
-ModificationsWindow::~ModificationsWindow(){}
+ModificationsWindow::~ModificationsWindow(){
+    delete(this->modificationsTable);
+    delete(this->refreshButton);
+}
 
 void ModificationsWindow::initUI(){
 
-    this->setWindowTitle("Liste des modifications");
     this->resize(1200, 600);
 
     QVBoxLayout * mainLayout = new QVBoxLayout(this);

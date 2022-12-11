@@ -30,6 +30,18 @@ EditTagDialog::EditTagDialog(DatabaseCRUD * databaseCRUD, Interaction * interact
     fillTodo();
 }
 
+EditTagDialog::~EditTagDialog(){
+    delete(this->todoCombobox);
+    delete(this->deleteTodoButton);
+    delete(this->contentEdit);
+    delete(this->dateButton);
+    delete(this->removeDateButton);
+    delete(this->editTodoButton);
+    delete(this->listTagLabel);
+
+    delete(this->calendarDialog);
+    delete(this->date);
+}
 
 //------------------------------------------------------------------------------------------------------------------------------
 //méthodes
@@ -178,6 +190,7 @@ void EditTagDialog::updateEditTodoButton(){
 void EditTagDialog::deleteTodo(){
     this->databaseCRUD->deleteTagBDD(this->currentInteraction->getListTodo()->getTodoByIndex(this->todoCombobox->currentIndex()-1), this->currentInteraction, this->currentContact);
     this->databaseCRUD->getTodoByInteraction(this->currentInteraction->getListTodo(),this->currentInteraction);
+    this->removeDateButton->setEnabled(false);
     this->fillTodo();
     emit emitUpdateTag();
 }
@@ -209,6 +222,7 @@ void EditTagDialog::addModifyTodo(){
         this->fillTodo();
         emit emitUpdateTag();
         this->dateButton->setText("@date");
+        this->removeDateButton->setEnabled(false);
         }
 }
 

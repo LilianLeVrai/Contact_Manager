@@ -24,7 +24,7 @@ class DatabaseCRUD
 {
     private:
         QSqlDatabase * database;/**< base de données */
-        Date * date; /**<Date lors de l'appel de la fonction*/
+        Date * date; /**< Date lors de l'appel de la fonction */
 
     public:
         /**
@@ -33,6 +33,7 @@ class DatabaseCRUD
          * @details Le paramêtre doit être la base de données ouverte par la classe DatabaseManagement
          */
         DatabaseCRUD(QSqlDatabase *);
+        ~DatabaseCRUD();
 
         /**
          * @brief Permet de remplir une liste de contact avec tous les contacts contenus dans la BDD en attribut.

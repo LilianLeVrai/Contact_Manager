@@ -1,7 +1,7 @@
 CREATE TABLE Modification(
    idModification INTEGER,
    contentModified VARCHAR(250) NOT NULL,
-   dateModification VARCHAR(10) NOT NULL,
+   dateModification VARCHAR(16) NOT NULL,
    idTodo INTEGER,
    idInteraction INTEGER,
    idContact INTEGER,

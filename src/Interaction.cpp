@@ -42,6 +42,7 @@ Interaction::Interaction(const int id, const std::string & content, Date* const 
 }
 
 Interaction::~Interaction(){
+    delete(this->date);
 }
 //fin constructeurs/destructeurs
 

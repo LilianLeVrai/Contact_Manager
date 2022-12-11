@@ -43,7 +43,16 @@ MainWindow::MainWindow(DatabaseCRUD * databaseCRUD, QWidget *parent)
         connect(this->showAllModification, SIGNAL(triggered()), this, SLOT(openModificationsWindow()));
     }
 
-MainWindow::~MainWindow(){}
+MainWindow::~MainWindow(){
+    delete(this->optionExportJson);
+    delete(this->optionInitDataTest);
+    delete(this->showAllModification);
+
+    delete(this->mainWidget);
+
+    delete(this->yesNoDialogDataTest);
+    delete(this->modificationsWindow);
+}
 
 void MainWindow::askInitDataTest(){
     this->yesNoDialogDataTest=new YesNoDialog("Attention", "Cela effacera toutes vos données pour les remplacer par les données tests.\n\nÊtes vous sûr ?");

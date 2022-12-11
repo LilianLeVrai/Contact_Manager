@@ -22,7 +22,11 @@ CalendarDialog::CalendarDialog(QWidget *parent)
     initConnect();
 }
 
-CalendarDialog::~CalendarDialog(){};
+CalendarDialog::~CalendarDialog(){
+    delete(this->calendar);
+    delete(this->cancelButton);
+    delete(this->validateButton);
+}
 
 
 //------------------------------------------------------------------------------------------------------------------------------

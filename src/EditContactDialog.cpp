@@ -53,7 +53,18 @@ EditContactDialog::EditContactDialog(Contact * contact, QWidget *parent)//si on 
     initConnect();
 }
 
-EditContactDialog::~EditContactDialog(){}
+EditContactDialog::~EditContactDialog(){
+    delete(this->errorMessage);
+    delete(this->lastNameEdit);
+    delete(this->firstNameEdit);
+    delete(this->companyEdit);
+    delete(this->mailEdit);
+    delete(this->phoneEdit);
+    delete(this->pictureButton);
+    delete(this->pictureEdit);
+    delete(this->cancelButton);
+    delete(this->validateButton);
+}
 
 
 //------------------------------------------------------------------------------------------------------------------------------

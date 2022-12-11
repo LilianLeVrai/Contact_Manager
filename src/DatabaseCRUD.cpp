@@ -15,9 +15,12 @@
 
 DatabaseCRUD::DatabaseCRUD(QSqlDatabase * database){
     this->database=database;
-    this->date = new Date();
+    this->date=nullptr;
 }
 
+DatabaseCRUD::~DatabaseCRUD(){
+    delete(this->date);
+}
 
 void DatabaseCRUD::getAllContacts(ListContact * listContact){
     QSqlQuery query;
@@ -110,6 +113,10 @@ void DatabaseCRUD::searchByFilters(ListContact * listContact, QString searchBarC
 
 
 void DatabaseCRUD::addContactBDD(Contact * contact){
+    delete(this->date);
+    this->date=new Date();
+    this->date->setDateType(Date::WithHours);
+
     QString s="insert into Contact(lastName, firstName, company, mail, phone, picture, dateCreation) values ";
     s=s+"('"+contact->getLastName().c_str()+"', '"+contact->getFirstName().c_str()+"', '"
             +contact->getCompany().c_str()+"', '"+contact->getMail().c_str()+"', '"
@@ -118,6 +125,7 @@ void DatabaseCRUD::addContactBDD(Contact * contact){
     QSqlQuery query;
     if(!query.exec(s))
         {qDebug() << "Impossible d'effectuer la requète :\n" << query.lastError();}
+
 
     QString s2="insert into Modification(contentModified, dateModification, idTodo, idInteraction, idContact) values ";
     s2=s2+"('Ajout CONTACT : "+contact->getFirstName().c_str()+" "+contact->getLastName().c_str()+"', '"+this->date->toString().c_str()+"', null, null, last_insert_rowid());";
@@ -128,6 +136,10 @@ void DatabaseCRUD::addContactBDD(Contact * contact){
 
 
 void DatabaseCRUD::modifyContactBDD(Contact * contact){
+    delete(this->date);
+    this->date=new Date();
+    this->date->setDateType(Date::WithHours);
+
     QString s="update Contact set ";
     s=s+"lastName='"+contact->getLastName().c_str()+"', firstName='"+contact->getFirstName().c_str()
             +"', company='"+contact->getCompany().c_str()+"', mail='"+contact->getMail().c_str()
@@ -145,6 +157,9 @@ void DatabaseCRUD::modifyContactBDD(Contact * contact){
 }
 
 void DatabaseCRUD::deleteContactBDD(Contact * contact){
+    delete(this->date);
+    this->date=new Date();
+    this->date->setDateType(Date::WithHours);
 
     QString s="update Modification set ";
     s=s+"idContact=null, idInteraction=null, idTodo=null where idContact="+QString::number(contact->getId())+";";
@@ -164,6 +179,10 @@ void DatabaseCRUD::deleteContactBDD(Contact * contact){
 }
 
 void DatabaseCRUD::addInteractionBDD(Interaction * interaction, Contact * contact){
+    delete(this->date);
+    this->date=new Date();
+    this->date->setDateType(Date::WithHours);
+
     QString s="insert into Interaction(content, dateCreation, idContact) values ";
     s=s+"('"+interaction->getContent().c_str()+"', '"
             +interaction->getDate()->toString().c_str()+"', "
@@ -181,6 +200,10 @@ void DatabaseCRUD::addInteractionBDD(Interaction * interaction, Contact * contac
 
 
 void DatabaseCRUD::modifyInteractionBDD(Interaction * interaction, Contact * contact){
+    delete(this->date);
+    this->date=new Date();
+    this->date->setDateType(Date::WithHours);
+
     QString s="update Interaction set ";
     s=s+"content='"+interaction->getContent().c_str()
             +"' where idInteraction="+QString::number(interaction->getId())+";";
@@ -196,6 +219,10 @@ void DatabaseCRUD::modifyInteractionBDD(Interaction * interaction, Contact * con
 }
 
 void DatabaseCRUD::deleteInteractionBDD(Interaction * interaction, Contact * contact){
+    delete(this->date);
+    this->date=new Date();
+    this->date->setDateType(Date::WithHours);
+
     QString s="update Modification set ";
     s=s+"idInteraction=null, idTodo=null where idInteraction="+QString::number(interaction->getId())+";";
     QSqlQuery query2;
@@ -214,8 +241,11 @@ void DatabaseCRUD::deleteInteractionBDD(Interaction * interaction, Contact * con
 }
 
 void DatabaseCRUD::addTagBDD(Todo * todo, Interaction * interaction, Contact * contact){
-    QString s;
+    delete(this->date);
+    this->date=new Date();
+    this->date->setDateType(Date::WithHours);
 
+    QString s;
     if(todo->getDate()!=nullptr)
         {
         s="insert into Todo(content, dateTodo, idInteraction) values ";
@@ -242,6 +272,10 @@ void DatabaseCRUD::addTagBDD(Todo * todo, Interaction * interaction, Contact * c
 
 
 void DatabaseCRUD::modifyTagBDD(Todo * todo, Interaction * interaction, Contact * contact){
+    delete(this->date);
+    this->date=new Date();
+    this->date->setDateType(Date::WithHours);
+
     QString s="update Todo set ";
     s=s+"content='"+todo->getContent().c_str();
     if(todo->getDate()==nullptr)
@@ -261,6 +295,10 @@ void DatabaseCRUD::modifyTagBDD(Todo * todo, Interaction * interaction, Contact 
 }
 
 void DatabaseCRUD::deleteTagBDD(Todo * todo, Interaction * interaction, Contact * contact){
+    delete(this->date);
+    this->date=new Date();
+    this->date->setDateType(Date::WithHours);
+
     QString s="update Modification set ";
     s=s+"idTodo=null where idTodo="+QString::number(todo->getId())+";";
     QSqlQuery query2;
@@ -279,7 +317,7 @@ void DatabaseCRUD::deleteTagBDD(Todo * todo, Interaction * interaction, Contact 
     getAllModifications();
 }
 
-void DatabaseCRUD::getInteractionByContact(ListInteraction * listInteraction, Contact * contact){
+void DatabaseCRUD::getInteractionByContact(ListInteraction * listInteraction, Contact * contact){    
     QSqlQuery query;
     if(!query.exec("select * from Interaction where idContact="+QString::number(contact->getId())+";"))
         {qDebug() << "Impossible d'effectuer la requète :\n" << query.lastError();}

@@ -21,6 +21,10 @@ YesNoDialog::YesNoDialog(QString title, QString question,QWidget *parent)
     initConnect();
 }
 
+YesNoDialog::~YesNoDialog(){
+    delete(this->yesButton);
+    delete(this->noButton);
+}
 
 //------------------------------------------------------------------------------------------------------------------------------
 //méthodes

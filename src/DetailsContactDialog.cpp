@@ -31,7 +31,24 @@ DetailsContactDialog::DetailsContactDialog(DatabaseCRUD * databaseCRUD,Contact *
 }
 
 
-DetailsContactDialog::~DetailsContactDialog(){};
+DetailsContactDialog::~DetailsContactDialog(){
+    delete(this->errorMessage);
+    delete(this->picture);
+    delete(this->modifyContactButton);
+    delete(this->infoContactLabel);
+
+    delete(this->interactionCombobox);
+    delete(this->removeInteractionButton);
+    delete(this->editTagButton);
+    delete(this->editInteraction);
+    delete(this->editInteractionButton);
+    delete(this->tagsLabel);
+    delete(this->printModificationsButton);
+
+    delete(this->modifyContactDialog);
+    delete(this->editTagDialog);
+    delete(this->modificationsWindow);
+}
 
 
 //------------------------------------------------------------------------------------------------------------------------------
