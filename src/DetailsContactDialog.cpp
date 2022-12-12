@@ -234,12 +234,12 @@ void DetailsContactDialog::addModifyInteraction(){
         {
         if(this->interactionCombobox->currentIndex()==0)
             {
-            Interaction * newInteraction=new Interaction(this->editInteraction->text().toStdString());
+            Interaction * newInteraction=new Interaction(this->editInteraction->text().simplified().toStdString());
             this->databaseCRUD->addInteractionBDD(newInteraction, this->contact);
             }
         else
             {
-            this->listInteraction.getInteractionByIndex(this->interactionCombobox->currentIndex()-1)->setContent(this->editInteraction->text().toStdString());
+            this->listInteraction.getInteractionByIndex(this->interactionCombobox->currentIndex()-1)->setContent(this->editInteraction->text().simplified().toStdString());
             this->databaseCRUD->modifyInteractionBDD(this->listInteraction.getInteractionByIndex(this->interactionCombobox->currentIndex()-1), this->contact);
             }
         this->databaseCRUD->getInteractionByContact(&this->listInteraction,this->contact);

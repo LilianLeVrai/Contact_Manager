@@ -202,9 +202,9 @@ void EditTagDialog::addModifyTodo(){
         if(this->todoCombobox->currentIndex()==0)
             {
             if (this->date==nullptr)
-                newTodo=new Todo(this->contentEdit->text().toStdString(), nullptr);
+                newTodo=new Todo(this->contentEdit->text().simplified().toStdString(), nullptr);
             else
-                newTodo=new Todo(this->contentEdit->text().toStdString(), this->date);
+                newTodo=new Todo(this->contentEdit->text().simplified().toStdString(), this->date);
             this->databaseCRUD->addTagBDD(newTodo, this->currentInteraction, this->currentContact);
             }
         else
@@ -214,7 +214,7 @@ void EditTagDialog::addModifyTodo(){
             else
                 this->currentInteraction->getListTodo()->getTodoByIndex(this->todoCombobox->currentIndex()-1)->setDate(date);
 
-            this->currentInteraction->getListTodo()->getTodoByIndex(this->todoCombobox->currentIndex()-1)->setContent(this->contentEdit->text().toStdString());
+            this->currentInteraction->getListTodo()->getTodoByIndex(this->todoCombobox->currentIndex()-1)->setContent(this->contentEdit->text().simplified().toStdString());
             this->databaseCRUD->modifyTagBDD(this->currentInteraction->getListTodo()->getTodoByIndex(this->todoCombobox->currentIndex()-1), this->currentInteraction, this->currentContact);
             }
         this->databaseCRUD->getTodoByInteraction(this->currentInteraction->getListTodo(),this->currentInteraction);

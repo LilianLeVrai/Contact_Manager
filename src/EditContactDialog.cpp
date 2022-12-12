@@ -202,22 +202,22 @@ void EditContactDialog::editContact(){
 
         if(this->currentContact!=nullptr)
             {
-            this->currentContact->setLastName(this->lastNameEdit->text().toStdString());
-            this->currentContact->setFirstName(this->firstNameEdit->text().toStdString());
-            this->currentContact->setCompany(this->companyEdit->text().toStdString());
-            this->currentContact->setMail(this->mailEdit->text().toStdString());
-            this->currentContact->setPhone(this->phoneEdit->text().toStdString());
+            this->currentContact->setLastName(this->lastNameEdit->text().simplified().toStdString());
+            this->currentContact->setFirstName(this->firstNameEdit->text().simplified().toStdString());
+            this->currentContact->setCompany(this->companyEdit->text().simplified().toStdString());
+            this->currentContact->setMail(this->mailEdit->text().simplified().toStdString());
+            this->currentContact->setPhone(this->phoneEdit->text().simplified().toStdString());
             this->currentContact->setPathPicture(pathPicture.toStdString());
 
             emit emitClose(this->currentContact, errorImg);
             }
         if(this->currentContact==nullptr)
             {
-            this->currentContact=new Contact(this->lastNameEdit->text().toStdString(),
-                                             this->firstNameEdit->text().toStdString(),
-                                             this->companyEdit->text().toStdString(),
-                                             this->mailEdit->text().toStdString(),
-                                             this->phoneEdit->text().toStdString(),
+            this->currentContact=new Contact(this->lastNameEdit->text().simplified().toStdString(),
+                                             this->firstNameEdit->text().simplified().toStdString(),
+                                             this->companyEdit->text().simplified().toStdString(),
+                                             this->mailEdit->text().simplified().toStdString(),
+                                             this->phoneEdit->text().simplified().toStdString(),
                                              pathPicture.toStdString());
             this->currentContact->setId(-1);
             emit emitClose(this->currentContact, errorImg);
