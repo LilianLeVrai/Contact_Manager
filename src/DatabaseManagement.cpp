@@ -118,6 +118,7 @@ void DatabaseManagement::createJSONfile(DatabaseCRUD * databaseCRUD){
     ListContact listContact;
     databaseCRUD->getAllContacts(&listContact);
 
+    QJsonObject mainObject;
     QJsonArray mainArray;
 
     for(int i=0;i<listContact.getSize();i++){
@@ -145,7 +146,9 @@ void DatabaseManagement::createJSONfile(DatabaseCRUD * databaseCRUD){
                 QJsonObject objectTodo;
                 objectTodo.insert("idTodo", std::to_string(listTodo.getTodoByIndex(k)->getId()).c_str());
                 objectTodo.insert("content", listTodo.getTodoByIndex(k)->getContent().c_str());
-                objectTodo.insert("dateCreation", listTodo.getTodoByIndex(k)->getDate()->toString().c_str());
+                if(listTodo.getTodoByIndex(k)->getDate()!=nullptr){
+                    objectTodo.insert("dateCreation", listTodo.getTodoByIndex(k)->getDate()->toString().c_str());
+                }
                 arrayTodo.push_back(objectTodo);
             }
             if(!arrayTodo.isEmpty())
@@ -159,8 +162,9 @@ void DatabaseManagement::createJSONfile(DatabaseCRUD * databaseCRUD){
         mainArray.push_back(contact);
     }
 
+    mainObject.insert("Contacts", mainArray);
     QJsonDocument jsonDoc;
-    jsonDoc.setArray(mainArray);
+    jsonDoc.setObject(mainObject);
 
     QFile fichierJSON("../data/JSONdata.json");
 
