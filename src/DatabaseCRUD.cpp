@@ -52,7 +52,7 @@ void DatabaseCRUD::searchByFilters(ListContact * listContact, QString searchBarC
     QStringList stringList=searchBarContent.split(QRegExp(" "));//liste des mots
     stringList.removeAll(QString(""));
 
-    QString s="select * from Contact where";
+    QString s="select * from Contact";
 
     QString word;
     int nbCondition=0;
@@ -62,10 +62,10 @@ void DatabaseCRUD::searchByFilters(ListContact * listContact, QString searchBarC
 
         if(word=="@todo" && i+1<stringList.size() && stringList.at(i+1)!="@todo" && stringList.at(i+1)!="@date")//si le mot est égal à @todo et suivi d'autre chose qu'un tag
             {
+            if(nbCondition==0)
+                {s=s+" WHERE";}//si c'est la première condition on rajoute 'WHERE'
             if(nbCondition>0)//si nbCondition n'est pas à zéro c'est qu'il y a déjà une condition, il faut donc mettre un 'AND'
-                {
-                s=s+" AND";
-                }
+                {s=s+" AND";}
             nbCondition++;
 
             QStringList stringListTmp;
@@ -86,10 +86,10 @@ void DatabaseCRUD::searchByFilters(ListContact * listContact, QString searchBarC
 
         else if(word=="@date" && i+1<stringList.size() && stringList.at(i+1)!="@todo" && stringList.at(i+1)!="@date")//si le mot est égal à @date et suivi d'autre chose qu'un tag
             {
+            if(nbCondition==0)
+                {s=s+" WHERE";}//si c'est la première condition on rajoute 'WHERE'
             if(nbCondition>0)//si nbCondition n'est pas à zéro c'est qu'il y a déjà une condition, il faut donc mettre un 'AND'
-                {
-                s=s+" AND";
-                }
+                {s=s+" AND";}
             nbCondition++;
             i=i+1;
             QString date=stringList.at(i);
@@ -98,10 +98,10 @@ void DatabaseCRUD::searchByFilters(ListContact * listContact, QString searchBarC
 
         else if(word!="@todo" && word!="@date")
             {
+            if(nbCondition==0)
+                {s=s+" WHERE";}//si c'est la première condition on rajoute 'WHERE'
             if(nbCondition>0)//si nbCondition n'est pas à zéro c'est qu'il y a déjà une condition, il faut donc mettre un 'AND'
-                {
-                s=s+" AND";
-                }
+                {s=s+" AND";}
             nbCondition++;
 
             if(indexFiltersCombobox==0)
@@ -126,6 +126,7 @@ void DatabaseCRUD::searchByFilters(ListContact * listContact, QString searchBarC
             }
 
         }
+        s=s+";";
 
 //-------------------------
 //execution de la requête
