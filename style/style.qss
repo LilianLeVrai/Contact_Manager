@@ -1,19 +1,8 @@
-/* %1=background_color %2=primary_color %3=primary_color */
+/* %1=background_color */
 
 MainWindow{background-color: %1;}
 
-/*
-QComboBox#filtersCombobox{
-	background-color: %3; 
-	color:black;
-	border:0;}
-QLineEdit#searchLineEdit{
-	}
-QPushButton#searchButton{
-	background-color: %2; 
-	color:white;
-	border:0;}
-*/
+
 
 
 

@@ -49,29 +49,83 @@ void DatabaseCRUD::searchByFilters(ListContact * listContact, QString searchBarC
 //-------------------------
 //préparation de la requête
 //-------------------------
-    searchBarContent=searchBarContent.simplified();
+    QStringList stringList=searchBarContent.split(QRegExp(" "));//liste des mots
+    stringList.removeAll(QString(""));
+
     QString s="select * from Contact where";
 
-    if(indexFiltersCombobox==0)
+    QString word;
+    int nbCondition=0;
+    for(int i=0; i<stringList.size(); i++)//on parcourt les mots
         {
-        s=s+" lastName LIKE '%"+searchBarContent+"%'"
-            +" OR firstName LIKE '%"+searchBarContent+"%'"
-            +" OR company LIKE '%"+searchBarContent+"%'"
-            +" OR mail LIKE '%"+searchBarContent+"%'"
-            +" OR phone LIKE '%"+searchBarContent+"%'"
-            +" OR dateCreation LIKE '%"+searchBarContent+"%'";
-        }
-    if(indexFiltersCombobox==1)
-        s=s+" lastName LIKE '%"+searchBarContent+"%'";
-    if(indexFiltersCombobox==2)
-        s=s+" firstName LIKE '%"+searchBarContent+"%'";
-    if(indexFiltersCombobox==3)
-        s=s+" company LIKE '%"+searchBarContent+"%'";
-    if(indexFiltersCombobox==4)
-        s=s+" mail LIKE '%"+searchBarContent+"%'";
-    if(indexFiltersCombobox==5)
-        s=s+" phone LIKE '%"+searchBarContent+"%';";
+        word=stringList.at(i);
 
+        if(word=="@todo" && i+1<stringList.size() && stringList.at(i+1)!="@todo" && stringList.at(i+1)!="@date")//si le mot est égal à @todo et suivi d'autre chose qu'un tag
+            {
+            if(nbCondition>0)//si nbCondition n'est pas à zéro c'est qu'il y a déjà une condition, il faut donc mettre un 'AND'
+                {
+                s=s+" AND";
+                }
+            nbCondition++;
+
+            QStringList stringListTmp;
+            while(i+1<stringList.size() && stringList.at(i+1)!="@todo" && stringList.at(i+1)!="@date")
+                {//on récupère tout les mots suivant le @todo tant qu'on ne rencontre pas un autre tag
+                i=i+1;
+                stringListTmp.push_back(stringList.at(i));
+                }
+            s=s+" (idContact IN (SELECT idContact FROM Interaction INNER JOIN Todo ON Interaction.idInteraction=Todo.idInteraction WHERE";
+            for(int j=0; j<stringListTmp.size(); j++)
+                {//on défini la condition comme quoi les mots doivent être compris dans le contenu du @todo
+                if(j>0)
+                    s=s+" AND";
+                s=s+" Todo.content LIKE '%"+stringListTmp.at(j)+"%'";
+                }
+            s=s+"))";
+            }
+
+        else if(word=="@date" && i+1<stringList.size() && stringList.at(i+1)!="@todo" && stringList.at(i+1)!="@date")//si le mot est égal à @date et suivi d'autre chose qu'un tag
+            {
+            if(nbCondition>0)//si nbCondition n'est pas à zéro c'est qu'il y a déjà une condition, il faut donc mettre un 'AND'
+                {
+                s=s+" AND";
+                }
+            nbCondition++;
+            i=i+1;
+            QString date=stringList.at(i);
+            s=s+" (idContact IN (SELECT idContact FROM Interaction INNER JOIN Todo ON Interaction.idInteraction=Todo.idInteraction WHERE dateTodo LIKE '%"+date+"%'))";
+            }
+
+        else if(word!="@todo" && word!="@date")
+            {
+            if(nbCondition>0)//si nbCondition n'est pas à zéro c'est qu'il y a déjà une condition, il faut donc mettre un 'AND'
+                {
+                s=s+" AND";
+                }
+            nbCondition++;
+
+            if(indexFiltersCombobox==0)
+                {
+                s=s+" (lastName LIKE '%"+word+"%'"
+                    +" OR firstName LIKE '%"+word+"%'"
+                    +" OR company LIKE '%"+word+"%'"
+                    +" OR mail LIKE '%"+word+"%'"
+                    +" OR phone LIKE '%"+word+"%'"
+                    +" OR dateCreation LIKE '%"+word+"%')";
+                }
+            if(indexFiltersCombobox==1)
+                s=s+" (lastName LIKE '%"+word+"%')";
+            if(indexFiltersCombobox==2)
+                s=s+" (firstName LIKE '%"+word+"%')";
+            if(indexFiltersCombobox==3)
+                s=s+" (company LIKE '%"+word+"%')";
+            if(indexFiltersCombobox==4)
+                s=s+" (mail LIKE '%"+word+"%')";
+            if(indexFiltersCombobox==5)
+                s=s+" (phone LIKE '%"+word+"%')";
+            }
+
+        }
 
 //-------------------------
 //execution de la requête
@@ -96,17 +150,17 @@ void DatabaseCRUD::searchByFilters(ListContact * listContact, QString searchBarC
             }
 
         //filtrage par les dates faits avec les méthodes de la classe Date
-            for(int i=0;i<listContactTemp.getSize();i++)
-                {
-                if(filterFirstDate==nullptr && filterSecondDate==nullptr)
-                    listContact->addContact(listContactTemp.getContactByIndex(i));
-                if(filterFirstDate!=nullptr && filterSecondDate!=nullptr && listContactTemp.getContactByIndex(i)->getDateCreation()->isBetween(filterFirstDate,filterSecondDate))
-                   listContact->addContact(listContactTemp.getContactByIndex(i));
-                if(filterFirstDate!=nullptr && filterSecondDate==nullptr && filterFirstDate->isLessThan(listContactTemp.getContactByIndex(i)->getDateCreation()))
-                   listContact->addContact(listContactTemp.getContactByIndex(i));
-                if(filterFirstDate==nullptr && filterSecondDate!=nullptr && listContactTemp.getContactByIndex(i)->getDateCreation()->isLessThan(filterSecondDate))
-                   listContact->addContact(listContactTemp.getContactByIndex(i));
-                }
+        for(int i=0;i<listContactTemp.getSize();i++)
+            {
+            if(filterFirstDate==nullptr && filterSecondDate==nullptr)
+                listContact->addContact(listContactTemp.getContactByIndex(i));
+            if(filterFirstDate!=nullptr && filterSecondDate!=nullptr && listContactTemp.getContactByIndex(i)->getDateCreation()->isBetween(filterFirstDate,filterSecondDate))
+               listContact->addContact(listContactTemp.getContactByIndex(i));
+            if(filterFirstDate!=nullptr && filterSecondDate==nullptr && filterFirstDate->isLessThan(listContactTemp.getContactByIndex(i)->getDateCreation()))
+               listContact->addContact(listContactTemp.getContactByIndex(i));
+            if(filterFirstDate==nullptr && filterSecondDate!=nullptr && listContactTemp.getContactByIndex(i)->getDateCreation()->isLessThan(filterSecondDate))
+               listContact->addContact(listContactTemp.getContactByIndex(i));
+            }
         }
 }
 
