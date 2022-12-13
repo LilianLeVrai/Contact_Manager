@@ -6,5 +6,6 @@
         <file>resourceFiles/initModification.sql</file>
         <file>resourceFiles/initTodo.sql</file>
         <file>resourceFiles/style.qss</file>
+        <file>resourceFiles/dataTest.sql</file>
     </qresource>
 </RCC>

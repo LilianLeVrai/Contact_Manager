@@ -97,7 +97,7 @@ DatabaseManagement::~DatabaseManagement(){
 }
 
 void DatabaseManagement::initDataTest(){
-    QFile initDataFile("data/dataTest.sql");
+    QFile initDataFile(":/resources/resourceFiles/dataTest.sql");
     QString initDataInstructions;
 
     if (initDataFile.open(QIODevice::ReadOnly))
