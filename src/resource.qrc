@@ -1,0 +1,10 @@
+<RCC>
+    <qresource prefix="/resources">
+        <file>resourceFiles/defaultImg.jpg</file>
+        <file>resourceFiles/initContact.sql</file>
+        <file>resourceFiles/initInteraction.sql</file>
+        <file>resourceFiles/initModification.sql</file>
+        <file>resourceFiles/initTodo.sql</file>
+        <file>resourceFiles/style.qss</file>
+    </qresource>
+</RCC>

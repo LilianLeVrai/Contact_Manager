@@ -191,12 +191,12 @@ void EditContactDialog::editContact(){
             {
             if(QFile::exists(pathPicture) && (ext.suffix()=="jpg" || ext.suffix()=="jpeg" || ext.suffix()=="png" ))
                 {
-                QDir directory("../img");
-                QString newPathPicture="../img/img_"+QString::number(directory.count())+"."+ext.suffix();
+                QDir directory("img");
+                QString newPathPicture="img/img_"+QString::number(directory.count())+"."+ext.suffix();
                 QFile::copy(pathPicture, newPathPicture);
                 pathPicture=newPathPicture;
                 }
-            else {pathPicture="../img/defaultImg.jpg";errorImg=true;}
+            else {pathPicture=":/resources/resourceFiles/defaultImg.jpg";errorImg=true;}
             }
 
 

@@ -57,3 +57,6 @@ HEADERS += \
     MessageLabel.h
 
 FORMS +=
+
+RESOURCES += \
+    resource.qrc

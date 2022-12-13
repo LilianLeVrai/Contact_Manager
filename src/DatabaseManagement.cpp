@@ -15,6 +15,7 @@
 #include <QJsonObject>
 #include <QJsonValue>
 #include <QJsonArray>
+#include <QDir>
 
 #include <QSqlError>
 
@@ -22,7 +23,12 @@ DatabaseManagement::DatabaseManagement()
 {
     this->database = QSqlDatabase::addDatabase("QSQLITE");
 
-    database.setDatabaseName("../data/database.sqlite");
+    //Verifie si le dossier data existe, si n'existe pas le créé
+    QDir dir("data");
+    if (!dir.exists())
+        dir.mkpath(".");
+
+    database.setDatabaseName("data/database.sqlite");
 
       if(!database.open())
         {
@@ -37,7 +43,7 @@ DatabaseManagement::DatabaseManagement()
           QSqlQuery query;
 
           //création de la table Contact si inexistante
-          initFile.setFileName("../data/initContact.sql");
+          initFile.setFileName(":/resources/resourceFiles/initContact.sql");
           initFile.open(QIODevice::ReadOnly);
           initInstructions =initFile.readAll();
           initFile.close();
@@ -47,7 +53,7 @@ DatabaseManagement::DatabaseManagement()
             {qDebug() << "fichier initContact appliqué à la BDD";}
 
           //création de la table Interaction si inexistante
-          initFile.setFileName("../data/initInteraction.sql");
+          initFile.setFileName(":/resources/resourceFiles/initInteraction.sql");
           initFile.open(QIODevice::ReadOnly);
           initInstructions =initFile.readAll();
           initFile.close();
@@ -57,7 +63,7 @@ DatabaseManagement::DatabaseManagement()
             {qDebug() << "fichier initInteraction appliqué à la BDD";}
 
           //création de la table Todo si inexistante
-          initFile.setFileName("../data/initTodo.sql");
+          initFile.setFileName(":/resources/resourceFiles/initTodo.sql");
           initFile.open(QIODevice::ReadOnly);
           initInstructions =initFile.readAll();
           initFile.close();
@@ -67,7 +73,7 @@ DatabaseManagement::DatabaseManagement()
             {qDebug() << "fichier initTodo appliqué à la BDD";}
 
           //création de la table Modification si inexistante
-          initFile.setFileName("../data/initModification.sql");
+          initFile.setFileName(":/resources/resourceFiles/initModification.sql");
           initFile.open(QIODevice::ReadOnly);
           initInstructions =initFile.readAll();
           initFile.close();
@@ -91,7 +97,7 @@ DatabaseManagement::~DatabaseManagement(){
 }
 
 void DatabaseManagement::initDataTest(){
-    QFile initDataFile("../data/dataTest.sql");
+    QFile initDataFile("data/dataTest.sql");
     QString initDataInstructions;
 
     if (initDataFile.open(QIODevice::ReadOnly))
@@ -166,7 +172,7 @@ void DatabaseManagement::createJSONfile(DatabaseCRUD * databaseCRUD){
     QJsonDocument jsonDoc;
     jsonDoc.setObject(mainObject);
 
-    QFile fichierJSON("../data/JSONdata.json");
+    QFile fichierJSON("data/JSONdata.json");
 
     if (fichierJSON.open(QFile::WriteOnly | QIODevice::Text))
     {
