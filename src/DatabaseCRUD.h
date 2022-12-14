@@ -168,9 +168,17 @@ class DatabaseCRUD
          */
         void fillModificationsTableByContact(QTableWidget *, Contact *);
 
-        //Fonction de test
+        /**
+         * @brief Permet d'afficher toutes les interactions.
+         */
         void getAllInteractions();
+        /**
+         * @brief Permet d'afficher tous les todos.
+         */
         void getAllTodos();
+        /**
+         * @brief Permet d'afficher toutes les modifications.
+         */
         void getAllModifications();
 
 

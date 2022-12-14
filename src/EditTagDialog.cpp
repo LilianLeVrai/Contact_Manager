@@ -157,6 +157,7 @@ void EditTagDialog::updateInputTodo(){
             this->listTagLabel->setText(this->currentInteraction->toString().c_str());
             this->date=nullptr;
             this->dateButton->setText("@date");
+            this->removeDateButton->setEnabled(false);
             this->contentEdit->setText("");
             }
         else

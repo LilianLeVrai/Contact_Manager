@@ -1,0 +1,7 @@
+Justifiez la construction de votre application, montrez le contenu de vos bases de données, ayez une documentation à jour et détaillée :
+
+*diagramme des classes généré par Doxygen
+*diagramme uml ou entité association
+*diagramme d'implémentation des classes (rôle, action des méthodes, lien d’héritage et usage
+*description de la base de données (clés primaires et étrangères)
+*connexion et évènement entre modules (signaux QT et leurs paramêtres)
