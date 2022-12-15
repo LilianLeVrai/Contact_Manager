@@ -369,7 +369,6 @@ void DatabaseCRUD::deleteTagBDD(Todo * todo, Interaction * interaction, Contact 
     QSqlQuery query;
     if(!query.exec("delete from Todo where idTodo="+QString::number(todo->getId())+";"))
         {qDebug() << "Impossible d'effectuer la requète :\n" << query.lastError();}
-    getAllModifications();
 }
 
 void DatabaseCRUD::getInteractionByContact(ListInteraction * listInteraction, Contact * contact){    
@@ -452,66 +451,4 @@ void DatabaseCRUD::fillModificationsTableByContact(QTableWidget * modificationsT
         }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//Fonction de test : Le delete on cascade ne fonctionne pas
-void DatabaseCRUD::getAllInteractions(){
-    QSqlQuery query;
-    if(!query.exec("select * from Interaction;"))
-        {qDebug() << "Impossible d'effectuer la requète :\n" << query.lastError();}
-    else
-        {
-        while(query.next())
-            {
-            qDebug() << QString::number(query.value(0).toInt());
-            qDebug() << query.value(1).toString().toStdString().c_str();
-            }
-        }
-}
-void DatabaseCRUD::getAllTodos(){
-    QSqlQuery query;
-    if(!query.exec("select * from Todo;"))
-        {qDebug() << "Impossible d'effectuer la requète :\n" << query.lastError();}
-    else
-        {
-        while(query.next())
-            {
-            qDebug() << QString::number(query.value(0).toInt());
-            qDebug() << query.value(1).toString().toStdString().c_str();
-            }
-        }
-}
-
-void DatabaseCRUD::getAllModifications(){
-    QSqlQuery query;
-    if(!query.exec("select * from Modification;"))
-        {qDebug() << "Impossible d'effectuer la requète :\n" << query.lastError();}
-    else
-        {
-        while(query.next())
-            {
-            qDebug() << query.value(1).toString().toStdString().c_str();
-            qDebug() << query.value(2).toString().toStdString().c_str();
-            qDebug() << "idTodo " << query.value(3).toString().toStdString().c_str();
-            qDebug() << "idInteraction " <<query.value(4).toString().toStdString().c_str();
-            qDebug() << "idContact " <<query.value(5).toString().toStdString().c_str();
-            }
-        }
-}
 

@@ -167,22 +167,6 @@ class DatabaseCRUD
          * La méthode fait une requête à la BDD.
          */
         void fillModificationsTableByContact(QTableWidget *, Contact *);
-
-        /**
-         * @brief Permet d'afficher toutes les interactions.
-         */
-        void getAllInteractions();
-        /**
-         * @brief Permet d'afficher tous les todos.
-         */
-        void getAllTodos();
-        /**
-         * @brief Permet d'afficher toutes les modifications.
-         */
-        void getAllModifications();
-
-
-
 };
 
 #endif // DATABASECRUD_H
