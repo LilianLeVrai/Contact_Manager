@@ -16,10 +16,6 @@
 #include <QDebug>
 #include <QMainWindow>
 
-#include <QPushButton>
-
-#include <QTranslator>
-
 #include <QDir>
 
 using namespace std;
@@ -29,7 +25,7 @@ int main(int argc, char *argv[])
     //déclaration de l'application
     QApplication app(argc, argv);
 
-    // Création des fichiers img et data s'ils n'existent pas chez l'utilisateur
+    // Création du dossier img s'il n'existe pas chez l'utilisateur
     QDir().mkdir("img");
 
     //déclaration de la BDD
