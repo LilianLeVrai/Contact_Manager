@@ -13,9 +13,8 @@
 #include <QStringList>
 #include <QDebug>
 #include <QAbstractItemView>
-#include <QMenu>
-#include <QAction>
-#include <QToolBar>
+#include <QtGui>
+
 
 //------------------------------------------------------------------------------------------------------------------------------
 //constructeurs/destructeurs
@@ -32,6 +31,7 @@ MainWidget::MainWidget(DatabaseCRUD * databaseCRUD, QWidget *parent)
     initUI();
     initConnect();
     fillTable();
+
 }
 
 MainWidget::~MainWidget(){
@@ -65,6 +65,7 @@ MainWidget::~MainWidget(){
 //------------------------------------------------------------------------------------------------------------------------------
 void MainWidget::initUI(){
 
+
     //selection de filtre
     this->filtersCombobox = new QComboBox(this);
     this->filtersCombobox->setObjectName("filtersCombobox");
@@ -77,25 +78,41 @@ void MainWidget::initUI(){
 
     //barre de recherche
     this->searchLineEdit = new QLineEdit(this);
-    this->searchLineEdit->setPlaceholderText("nom, prénom, mail, ...");
     this->searchLineEdit->setObjectName("searchLineEdit");
+    this->searchLineEdit->setPlaceholderText("nom, prénom, mail, ...");
     //bouton de recherche
-    this->searchButton = new QPushButton("Rechercher", this);
+    this->searchButton = new QPushButton("", this);
     this->searchButton->setObjectName("searchButton");
+    QPixmap pixmapSearch(":/icon/icon/search.png");
+    QIcon searchIcon(pixmapSearch);
+    this->searchButton->setIcon(searchIcon);
+    this->searchButton->setIconSize(pixmapSearch.rect().size());
 
     //selecteur de date
     QLabel * dateSelectorLabel1=new QLabel("Contacts crées entre le ",this);
+    dateSelectorLabel1->setObjectName("whiteLabels");
     this->dateSelectorButton1 = new QPushButton(this);
+    this->dateSelectorButton1->setObjectName("dateSelectorButton");
     this->dateSelectorButton1->setMinimumWidth(100);
     QLabel * dateSelectorLabel2=new QLabel("et le ",this);
+    dateSelectorLabel2->setObjectName("whiteLabels");
     this->dateSelectorButton2 = new QPushButton(this);
+    this->dateSelectorButton2->setObjectName("dateSelectorButton");
     this->dateSelectorButton2->setMinimumWidth(100);
+
+    QPixmap pixmapDate(":/icon/icon/calendar.png");
+    QIcon calendarIcon(pixmapDate);
+    this->dateSelectorButton1->setIcon(calendarIcon);
+    this->dateSelectorButton1->setIconSize(pixmapDate.rect().size());
+    this->dateSelectorButton2->setIcon(calendarIcon);
+    this->dateSelectorButton2->setIconSize(pixmapDate.rect().size());
 
     //bouton pour réinitialiser les filtres
     this->resetFiltersButton=new QPushButton("Réinitialiser les filtres",this);
 
     //label pour afficher les messages
     this->messageLabel=new MessageLabel;
+    this->messageLabel->setProperty("",MessageLabel::NoStyle,true);
 
     //selection de tri
     this->sortCombobox=new QComboBox(this);
@@ -123,25 +140,33 @@ void MainWidget::initUI(){
     this->contactsTable->setEditTriggers(QAbstractItemView::NoEditTriggers);
     this->contactsTable->setSelectionBehavior(QAbstractItemView::SelectRows);
     this->contactsTable->setSelectionMode(QAbstractItemView::SingleSelection);
+
+    QString myFontFamily = QFontDatabase::applicationFontFamilies(0).at(0);
+    QFont myFont(myFontFamily);
+    this->contactsTable->setFont(myFont);
     //label avec nombre de contacts
     this->nbContactsLabel=new QLabel(this);
+    this->nbContactsLabel->setObjectName("nbContactLabel");
+    this->nbContactsLabel->setFont(myFont);
 
     //Layout verticaux puis horizontaux
     QVBoxLayout * mainLayout = new QVBoxLayout(this);
-
     QHBoxLayout * searchBarLayout = new QHBoxLayout();
     QHBoxLayout * dateAndResetLayout = new QHBoxLayout();
+    QVBoxLayout * topLayout = new QVBoxLayout();
     QHBoxLayout * dateSelectorLayout = new QHBoxLayout();
     QHBoxLayout * resetFiltersButtonLayout = new QHBoxLayout();
     QHBoxLayout * leftButtonsShowContactLayout = new QHBoxLayout();
+    QVBoxLayout * leftComboBoxLayout = new QVBoxLayout();
     QVBoxLayout * leftButtonsLayout = new QVBoxLayout();
     QVBoxLayout * showContactsLayout = new QVBoxLayout();
 
-    //ajouts des widget dans chaque layout
+    //layout du top
     searchBarLayout->addWidget(this->filtersCombobox);
     searchBarLayout->addWidget(this->searchLineEdit);
     searchBarLayout->addWidget(this->searchButton);
-
+    searchBarLayout->setSpacing(0);
+    searchBarLayout->setContentsMargins(0,10,0,0);
 
     dateSelectorLayout->addWidget(dateSelectorLabel1);
     dateSelectorLayout->addWidget(this->dateSelectorButton1);
@@ -152,27 +177,39 @@ void MainWidget::initUI(){
 
     dateAndResetLayout->addLayout(dateSelectorLayout);
     dateAndResetLayout->addLayout(resetFiltersButtonLayout);
+    dateAndResetLayout->setContentsMargins(0,10,0,10);
 
+    topLayout->addWidget(this->messageLabel);
+    topLayout->addLayout(searchBarLayout);
+    topLayout->addLayout(dateAndResetLayout);
+    topLayout->setContentsMargins(100,20,100,10);
 
-    leftButtonsLayout->addWidget(this->sortCombobox);
+    QWidget * topWidget=new QWidget(this);
+    topWidget->setObjectName("topWidgetMainWidget");
+    topWidget->setLayout(topLayout);
+
+    //layout du bas
+    leftComboBoxLayout->addWidget(this->sortCombobox);
+    leftComboBoxLayout->setContentsMargins(0, 0, 0, 32);
+    leftButtonsLayout->addLayout(leftComboBoxLayout);
     leftButtonsLayout->addWidget(this->addContactButton);
     leftButtonsLayout->addWidget(this->detailsContactButton);
     leftButtonsLayout->addWidget(this->deleteContactButton);
 
     showContactsLayout->addWidget(this->contactsTable);
     showContactsLayout->addWidget(this->nbContactsLabel);
+    showContactsLayout->setContentsMargins(15,0,0,0);
 
     leftButtonsShowContactLayout->addLayout(leftButtonsLayout);
     leftButtonsShowContactLayout->addLayout(showContactsLayout);
+    leftButtonsShowContactLayout->setContentsMargins(100,40,100,20);
 
     //ajout des layout (attention à l'ordre)
-    mainLayout->addLayout(searchBarLayout);
-    mainLayout->addLayout(dateAndResetLayout);
-    mainLayout->addWidget(this->messageLabel);
+    mainLayout->addWidget(topWidget);
     mainLayout->addLayout(leftButtonsShowContactLayout);
+    mainLayout->setContentsMargins(0, 0, 0, 0);
 
     //propriétés d'alignement sur les layout et widget
-    leftButtonsShowContactLayout->setContentsMargins(0,20,0,0);
     dateAndResetLayout->setAlignment(dateSelectorLayout, Qt::AlignLeft);
     dateAndResetLayout->setAlignment(resetFiltersButtonLayout, Qt::AlignRight);
     leftButtonsLayout->setAlignment(Qt::AlignTop);
@@ -245,6 +282,7 @@ void MainWidget::closeFirstCalendarDialog(QDate * date){
     if(date!=nullptr)
         {
         this->filterFirstDate=new Date(date->day(), date->month(), date->year());
+        this->dateSelectorButton1->setIcon(QIcon());
         this->dateSelectorButton1->setText(this->filterFirstDate->toString().c_str());
         if(this->filterFirstDate!=nullptr && this->filterSecondDate!=nullptr)
             {
@@ -262,6 +300,7 @@ void MainWidget::closeSecondCalendarDialog(QDate * date){
     if(date!=nullptr)
         {
         this->filterSecondDate=new Date(date->day(), date->month(), date->year());
+        this->dateSelectorButton2->setIcon(QIcon());
         this->dateSelectorButton2->setText(this->filterSecondDate->toString().c_str());
         if(this->filterFirstDate!=nullptr && this->filterSecondDate!=nullptr)
             {
@@ -295,6 +334,12 @@ void MainWidget::resetFilters(){
     this->searchLineEdit->setText("");
     this->dateSelectorButton1->setText("");
     this->dateSelectorButton2->setText("");
+    QPixmap pixmap(":/icon/icon/calendar.png");
+    QIcon calendarIcon(pixmap);
+    this->dateSelectorButton1->setIcon(calendarIcon);
+    this->dateSelectorButton1->setIconSize(pixmap.rect().size());
+    this->dateSelectorButton2->setIcon(calendarIcon);
+    this->dateSelectorButton2->setIconSize(pixmap.rect().size());
     this->filterFirstDate=nullptr;
     this->filterSecondDate=nullptr;
     this->messageLabel->setVisible(false);

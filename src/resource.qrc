@@ -8,4 +8,15 @@
         <file>resourceFiles/style.qss</file>
         <file>resourceFiles/dataTest.sql</file>
     </qresource>
+    <qresource prefix="/icon">
+        <file>icon/arrow_comboBox.png</file>
+        <file>icon/calendar.png</file>
+        <file>icon/search.png</file>
+    </qresource>
+    <qresource prefix="/font">
+        <file>font/Ubuntu-Bold.ttf</file>
+        <file>font/Ubuntu-Light.ttf</file>
+        <file>font/Ubuntu-Medium.ttf</file>
+        <file>font/Ubuntu-Regular.ttf</file>
+    </qresource>
 </RCC>

@@ -1,6 +1,171 @@
-/* %1=background_color */
+/* %1=main_color_clear %2=main_color_dark %3=highlight_color %4=dark_highlight_color %5=white %6=black %7=light_grey %8=medium_grey %9=dark_grey */
 
-MainWindow{background-color: %1;}
+/* ------------------------------------------------------------- */
+/* general */
+/* ------------------------------------------------------------- */
+QMainWindow, QDialog{background-color: %1;}
+*{font-size: 10pt; color: %6;}
+
+/* boutons */
+QPushButton{
+    padding-left: 15px;
+    padding-right: 15px;
+    margin: 0px;
+    height: 32px;
+
+    border: solid;
+    border-width: 0px;
+    border-radius: 8px;
+
+    background-color: %8;
+    color: %6;
+}
+QPushButton:hover{background-color: %7;}
+QPushButton:disabled{background-color: %7;color: %9;}
+
+/* comboBox */
+QComboBox{
+    padding-left: 15px;
+    padding-right: 25px;
+    margin: 0px;
+    height: 32px;
+
+    border: solid;
+    border-width: 0px;
+    border-radius: 8px;
+
+    background-color: %8;
+    color: %6;
+}
+QComboBox:hover{background-color: %7;}
+QComboBox::down-arrow{border: solid; border-width:0px;}
+QComboBox::drop-down {
+  padding-left: 15px;
+  padding-right: 25px;
+  padding-top: 5px;
+  subcontrol-origin: padding;
+  subcontrol-position: top right;
+  border-left: none;
+}
+QComboBox::down-arrow {
+  image: url(:/icon/icon/arrow_comboBox.png);
+}
+
+
+QCalendarWidget QToolButton{
+        height: 60px;
+        width: 150px;
+        color: white;
+        font-size: 24px;
+        icon-size: 56px, 56px;
+        background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop: 0 #cccccc, stop: 1 #333333);
+}
+QCalendarWidget QMenu {
+        width: 150px;
+        left: 20px;
+        color: white;
+        font-size: 18px;
+        background-color: rgb(100, 100, 100);
+}
+QCalendarWidget QSpinBox {
+        width: 150px;
+        font-size:24px;
+        color: white;
+        background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop: 0 #cccccc, stop: 1 #333333);
+        selection-background-color: rgb(136, 136, 136);
+        selection-color: rgb(255, 255, 255);
+}
+QCalendarWidget QSpinBox::up-button { subcontrol-origin: border;  subcontrol-position: top right;  width:65px; }
+QCalendarWidget QSpinBox::down-button {subcontrol-origin: border; subcontrol-position: bottom right;  width:65px;}
+QCalendarWidget QSpinBox::up-arrow { width:56px;  height:56px; }
+QCalendarWidget QSpinBox::down-arrow { width:56px;  height:56px; }
+
+/* header row */
+QCalendarWidget QWidget { alternate-background-color: rgb(128, 128, 128); }
+/* normal days */
+QCalendarWidget QAbstractItemView:enabled{
+        font-size:24px;
+        color: rgb(180, 180, 180);
+        background-color: black;
+        selection-background-color: rgb(64, 64, 64);
+        selection-color: rgb(0, 255, 0);
+}
+  /* days in other months */
+  /* navigation bar */
+QCalendarWidget QWidget#qt_calendar_navigationbar{
+  background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop: 0 #cccccc, stop: 1 #333333);
+}
+QCalendarWidget QAbstractItemView:disabled{
+color: rgb(64, 64, 64);
+}
+
+
+
+/* ------------------------------------------------------------- */
+/* page principal */
+/* ------------------------------------------------------------- */
+
+#topWidgetMainWidget{background-color: %2;}
+
+#filtersCombobox{
+    height: 48px;
+
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+}
+
+
+
+
+#searchLineEdit{
+    padding-left: 15px;
+    padding-right: 15px;
+    margin: 0px;
+    height: 48px;
+
+    border: solid;
+    border-width: 0px;
+
+    color: %6;
+}
+
+
+#searchButton{
+    height: 48px;
+
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+
+    background-color: %3;
+}
+#searchButton:hover{background-color: %4;}
+
+#whiteLabels{color: %5;}
+#dateSelectorButton{
+    padding-left: 5px;
+    padding-right: 5px;
+    height: 28px;
+    width: 100px;
+}
+#nbContactLabel{font-size: 9pt;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
