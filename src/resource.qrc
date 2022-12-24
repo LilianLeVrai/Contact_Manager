@@ -7,6 +7,7 @@
         <file>resourceFiles/initTodo.sql</file>
         <file>resourceFiles/style.qss</file>
         <file>resourceFiles/dataTest.sql</file>
+        <file>resourceFiles/logo.png</file>
     </qresource>
     <qresource prefix="/icon">
         <file>icon/arrow_comboBox.png</file>

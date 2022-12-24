@@ -1,6 +1,8 @@
 /build-src-Desktop_Qt_5_15_2_MinGW_64_bit-Debug/
 
 /docs/generate_doc_doxygen/
+/docs/logo.ai
+/docs/*.docx
 
 /src/src.pro.user
 

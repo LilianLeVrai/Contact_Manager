@@ -47,6 +47,9 @@ EditTagDialog::~EditTagDialog(){
 //------------------------------------------------------------------------------------------------------------------------------
 void EditTagDialog::initUI(){
 
+    this->setWindowIcon(QIcon(":/resources/resourceFiles/logo.png"));
+    this->setWindowFlags(windowFlags() & ~Qt::WindowContextHelpButtonHint);
+
     //selection todo
     this->todoCombobox=new QComboBox(this);
     this->todoCombobox->addItem("Ajouter tag");

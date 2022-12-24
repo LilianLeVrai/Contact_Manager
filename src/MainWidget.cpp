@@ -66,6 +66,7 @@ MainWidget::~MainWidget(){
 void MainWidget::initUI(){
 
 
+
     //selection de filtre
     this->filtersCombobox = new QComboBox(this);
     this->filtersCombobox->setObjectName("filtersCombobox");
@@ -388,7 +389,7 @@ void MainWidget::editContact(Contact * contact, bool error){
 
 
 void MainWidget::openDetailsContactDialog(){
-    this->detailsContactDialog=new DetailsContactDialog(this->databaseCRUD,this->listContact.getContactByIndex(this->contactsTable->selectionModel()->currentIndex().row()));
+    this->detailsContactDialog=new DetailsContactDialog(this->databaseCRUD,this->listContact.getContactByIndex(this->contactsTable->selectionModel()->currentIndex().row()),this);
     QObject::connect(this->detailsContactDialog, SIGNAL(emitModifyContact(Contact*, bool)), this, SLOT(editContact(Contact*, bool)));
     this->detailsContactDialog->show();
 }

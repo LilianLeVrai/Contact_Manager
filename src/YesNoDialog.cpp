@@ -30,6 +30,9 @@ YesNoDialog::~YesNoDialog(){
 //méthodes
 //------------------------------------------------------------------------------------------------------------------------------
 void YesNoDialog::initUI(QString title, QString question){
+
+    this->setWindowIcon(QIcon(":/resources/resourceFiles/logo.png"));
+    this->setWindowFlags(windowFlags() & ~Qt::WindowContextHelpButtonHint);
     setWindowTitle(title);
 
     //label

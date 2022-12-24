@@ -39,6 +39,8 @@ ModificationsWindow::~ModificationsWindow(){
 
 void ModificationsWindow::initUI(){
 
+    this->setWindowIcon(QIcon(":/resources/resourceFiles/logo.png"));
+    this->setWindowFlags(windowFlags() & ~Qt::WindowContextHelpButtonHint);
     this->resize(1200, 600);
 
     QVBoxLayout * mainLayout = new QVBoxLayout(this);

@@ -72,6 +72,9 @@ EditContactDialog::~EditContactDialog(){
 //------------------------------------------------------------------------------------------------------------------------------
 void EditContactDialog::initUI(){
 
+    this->setWindowIcon(QIcon(":/resources/resourceFiles/logo.png"));
+    this->setWindowFlags(windowFlags() & ~Qt::WindowContextHelpButtonHint);
+
     this->errorMessage=new MessageLabel("", MessageLabel::NoStyle, true);
 
     QLabel * lastNameLabel=new QLabel("Nom :",this);

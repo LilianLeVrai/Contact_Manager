@@ -33,6 +33,8 @@ CalendarDialog::~CalendarDialog(){
 //méthodes
 //------------------------------------------------------------------------------------------------------------------------------
 void CalendarDialog::initUI(){
+    this->setWindowIcon(QIcon(":/resources/resourceFiles/logo.png"));
+    this->setWindowFlags(windowFlags() & ~Qt::WindowContextHelpButtonHint);
     setWindowTitle("Choisir une date");
 
     //calendrier

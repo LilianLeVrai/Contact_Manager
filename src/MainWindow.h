@@ -25,6 +25,8 @@ class MainWindow : public QMainWindow
         Q_OBJECT
 
     private:
+        QApplication * app;
+
         DatabaseManagement * databaseManagement;/**< databaseManagement (utile pour les options de la barre d'outils) */
         DatabaseCRUD * databaseCRUD;/**< gestionnaire de la BDD */
 

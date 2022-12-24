@@ -57,6 +57,8 @@ DetailsContactDialog::~DetailsContactDialog(){
 
 void DetailsContactDialog::initUI(){
 
+    this->setWindowIcon(QIcon(":/resources/resourceFiles/logo.png"));
+    this->setWindowFlags(windowFlags() & ~Qt::WindowContextHelpButtonHint);
     setWindowTitle("Détails");
 
     //message pour erreur
@@ -253,7 +255,7 @@ void DetailsContactDialog::updateTag(){
 }
 
 void DetailsContactDialog::printModifications(){
-    this->modificationsWindow=new ModificationsWindow(this->contact, this->databaseCRUD);
+    this->modificationsWindow=new ModificationsWindow(this->contact, this->databaseCRUD, this->parentWidget());
     this->modificationsWindow->show();
 }
 

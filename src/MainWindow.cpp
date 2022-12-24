@@ -21,6 +21,8 @@ MainWindow::MainWindow(DatabaseCRUD * databaseCRUD, QWidget *parent)
     {
         this->databaseCRUD=databaseCRUD;
 
+        this->setWindowFlags(windowFlags() & ~Qt::WindowContextHelpButtonHint);
+        this->setWindowIcon(QIcon(":/resources/resourceFiles/logo.png"));
         this->setWindowTitle("Gestionnaire de contact");
         this->resize(1600, 800);
 
@@ -73,7 +75,7 @@ void MainWindow::createJSON(){
 }
 
 void MainWindow::openModificationsWindow(){
-    this->modificationsWindow=new ModificationsWindow(this->databaseCRUD);
+    this->modificationsWindow=new ModificationsWindow(this->databaseCRUD, this);
     this->modificationsWindow->show();
 }
 

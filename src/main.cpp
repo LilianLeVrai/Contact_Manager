@@ -58,6 +58,5 @@ int main(int argc, char *argv[])
     app.setStyleSheet(styleSheet.arg("#fefffe").arg("#373353").arg("#ffd803").arg("#ffe823").arg("#fffffe").arg("#070323").arg("#f0f2f5").arg("#e5e7ea").arg("#b5b7ba"));//description des couleurs dans le fichier de style
     styleFile.close();
 
-
     return app.exec();
 }
