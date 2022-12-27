@@ -45,6 +45,7 @@ void ModificationsWindow::initUI(){
 
     QVBoxLayout * mainLayout = new QVBoxLayout(this);
     this->refreshButton=new QPushButton("Rafraichir",this);
+    this->refreshButton->setObjectName("refreshButton");
     mainLayout->addWidget(this->refreshButton);
 
     this->modificationsTable = new QTableWidget(this);
@@ -59,6 +60,9 @@ void ModificationsWindow::initUI(){
     this->modificationsTable->setSelectionBehavior(QAbstractItemView::SelectRows);
     this->modificationsTable->setSelectionMode(QAbstractItemView::SingleSelection);
     mainLayout->addWidget(this->modificationsTable);
+
+    mainLayout->setContentsMargins(30,30,30,30);
+    mainLayout->setSpacing(30);
 }
 
 void ModificationsWindow::fillModificationsTable(){

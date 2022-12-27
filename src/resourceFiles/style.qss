@@ -52,10 +52,25 @@ QComboBox::down-arrow {
   image: url(:/icon/icon/arrow_comboBox.png);
 }
 
+/* champ d'edition */
+QLineEdit{
+    padding-left: 5px;
+    padding-right: 5px;
+    height: 30px;
+
+    border: 1px solid %2;
+
+    background-color: %5;
+    color: %6;
+
+
+}
+
+
 /* tableaux */
 QTableWidget{
     border: 1px solid %2;
- alternate-background-color: %2;
+    alternate-background-color: %2;
     background-color: %5;
     color: %6;
 }
@@ -78,9 +93,6 @@ QTableWidget{
     border-bottom-left-radius: 15px;
 }
 
-
-
-
 #searchLineEdit{
     padding-left: 15px;
     padding-right: 15px;
@@ -93,7 +105,6 @@ QTableWidget{
     background-color: %5;
     color: %6;
 }
-
 
 #searchButton{
     height: 48px;
@@ -115,6 +126,49 @@ QTableWidget{
     width: 100px;
 }
 #nbContactLabel{font-size: 9pt;}
+
+
+/* ------------------------------------------------------------- */
+/* fenetre de détails de contact */
+/* ------------------------------------------------------------- */
+
+
+
+
+
+
+/* ------------------------------------------------------------- */
+/* fenetre d'édition de contact */
+/* ------------------------------------------------------------- */
+
+#editContactButton{background-color: %3;}
+#editContactButton:hover{background-color: %4;}
+
+
+/* ------------------------------------------------------------- */
+/* fenetre d'édition de tags */
+/* ------------------------------------------------------------- */
+
+
+
+
+
+
+
+/* ------------------------------------------------------------- */
+/* fenetre d'historique */
+/* ------------------------------------------------------------- */
+
+#refreshButton{background-color: %3;}
+#refreshButton:hover{background-color: %4;}
+
+/* ------------------------------------------------------------- */
+/* fenetre de question oui/non */
+/* ------------------------------------------------------------- */
+
+#yesButton{background-color: %3;}
+#yesButton:hover{background-color: %4;}
+
 
 
 

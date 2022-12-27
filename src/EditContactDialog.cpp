@@ -78,14 +78,19 @@ void EditContactDialog::initUI(){
     this->errorMessage=new MessageLabel("", MessageLabel::NoStyle, true);
 
     QLabel * lastNameLabel=new QLabel("Nom :",this);
+    lastNameLabel->setAlignment(Qt::AlignLeft);
     this->lastNameEdit=new QLineEdit(this);
-    QLabel * firstNameLabel=new QLabel("Prénom :");
+    QLabel * firstNameLabel=new QLabel("Prénom :", this);
+    firstNameLabel->setAlignment(Qt::AlignLeft);
     this->firstNameEdit=new QLineEdit(this);
     QLabel * companyLabel=new QLabel("Entreprise :",this);
+    companyLabel->setAlignment(Qt::AlignLeft);
     this->companyEdit=new QLineEdit(this);
     QLabel * mailLabel=new QLabel("Mail :",this);
+    mailLabel->setAlignment(Qt::AlignLeft);
     this->mailEdit=new QLineEdit(this);
     QLabel * phoneLabel=new QLabel("Téléphone :",this);
+    phoneLabel->setAlignment(Qt::AlignLeft);
     this->phoneEdit=new QLineEdit(this);
     this->pictureButton=new QPushButton("Photo",this);
     this->pictureEdit=new QLineEdit(this);
@@ -93,13 +98,13 @@ void EditContactDialog::initUI(){
 
     this->cancelButton=new QPushButton("Annuler",this);
     this->validateButton=new QPushButton(this);
+    this->validateButton->setObjectName("editContactButton");
 
     QVBoxLayout * mainLayout=new QVBoxLayout(this);
     QVBoxLayout * labelLayout=new QVBoxLayout;
     QVBoxLayout * textEditLayout=new QVBoxLayout;
     QHBoxLayout * formLayout=new QHBoxLayout;
     QHBoxLayout * buttonLayout=new QHBoxLayout;
-    buttonLayout->setContentsMargins(0,20,0,0);
 
     labelLayout->addWidget(lastNameLabel);
     textEditLayout->addWidget(this->lastNameEdit);
@@ -116,6 +121,7 @@ void EditContactDialog::initUI(){
 
     formLayout->addLayout(labelLayout);
     formLayout->addLayout(textEditLayout);
+    formLayout->setContentsMargins(5,10,5,20);
 
     buttonLayout->addWidget(this->cancelButton);
     buttonLayout->addWidget(this->validateButton);

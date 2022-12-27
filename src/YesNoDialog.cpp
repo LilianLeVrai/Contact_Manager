@@ -41,6 +41,7 @@ void YesNoDialog::initUI(QString title, QString question){
     //boutons
     this->noButton=new QPushButton("Non",this);
     this->yesButton=new QPushButton("Oui",this);
+    this->yesButton->setObjectName("yesButton");
 
     //layouts
     QVBoxLayout * mainLayout=new QVBoxLayout(this);
@@ -48,6 +49,7 @@ void YesNoDialog::initUI(QString title, QString question){
 
     buttonLayout->addWidget(this->noButton);
     buttonLayout->addWidget(this->yesButton);
+    buttonLayout->setContentsMargins(0,30,0,0);
 
     mainLayout->addWidget(questionLabel);
     mainLayout->addLayout(buttonLayout);
