@@ -47,9 +47,12 @@ class MainWidget : public QWidget
         QTableWidget * contactsTable;/**< tableau affichant les contacts */
         QLabel * nbContactsLabel;/**< label affichant le nombre de contact dans le tableau */
         QComboBox * sortCombobox;/**< selecteur du tri */
-        QPushButton * addContactButton; /**< bouton d'ajout d'un contact */
+        QPushButton * addContactButton;/**< bouton d'ajout d'un contact */
+        QLabel * addContactLabel;/**< label pour le bouton d'ajout d'un contact */
         QPushButton * detailsContactButton;/**< bouton pour afficher les details d'un contact */
+        QLabel * detailsContactLabel;/**< label pour le bouton pour afficher les details d'un contact */
         QPushButton * deleteContactButton;/**< bouton de suppression du contact selectionne */
+        QLabel * deleteContactLabel;/**< label pour le bouton de suppression du contact selectionne */
 
         CalendarDialog * calendarDialogFirstDate;/**< boite de dialogue pour sélectionner la première date de filtre */
         CalendarDialog * calendarDialogSecondDate;/**< boite de dialogue pour sélectionner la seconde date de filtre */

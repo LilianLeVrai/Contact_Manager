@@ -93,13 +93,15 @@ void MainWidget::initUI(){
     QLabel * dateSelectorLabel1=new QLabel("Contacts crées entre le ",this);
     dateSelectorLabel1->setObjectName("whiteLabels");
     this->dateSelectorButton1 = new QPushButton(this);
+    this->dateSelectorButton1->setContentsMargins(0,0,0,0);
     this->dateSelectorButton1->setObjectName("dateSelectorButton");
-    this->dateSelectorButton1->setMinimumWidth(100);
+    this->dateSelectorButton1->setMinimumWidth(105);
     QLabel * dateSelectorLabel2=new QLabel("et le ",this);
     dateSelectorLabel2->setObjectName("whiteLabels");
     this->dateSelectorButton2 = new QPushButton(this);
+    this->dateSelectorButton2->setContentsMargins(0,0,0,0);
     this->dateSelectorButton2->setObjectName("dateSelectorButton");
-    this->dateSelectorButton2->setMinimumWidth(100);
+    this->dateSelectorButton2->setMinimumWidth(105);
 
     QPixmap pixmapDate(":/icon/icon/calendar.png");
     QIcon calendarIcon(pixmapDate);
@@ -123,18 +125,45 @@ void MainWidget::initUI(){
     this->sortCombobox->addItem("Trier par ordre Z->A");
 
     //Ajouter, details, supprimer contact
-    this->addContactButton = new QPushButton("Ajouter contact",this);
-    this->detailsContactButton = new QPushButton("Afficher details",this);
-    detailsContactButton->setEnabled(false);
-    this->deleteContactButton = new QPushButton("Supprimer contact",this);
-    deleteContactButton->setEnabled(false);
+    QPixmap pixmapAdd(":/icon/icon/addContact.png");
+    QIcon addIcon(pixmapAdd);
+    this->addContactButton=new QPushButton;
+    this->addContactButton->setIcon(addIcon);
+    this->addContactButton->setStyleSheet("text-align: right;");
+    this->addContactButton->setLayout(new QGridLayout);
+    this->addContactLabel = new QLabel("Ajouter contact");
+    this->addContactLabel->setAlignment(Qt::AlignCenter);
+    this->addContactButton->layout()->setContentsMargins(0,0,0,0);
+    this->addContactButton->layout()->addWidget(this->addContactLabel);
+
+    QPixmap pixmapDetails(":/icon/icon/detailsContact.png");
+    QIcon detailsIcon(pixmapDetails);
+    this->detailsContactButton=new QPushButton;
+    this->detailsContactButton->setIcon(detailsIcon);
+    this->detailsContactButton->setStyleSheet("text-align: right;");
+    this->detailsContactButton->setLayout(new QGridLayout);
+    this->detailsContactLabel = new QLabel("Afficher details");
+    this->detailsContactLabel->setAlignment(Qt::AlignCenter);
+    this->detailsContactButton->layout()->setContentsMargins(0,0,0,0);
+    this->detailsContactButton->layout()->addWidget(this->detailsContactLabel);
+
+    QPixmap pixmapDelete(":/icon/icon/delete.png");
+    QIcon deleteIcon(pixmapDelete);
+    this->deleteContactButton=new QPushButton;
+    this->deleteContactButton->setIcon(deleteIcon);
+    this->deleteContactButton->setStyleSheet("text-align: right;");
+    this->deleteContactButton->setLayout(new QGridLayout);
+    this->deleteContactLabel = new QLabel("Supprimer contact");
+    this->deleteContactLabel->setAlignment(Qt::AlignCenter);
+    this->deleteContactButton->layout()->setContentsMargins(0,0,0,0);
+    this->deleteContactButton->layout()->addWidget(this->deleteContactLabel);
 
     //tableau des contacts
     this->contactsTable = new QTableWidget(this);
     this->contactsTable->setObjectName("contactsTable");
     this->contactsTable->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
     this->contactsTable->setColumnCount(6);
-    QStringList hlabels; hlabels <<"Nom"<<"Prénom"<<"Entreprise"<<"mail"<<"Téléphone"<<"Date de création";
+    QStringList hlabels; hlabels <<"Nom"<<"Prénom"<<"Entreprise"<<"Mail"<<"Téléphone"<<"Date de création";
     this->contactsTable->setHorizontalHeaderLabels(hlabels);
     this->contactsTable->verticalHeader()->setVisible(false);
     this->contactsTable->horizontalHeader()->setSelectionMode(QAbstractItemView::NoSelection);
@@ -256,7 +285,9 @@ void MainWidget::fillTable(){
 
 void MainWidget::disableDeleteDetailsButton(){
     this->detailsContactButton->setEnabled(false);
+    this->detailsContactLabel->setStyleSheet("color: #b5b7ba");
     this->deleteContactButton->setEnabled(false);
+    this->deleteContactLabel->setStyleSheet("color: #b5b7ba");
 }
 
 
@@ -292,7 +323,7 @@ void MainWidget::closeFirstCalendarDialog(QDate * date){
                 this->messageLabel->setProperty("La date de départ est supérieur à la date de fin.", MessageLabel::Red, true);
                 }
             else
-                this->messageLabel->setVisible(false);
+                this->messageLabel->setProperty("",MessageLabel::NoStyle,true);
             }
         }
 }
@@ -310,7 +341,7 @@ void MainWidget::closeSecondCalendarDialog(QDate * date){
                 this->messageLabel->setProperty("La date de départ est supérieur à la date de fin.", MessageLabel::Red, true);
                 }
             else
-                this->messageLabel->setVisible(false);
+                this->messageLabel->setProperty("",MessageLabel::NoStyle,true);
             }
     }
 }
@@ -319,7 +350,9 @@ void MainWidget::updateTable(){fillTable();}
 
 void MainWidget::enableDeleteDetailsButton(){
     this->detailsContactButton->setEnabled(true);
+    this->detailsContactLabel->setStyleSheet("color: #070323");
     this->deleteContactButton->setEnabled(true);
+    this->deleteContactLabel->setStyleSheet("color: #070323");
 }
 
 
@@ -343,7 +376,7 @@ void MainWidget::resetFilters(){
     this->dateSelectorButton2->setIconSize(pixmap.rect().size());
     this->filterFirstDate=nullptr;
     this->filterSecondDate=nullptr;
-    this->messageLabel->setVisible(false);
+    this->messageLabel->setProperty("",MessageLabel::NoStyle,true);
     this->databaseCRUD->getAllContacts(&this->listContact);
     this->fillTable();
 }

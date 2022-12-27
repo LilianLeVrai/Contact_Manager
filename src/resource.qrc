@@ -13,6 +13,9 @@
         <file>icon/arrow_comboBox.png</file>
         <file>icon/calendar.png</file>
         <file>icon/search.png</file>
+        <file>icon/addContact.png</file>
+        <file>icon/detailsContact.png</file>
+        <file>icon/delete.png</file>
     </qresource>
     <qresource prefix="/font">
         <file>font/Ubuntu-Bold.ttf</file>
