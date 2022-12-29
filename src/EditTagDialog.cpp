@@ -52,16 +52,20 @@ void EditTagDialog::initUI(){
 
     //selection todo
     this->todoCombobox=new QComboBox(this);
+    this->todoCombobox->setObjectName("tagCombobox");
     this->todoCombobox->addItem("Ajouter tag");
     //suppression todo
     this->deleteTodoButton=new QPushButton("supprimer le tag",this);
+    this->deleteTodoButton->setObjectName("deleteTagButton");
     this->deleteTodoButton->setEnabled(false);
 
-    //contenu de l'interaction
+    //contenu du tag
     this->contentEdit=new QLineEdit(this);
     this->contentEdit->setPlaceholderText("@todo (max 150 caractères)");
     this->dateButton=new QPushButton("@date",this);
+    this->dateButton->setObjectName("dateTagButton");
     this->removeDateButton=new QPushButton("Effacer la date",this);
+    this->removeDateButton->setObjectName("removeDateTagButton");
     this->removeDateButton->setEnabled(false);
 
     this->editTodoButton=new QPushButton("Ajouter tag",this);
@@ -81,9 +85,11 @@ void EditTagDialog::initUI(){
 
     selectorLayout->addWidget(this->todoCombobox);
     selectorLayout->addWidget(this->deleteTodoButton);
+    selectorLayout->setSpacing(0);
 
     dateLayout->addWidget(this->dateButton);
     dateLayout->addWidget(this->removeDateButton);
+    dateLayout->setSpacing(0);
 
     formLayout->addWidget(this->contentEdit);
     formLayout->addLayout(dateLayout);

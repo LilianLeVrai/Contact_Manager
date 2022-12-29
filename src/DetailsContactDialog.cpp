@@ -12,6 +12,7 @@
 #include <QPixmap>
 
 #include <QDebug>
+#include <QPainter>
 
 
 //------------------------------------------------------------------------------------------------------------------------------
@@ -66,25 +67,34 @@ void DetailsContactDialog::initUI(){
 
     //label pour photo
     this->picture=new QLabel(this);
+    this->picture->setObjectName("picture");
     this->picture->setFixedWidth(150);
     this->picture->setFixedHeight(150);
     //bouton modifier le contact
     this->modifyContactButton=new QPushButton("Modifier le contact",this);
+    this->modifyContactButton->setObjectName("modifyContactButton");
     //bouton pour afficher les modifications du contact
     this->printModificationsButton=new QPushButton("Afficher les modifications",this);
     //info pour contact
     this->infoContactLabel=new QLabel(this);
+    this->infoContactLabel->setObjectName("infoContactLabel");
 
     //inputs pour interaction
     this->interactionCombobox=new QComboBox(this);
+    this->interactionCombobox->setObjectName("interactionCombobox");
     this->removeInteractionButton=new QPushButton("Supprimer l'interaction",this);
+    this->removeInteractionButton->setObjectName("deleteInteractionButton");
     this->removeInteractionButton->setEnabled(false);
     this->editTagButton=new QPushButton("Éditer les tags",this);
+    this->editTagButton->setObjectName("openEditTagButton");
     this->editTagButton->setEnabled(false);
     this->editInteraction=new QLineEdit(this);
+    this->editInteraction->setObjectName("editInteractionLine");
+    this->editInteraction->setStyleSheet("color: #a8aaac;");
     this->editInteraction->setPlaceholderText("contenu interaction (max 150 caractères)");
     this->editInteraction->setMaxLength(150);
-    this->editInteractionButton=new QPushButton("Ajouter interaction",this);
+    this->editInteractionButton=new QPushButton("Ajouter l'interaction",this);
+    this->editInteractionButton->setObjectName("editInteractionButton");
     this->editInteractionButton->setEnabled(false);
 
     this->tagsLabel=new QLabel(this);
@@ -98,29 +108,41 @@ void DetailsContactDialog::initUI(){
     QVBoxLayout * infoLayout=new QVBoxLayout;
     QHBoxLayout * inputInteraction1Layout=new QHBoxLayout;
     QHBoxLayout * inputInteraction2Layout=new QHBoxLayout;
+    QVBoxLayout * interactionLayout=new QVBoxLayout;
+
     pictureLayout->addWidget(this->picture);
     pictureLayout->addWidget(this->infoContactLabel);
+    pictureLayout->setContentsMargins(0,0,0,15);
+    pictureLayout->setSpacing(20);
 
     infoLayout->addWidget(this->errorMessage);
     infoLayout->addLayout(pictureLayout);
     infoLayout->addWidget(this->modifyContactButton);
     infoLayout->addWidget(this->printModificationsButton);
-
+    infoLayout->setContentsMargins(40,40,40,30);
+    QWidget * topWidget=new QWidget();
+    topWidget->setObjectName("topWidgetDetailsDialog");
+    topWidget->setLayout(infoLayout);
 
     inputInteraction1Layout->addWidget(this->interactionCombobox);
     inputInteraction1Layout->addWidget(this->removeInteractionButton);
     inputInteraction1Layout->addWidget(this->editTagButton);
+    inputInteraction1Layout->setSpacing(0);
     inputInteraction2Layout->addWidget(this->editInteraction);
     inputInteraction2Layout->addWidget(this->editInteractionButton);
+    inputInteraction2Layout->setSpacing(0);
 
+    interactionLayout->addLayout(inputInteraction1Layout);
+    interactionLayout->addLayout(inputInteraction2Layout);
+    interactionLayout->addWidget(tagsLabel);
+    interactionLayout->setContentsMargins(40,30,40,40);
+    interactionLayout->setSpacing(10);
 
-    mainLayout->addLayout(infoLayout);
-    mainLayout->addLayout(inputInteraction1Layout);
-    mainLayout->addLayout(inputInteraction2Layout);
-    mainLayout->addWidget(tagsLabel);
+    mainLayout->addWidget(topWidget);
+    mainLayout->addLayout(interactionLayout);
+    mainLayout->setContentsMargins(0,0,0,0);
 
     //propriétés d'alignement sur les layout et widget
-    inputInteraction1Layout->setContentsMargins(0,10,0,0);
     mainLayout->setAlignment(Qt::AlignTop);
     infoLayout->setAlignment(Qt::AlignTop);
 }
@@ -144,9 +166,9 @@ void DetailsContactDialog::fillInfo(){
     QImage image;
     if(image.load(this->contact->getPathPicture().c_str()))
         {
-          image=image.scaledToWidth(this->picture->width(), Qt::SmoothTransformation);
-          this->picture->setPixmap(QPixmap::fromImage(image));
-          this->errorMessage->setProperty("",MessageLabel::NoStyle,false);
+        this->errorMessage->setProperty("",MessageLabel::NoStyle,false);
+        image=image.scaledToWidth(this->picture->width(), Qt::SmoothTransformation);
+        this->picture->setPixmap(QPixmap::fromImage(image));
         }
     else
         {
@@ -206,12 +228,12 @@ void DetailsContactDialog::updateInputInteraction(){
             }
         else
             {
-            this->editInteractionButton->setText("Modifier interaction");
+            this->editInteractionButton->setText("Modifier l'interaction");
             this->removeInteractionButton->setEnabled(true);
             this->editTagButton->setEnabled(true);
             this->editInteraction->setText(this->listInteraction.getInteractionByIndex(this->interactionCombobox->currentIndex()-1)->getContent().c_str());
 
-            this->tagsLabel->setText(this->listInteraction.getInteractionByIndex(((this->interactionCombobox->currentIndex())-1))->toString().c_str());
+            this->tagsLabel->setText(this->listInteraction.getInteractionByIndex(((this->interactionCombobox->currentIndex())-1))->getListTodo()->toString().c_str());
             }
         }
 }
@@ -219,9 +241,19 @@ void DetailsContactDialog::updateInputInteraction(){
 void DetailsContactDialog::updateEditInteractionButton(){
     if(this->editInteraction->text().simplified().isEmpty() ||
             (this->interactionCombobox->currentIndex()!=0 && this->editInteraction->text()==this->listInteraction.getInteractionByIndex(this->interactionCombobox->currentIndex()-1)->getContent().c_str()))
+        {
         this->editInteractionButton->setEnabled(false);
+        this->editInteraction->setStyleSheet("border-color: #f0f2f5;");
+        if(this->editInteraction->text().simplified().isEmpty())
+            {this->editInteraction->setStyleSheet("color: #a8aaac;");}
+        else
+            {this->editInteraction->setStyleSheet("color: #373353;");}
+        }
     else
+        {
         this->editInteractionButton->setEnabled(true);
+        this->editInteraction->setStyleSheet("border-color: #e5e7ea;");
+        }
 }
 
 void DetailsContactDialog::removeInteraction(){
@@ -251,7 +283,7 @@ void DetailsContactDialog::addModifyInteraction(){
 
 
 void DetailsContactDialog::updateTag(){
-    this->tagsLabel->setText(this->listInteraction.getInteractionByIndex(((this->interactionCombobox->currentIndex())-1))->toString().c_str());
+    this->tagsLabel->setText(this->listInteraction.getInteractionByIndex(((this->interactionCombobox->currentIndex())-1))->getListTodo()->toString().c_str());
 }
 
 void DetailsContactDialog::printModifications(){

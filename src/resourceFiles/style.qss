@@ -49,7 +49,7 @@ QComboBox::drop-down {
   border-left: none;
 }
 QComboBox::down-arrow {
-  image: url(:/icon/icon/arrow_comboBox.png);
+  image: url(:/icon/icon/arrow_bottom.png);
 }
 
 /* champ d'edition */
@@ -62,21 +62,51 @@ QLineEdit{
 
     background-color: %5;
     color: %6;
-
-
 }
 
 
 /* tableaux */
 QTableWidget{
     border: 1px solid %2;
-    alternate-background-color: %2;
-    background-color: %5;
+
+    background-color: %5;  
+    selection-background-color: %4;
     color: %6;
+    selection-color: %6;
+}
+
+QHeaderView::section {
+    border: 0px;
+    background-color: %2;
+    color: %5;
+    height: 35px;
+    font: 14px;
+    font-weight: 400;
+}
+QHeaderView::section:focus {
+    background-color: %2;
+    color: %5;
+    height: 35px;
+    font: 14px;
+    font-weight: 400;
 }
 
 
-
+/* scrollbar */
+QScrollBar:vertical {
+    width: 7px;
+    background: %8;
+}
+QScrollBar::handle:vertical {
+    background: %9;
+}
+QScrollBar:horizontal {
+    height: 7px;
+    background: %8;
+}
+QScrollBar::handle:horizontal {
+    background: %9;
+}
 
 /* ------------------------------------------------------------- */
 /* fenetre principal */
@@ -127,15 +157,47 @@ QTableWidget{
 }
 #nbContactLabel{font-size: 9pt;}
 
-
 /* ------------------------------------------------------------- */
 /* fenetre de détails de contact */
 /* ------------------------------------------------------------- */
 
+#topWidgetDetailsDialog{background-color: %2;}
 
+#infoContactLabel{color: %5;}
 
+#modifyContactButton{background-color: %3;}
+#modifyContactButton:hover{background-color: %4;}
 
-
+#interactionCombobox{
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+#deleteInteractionButton{
+    border-radius: 0px;
+    border-right-width: 1px;
+    border-left-width: 1px;
+    border-color: %6;
+}
+#deleteInteractionButton:disabled{
+    border-radius: 0px;
+    border-right-color: %9;
+}
+#openEditTagButton{
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+}
+#editInteractionLine{
+    height: 30px;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+    border-width: 1px;
+    border-color: %7;
+}
+#editInteractionButton{
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+    height: 32px;
+}
 
 /* ------------------------------------------------------------- */
 /* fenetre d'édition de contact */
@@ -144,16 +206,28 @@ QTableWidget{
 #editContactButton{background-color: %3;}
 #editContactButton:hover{background-color: %4;}
 
-
 /* ------------------------------------------------------------- */
 /* fenetre d'édition de tags */
 /* ------------------------------------------------------------- */
 
-
-
-
-
-
+#tagCombobox{
+border-top-right-radius: 0px;
+border-bottom-right-radius: 0px;
+    border-right-color: %6;border-right-width: 1px;
+}
+#deleteTagButton{
+border-top-left-radius: 0px;
+border-bottom-left-radius: 0px;
+}
+#dateTagButton{
+border-top-right-radius: 0px;
+border-bottom-right-radius: 0px;
+    border-right-color: %6;border-right-width: 1px;
+}
+#removeDateTagButton{
+border-top-left-radius: 0px;
+border-bottom-left-radius: 0px;
+}
 
 /* ------------------------------------------------------------- */
 /* fenetre d'historique */
@@ -169,71 +243,25 @@ QTableWidget{
 #yesButton{background-color: %3;}
 #yesButton:hover{background-color: %4;}
 
-
-
-
-
 /* ------------------------------------------------------------- */
 /* fenetre selection de date */
 /* ------------------------------------------------------------- */
 
-QCalendarWidget QToolButton{
-        height: 60px;
-        width: 150px;
-        color: white;
-        font-size: 24px;
-        icon-size: 56px, 56px;
-        background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop: 0 #cccccc, stop: 1 #333333);
-}
-QCalendarWidget QMenu {
-        width: 150px;
-        left: 20px;
-        color: white;
-        font-size: 18px;
-        background-color: rgb(100, 100, 100);
-}
-QCalendarWidget QSpinBox {
-        width: 150px;
-        font-size:24px;
-        color: white;
-        background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop: 0 #cccccc, stop: 1 #333333);
-        selection-background-color: rgb(136, 136, 136);
-        selection-color: rgb(255, 255, 255);
-}
-QCalendarWidget QSpinBox::up-button { subcontrol-origin: border;  subcontrol-position: top right;  width:65px; }
-QCalendarWidget QSpinBox::down-button {subcontrol-origin: border; subcontrol-position: bottom right;  width:65px;}
-QCalendarWidget QSpinBox::up-arrow { width:56px;  height:56px; }
-QCalendarWidget QSpinBox::down-arrow { width:56px;  height:56px; }
+#validateDateButton{background-color: %3;}
+#validateDateButton:hover{background-color: %4;}
 
-/* header row */
-QCalendarWidget QWidget { alternate-background-color: rgb(128, 128, 128); }
-/* normal days */
+
 QCalendarWidget QAbstractItemView:enabled{
-        font-size:24px;
-        color: rgb(180, 180, 180);
-        background-color: black;
-        selection-background-color: rgb(64, 64, 64);
-        selection-color: rgb(0, 255, 0);
+        selection-background-color: %4;
+        selection-color: %2;
 }
-  /* days in other months */
-  /* navigation bar */
-QCalendarWidget QWidget#qt_calendar_navigationbar{
-  background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop: 0 #cccccc, stop: 1 #333333);
+QCalendarWidget QAbstractItemView:disabled{color: rgb(64, 64, 64);}
+
+QCalendarWidget QWidget#qt_calendar_navigationbar{background-color: %2;}
+QCalendarWidget QWidget#qt_calendar_prevmonth{qproperty-icon:url(:/icon/icon/arrow_left.png);}
+QCalendarWidget QWidget#qt_calendar_nextmonth{qproperty-icon:url(:/icon/icon/arrow_right.png);}
+QCalendarWidget QToolButton{
+    padding: 3px;
+    background-color: %2;
+    color: %5;
 }
-QCalendarWidget QAbstractItemView:disabled{
-color: rgb(64, 64, 64);
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-

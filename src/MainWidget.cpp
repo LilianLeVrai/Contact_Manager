@@ -170,6 +170,8 @@ void MainWidget::initUI(){
     this->contactsTable->setEditTriggers(QAbstractItemView::NoEditTriggers);
     this->contactsTable->setSelectionBehavior(QAbstractItemView::SelectRows);
     this->contactsTable->setSelectionMode(QAbstractItemView::SingleSelection);
+    this->contactsTable->setFocusPolicy(Qt::NoFocus);
+    this->contactsTable->horizontalHeader()->setHighlightSections(false);
 
     QString myFontFamily = QFontDatabase::applicationFontFamilies(0).at(0);
     QFont myFont(myFontFamily);

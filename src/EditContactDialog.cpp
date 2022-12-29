@@ -15,6 +15,8 @@
 #include <QDir>
 #include <QFile>
 #include <QFileInfo>
+#include <QPainter>
+#include <QImage>
 
 
 //------------------------------------------------------------------------------------------------------------------------------
@@ -198,11 +200,34 @@ void EditContactDialog::editContact(){
         QFileInfo ext(pathPicture);
         if(this->currentContact==nullptr || (this->currentContact!=nullptr && this->currentContact->getPathPicture().c_str()!=pathPicture))
             {
-            if(QFile::exists(pathPicture) && (ext.suffix()=="jpg" || ext.suffix()=="jpeg" || ext.suffix()=="png" ))
+            if(QFile::exists(pathPicture) && (ext.suffix()=="jpg" || ext.suffix()=="jpeg" || ext.suffix()=="png" || ext.suffix()=="JPG" || ext.suffix()=="JPEG" || ext.suffix()=="PNG"))
                 {
                 QDir directory("img");
-                QString newPathPicture="img/img_"+QString::number(directory.count())+"."+ext.suffix();
-                QFile::copy(pathPicture, newPathPicture);
+                QString newPathPicture="img/img_"+QString::number(directory.count())+".png"; //+ext.suffix();
+
+                QImage image(pathPicture);
+                if(image.width()<image.height())
+                      {image=image.copy(0,(image.height()-image.width())/2,image.width(),image.width());}
+                else
+                      {image=image.copy((image.width()-image.height())/2,0,image.height(),image.height());}
+                image=image.scaled(1000,1000);
+                image.save(newPathPicture, "PNG", 100);
+                image.load(newPathPicture);
+
+                QImage out(image.height(), image.height(), QImage::Format_ARGB32);
+                out.fill(Qt::transparent);
+
+                QBrush brush(image);
+                QPen pen;
+                pen.setColor(Qt::darkGray);
+                pen.setJoinStyle(Qt::RoundJoin);
+
+                QPainter painter(&out);
+                painter.setBrush(brush);
+                painter.setPen(Qt::NoPen);
+                painter.drawRoundedRect(0, 0, out.width(), out.height(), out.width()/2, out.height()/2);
+                out.save(newPathPicture, "PNG", 100);
+
                 pathPicture=newPathPicture;
                 }
             else {pathPicture=":/resources/resourceFiles/defaultImg.jpg";errorImg=true;}

@@ -59,6 +59,8 @@ void ModificationsWindow::initUI(){
     this->modificationsTable->setEditTriggers(QAbstractItemView::NoEditTriggers);
     this->modificationsTable->setSelectionBehavior(QAbstractItemView::SelectRows);
     this->modificationsTable->setSelectionMode(QAbstractItemView::SingleSelection);
+    this->modificationsTable->setFocusPolicy(Qt::NoFocus);
+    this->modificationsTable->horizontalHeader()->setHighlightSections(false);
     mainLayout->addWidget(this->modificationsTable);
 
     mainLayout->setContentsMargins(30,30,30,30);

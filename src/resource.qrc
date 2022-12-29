@@ -1,6 +1,6 @@
 <RCC>
     <qresource prefix="/resources">
-        <file>resourceFiles/defaultImg.jpg</file>
+        <file>resourceFiles/defaultImg.png</file>
         <file>resourceFiles/initContact.sql</file>
         <file>resourceFiles/initInteraction.sql</file>
         <file>resourceFiles/initModification.sql</file>
@@ -10,7 +10,9 @@
         <file>resourceFiles/logo.png</file>
     </qresource>
     <qresource prefix="/icon">
-        <file>icon/arrow_comboBox.png</file>
+        <file>icon/arrow_bottom.png</file>
+        <file>icon/arrow_left.png</file>
+        <file>icon/arrow_right.png</file>
         <file>icon/calendar.png</file>
         <file>icon/search.png</file>
         <file>icon/addContact.png</file>

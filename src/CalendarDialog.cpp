@@ -39,10 +39,12 @@ void CalendarDialog::initUI(){
 
     //calendrier
     this->calendar=new QCalendarWidget(this);
+    this->calendar->setFocusPolicy(Qt::NoFocus);
 
     //boutons
     this->cancelButton=new QPushButton("Annuler",this);
     this->validateButton=new QPushButton("Valider",this);
+    this->validateButton->setObjectName("validateDateButton");
 
     //layouts
     QVBoxLayout * mainLayout=new QVBoxLayout(this);
@@ -53,6 +55,7 @@ void CalendarDialog::initUI(){
 
     mainLayout->addWidget(this->calendar);
     mainLayout->addLayout(buttonLayout);
+    mainLayout->setSpacing(15);
 }
 
 void CalendarDialog::initConnect(){
