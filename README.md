@@ -24,20 +24,27 @@ The project is made in C++ with [Qt](https://www.qt.io/ ""), and for the databas
 
 ### Prerequisites
 
-
+To compile the project you need [Qt](https://www.qt.io/ "") 5.0 or a more recent version.
 
 ### Installation 
 
 1. Clone the repo. 
 ```
-git clone https://github.com/LilianLeVrai/Contact_manager.git
+git clone https://github.com/LilianLeVrai/Contact_Manager.git
+```
+2. Import the 'src.pro' file into the Qt Creator IDE, and run.  
+Or compile and run command lines from 'src' folder :
+```
+qmake
+make
+./src
 ```
 
 
 # Documentation
 
 The code is commented with [Doxygen](https://www.doxygen.nl/ ""), so you can generate the HTML documentation using the doxyfile present in the 'docs' folder. Moreover in this folder you can find diagrams and reports documenting the project. 
-This project being intended for a French professor, all this documentation is in French.
+This project being intended for a French professor, so all this documentation is in French.
 
 # Contributors 
 
