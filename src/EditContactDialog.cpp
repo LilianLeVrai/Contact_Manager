@@ -230,7 +230,7 @@ void EditContactDialog::editContact(){
 
                 pathPicture=newPathPicture;
                 }
-            else {pathPicture=":/resources/resourceFiles/defaultImg.jpg";errorImg=true;}
+            else {pathPicture=":/resources/resourceFiles/defaultImg.png";errorImg=true;}
             }
 
 
