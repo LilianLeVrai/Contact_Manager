@@ -2,7 +2,7 @@
 
 It's an application allowing the creation and management of contacts, as well as the addition of notes to them.
 
-![](./imgReadme.JPG)
+![](./imgReadme.png)
 
 This project was made for a 3rd year license study project.
 
