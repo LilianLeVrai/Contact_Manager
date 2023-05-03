@@ -48,6 +48,6 @@ This project being intended for a French professor, so all this documentation is
 
 # Contributors 
 
-- [Lilian M.](https://github.com/LilianLeVrai "")
+- [Lilian M.](https://github.com/LilianManzano "")
 - [Brandon P.](https://github.com/Branedon "")
 
